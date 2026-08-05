@@ -2,14 +2,16 @@ name: Daily Job Scraper
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # runs every day at 3AM UTC (8:30AM IST)
-  workflow_dispatch:        # also allows manual trigger anytime
+    - cron: '0 3 * * *'   # 8:30AM IST daily
+  workflow_dispatch:        # manual trigger anytime
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  scrape:
+  scrape-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,3 +36,11 @@ jobs:
           git add data/jobs.json
           git diff --staged --quiet || git commit -m "🤖 Auto-update jobs $(date +'%Y-%m-%d')"
           git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
