@@ -26,8 +26,37 @@ PROFILE = {
               "finance", "legal", "graphic design", "video editor"]
 }
 
+# ── LOCATION FILTER ─────────────────────────────────────────────────
+CHENNAI_KEYWORDS = ["chennai", "tambaram", "sholinganallur", "adyar",
+                    "anna nagar", "t nagar", "kodambakkam", "velachery",
+                    "chengalpattu", "perambur", "ambattur", "avadi",
+                    "porur", "maduravoyal", "chromepet", "pallavaram"]
+
+ONLINE_KEYWORDS  = ["remote", "work from home", "wfh", "online",
+                    "hybrid", "virtual", "anywhere"]
+
+def is_location_allowed(location, desc=""):
+    """
+    Chennai company  → always include
+    Outside Chennai  → include ONLY if online/remote/hybrid interview
+    """
+    loc  = location.lower()
+    text = (location + " " + desc).lower()
+
+    if any(c in loc for c in CHENNAI_KEYWORDS):
+        return True, "chennai"
+
+    if any(o in text for o in ONLINE_KEYWORDS):
+        return True, "online"
+
+    # Unknown location (scrapers sometimes return empty) → keep, mark unknown
+    if loc.strip() in ["", "india", "pan india"]:
+        return True, "remote"
+
+    return False, "skip"
+
 # ── SCORING ─────────────────────────────────────────────────────────
-def score_job(title, desc=""):
+def score_job(title, desc="", location=""):
     text = (title + " " + desc).lower()
     score = 0
     matched = []
@@ -93,7 +122,11 @@ def scrape_internshala():
                     location = location_el.get_text(strip=True) if location_el else "India"
                     link = "https://internshala.com" + link_el["href"] if link_el and link_el.get("href","").startswith("/") else (link_el["href"] if link_el else url)
 
-                    score, prob = score_job(title)
+                    allowed, loc_type = is_location_allowed(location)
+                    if not allowed:
+                        continue
+
+                    score, prob = score_job(title, location=location)
                     if prob == "skip":
                         continue
 
@@ -101,6 +134,7 @@ def scrape_internshala():
                         "title": title,
                         "company": company,
                         "location": location,
+                        "loc_type": loc_type,
                         "source": "Internshala",
                         "url": link,
                         "prob": prob,
@@ -145,7 +179,11 @@ def scrape_naukri():
                     location = location_el.get_text(strip=True) if location_el else "Chennai"
                     link = link_el["href"] if link_el and link_el.get("href") else url
 
-                    score, prob = score_job(title)
+                    allowed, loc_type = is_location_allowed(location)
+                    if not allowed:
+                        continue
+
+                    score, prob = score_job(title, location=location)
                     if prob == "skip":
                         continue
 
@@ -153,6 +191,7 @@ def scrape_naukri():
                         "title": title,
                         "company": company,
                         "location": location,
+                        "loc_type": loc_type,
                         "source": "Naukri",
                         "url": link,
                         "prob": prob,
@@ -198,7 +237,11 @@ def scrape_linkedin():
                     location_text = location_el.get_text(strip=True) if location_el else location
                     link = link_el["href"] if link_el and link_el.get("href") else url
 
-                    score, prob = score_job(title)
+                    allowed, loc_type = is_location_allowed(location_text)
+                    if not allowed:
+                        continue
+
+                    score, prob = score_job(title, location=location_text)
                     if prob == "skip":
                         continue
 
@@ -206,6 +249,7 @@ def scrape_linkedin():
                         "title": title,
                         "company": company,
                         "location": location_text,
+                        "loc_type": loc_type,
                         "source": "LinkedIn",
                         "url": link,
                         "prob": prob,
@@ -234,13 +278,19 @@ def scrape_unstop():
                 company = item.get("organisation", {}).get("name", "Unknown")
                 location = item.get("city", "India")
                 link = f"https://unstop.com/jobs/{item.get('public_url','')}"
-                score, prob = score_job(title)
+
+                allowed, loc_type = is_location_allowed(location)
+                if not allowed:
+                    continue
+
+                score, prob = score_job(title, location=location)
                 if prob == "skip":
                     continue
                 jobs.append({
                     "title": title,
                     "company": company,
                     "location": location,
+                    "loc_type": loc_type,
                     "source": "Unstop",
                     "url": link,
                     "prob": prob,
