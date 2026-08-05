@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranjith G — Live Job Tracker</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh;padding:20px}
+.header{margin-bottom:24px}
+h1{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.sub{font-size:13px;color:#64748b}
+.updated{font-size:12px;color:#4ade80;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:#1e2130;border:1px solid #2d3348;border-radius:12px;padding:14px 16px}
+.sl{font-size:11px;color:#64748b;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.sv{font-size:26px;font-weight:700}
+.sv.total{color:#fff}
+.sv.high{color:#4ade80}
+.sv.med{color:#fbbf24}
+.sv.low{color:#f87171}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.fb{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid #2d3348;background:#1e2130;color:#94a3b8;cursor:pointer;transition:all .12s}
+.fb.active{background:#6366f1;border-color:#6366f1;color:#fff;font-weight:600}
+.fb:hover{border-color:#6366f1;color:#a5b4fc}
+.search-row{display:flex;gap:8px;margin-bottom:14px}
+.sb{flex:1;font-size:13px;padding:8px 14px;border-radius:10px;border:1px solid #2d3348;background:#1e2130;color:#e2e8f0;outline:none}
+.sb:focus{border-color:#6366f1}
+.sort-sel{font-size:12px;padding:6px 10px;border-radius:10px;border:1px solid #2d3348;background:#1e2130;color:#94a3b8;cursor:pointer}
+.cl{font-size:12px;color:#64748b;margin-bottom:10px}
+.table-wrap{background:#1e2130;border:1px solid #2d3348;border-radius:12px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}
+thead tr{background:#161a27;border-bottom:1px solid #2d3348}
+th{text-align:left;padding:10px 14px;font-size:11px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+td{padding:11px 14px;vertical-align:middle;border-bottom:1px solid #1a1f30}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#252a3d}
+.jl{color:#818cf8;text-decoration:none;font-weight:600;font-size:13px;display:block}
+.jl:hover{color:#a5b4fc;text-decoration:underline}
+.jr{font-size:11px;color:#475569;margin-top:2px}
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap}
+.high{background:rgba(74,222,128,.12);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.medium{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.low{background:rgba(248,113,113,.1);color:#f87171;border:1px solid rgba(248,113,113,.3)}
+.src{display:inline-block;padding:2px 7px;border-radius:6px;font-size:10px;font-weight:600}
+.src-internshala{background:#1a2744;color:#60a5fa}
+.src-naukri{background:#2d1a1a;color:#f87171}
+.src-linkedin{background:#162030;color:#38bdf8}
+.src-unstop{background:#1f1a2d;color:#a78bfa}
+.src-indeed{background:#1a2820;color:#4ade80}
+.dp{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:#1e1b4b;color:#a5b4fc}
+.loc{font-size:12px;color:#64748b}
+.ap{color:#6366f1;font-size:12px;text-decoration:none;font-weight:600}
+.ap:hover{color:#818cf8}
+.loading{text-align:center;padding:60px;color:#64748b;font-size:14px}
+.error{text-align:center;padding:40px;color:#f87171;font-size:13px}
+.new-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:4px;background:rgba(74,222,128,.15);color:#4ade80;margin-left:5px;font-weight:700;vertical-align:middle}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.filters{gap:4px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🎯 Ranjith G — Live Job Tracker</h1>
+  <div class="sub">Auto-scrapes Internshala · Naukri · LinkedIn · Unstop · Daily at 8:30 AM IST</div>
+  <div class="updated" id="updated">Loading...</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sl">Total Jobs</div><div class="sv total" id="tc">—</div></div>
+  <div class="stat"><div class="sl">✦ Highly Possible</div><div class="sv high" id="hc">—</div></div>
+  <div class="stat"><div class="sl">◆ Possible</div><div class="sv med" id="mc">—</div></div>
+  <div class="stat"><div class="sl">○ Stretch</div><div class="sv low" id="lc">—</div></div>
+</div>
+
+<div class="filters">
+  <button class="fb active" onclick="fp('all',this)">All</button>
+  <button class="fb" onclick="fp('high',this)">✦ Highly Possible</button>
+  <button class="fb" onclick="fp('medium',this)">◆ Possible</button>
+  <button class="fb" onclick="fp('low',this)">○ Stretch</button>
+  <button class="fb" onclick="fd('fullstack',this)">Full Stack</button>
+  <button class="fb" onclick="fd('python',this)">Python/BE</button>
+  <button class="fb" onclick="fd('data',this)">Data/QA</button>
+  <button class="fb" onclick="fd('iot',this)">IoT/ECE</button>
+  <button class="fb" onclick="fd('java',this)">Java</button>
+  <button class="fb" onclick="fd('ml',this)">ML/AI</button>
+</div>
+
+<div class="filters">
+  <button class="fb active" onclick="fs('all',this)">All Sources</button>
+  <button class="fb" onclick="fs('Internshala',this)">Internshala</button>
+  <button class="fb" onclick="fs('Naukri',this)">Naukri</button>
+  <button class="fb" onclick="fs('LinkedIn',this)">LinkedIn</button>
+  <button class="fb" onclick="fs('Unstop',this)">Unstop</button>
+</div>
+
+<div class="search-row">
+  <input class="sb" type="text" placeholder="🔍 Search role, company, location..." id="si" oninput="render()">
+  <select class="sort-sel" id="sort" onchange="render()">
+    <option value="score">Sort: Best Match</option>
+    <option value="date">Sort: Latest</option>
+    <option value="title">Sort: A-Z</option>
+  </select>
+</div>
+
+<div class="cl" id="cl2"></div>
+
+<div class="table-wrap">
+  <table>
+    <thead><tr>
+      <th style="width:30%">Role</th>
+      <th style="width:18%">Company</th>
+      <th style="width:10%">Source</th>
+      <th style="width:11%">Domain</th>
+      <th style="width:13%">Location</th>
+      <th style="width:11%">Match</th>
+      <th style="width:7%">Apply</th>
+    </tr></thead>
+    <tbody id="jt"><tr><td colspan="7" class="loading">⏳ Loading jobs...</td></tr></tbody>
+  </table>
+</div>
+
+<script>
+let allJobs = [];
+let pf = 'all', df = null, sf = 'all';
+
+const dl = {fullstack:'Full Stack',python:'Python/BE',data:'Data/QA',iot:'IoT/ECE',java:'Java',ml:'ML/AI',general:'General'};
+
+function fp(p, btn) {
+  pf = p;
+  document.querySelectorAll('.filters:nth-child(1) .fb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); render();
+}
+function fd(d, btn) {
+  df = df === d ? null : d;
+  document.querySelectorAll('.filters:nth-child(2) .fb').forEach(b => b.classList.remove('active'));
+  if (df) btn.classList.add('active'); render();
+}
+function fs(s, btn) {
+  sf = s;
+  document.querySelectorAll('.filters:nth-child(3) .fb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); render();
+}
+
+function isNew(dateStr) {
+  const d = new Date(dateStr);
+  const now = new Date();
+  return (now - d) < 2 * 24 * 60 * 60 * 1000;
+}
+
+function render() {
+  const q = document.getElementById('si').value.toLowerCase();
+  const sortBy = document.getElementById('sort').value;
+
+  let f = allJobs.filter(j => {
+    return (pf === 'all' || j.prob === pf) &&
+           (!df || j.domain === df) &&
+           (sf === 'all' || j.source === sf) &&
+           (!q || j.title.toLowerCase().includes(q) ||
+                  j.company.toLowerCase().includes(q) ||
+                  j.location.toLowerCase().includes(q));
+  });
+
+  if (sortBy === 'score') f.sort((a,b) => b.score - a.score);
+  else if (sortBy === 'date') f.sort((a,b) => new Date(b.date) - new Date(a.date));
+  else f.sort((a,b) => a.title.localeCompare(b.title));
+
+  document.getElementById('tc').textContent = allJobs.length;
+  document.getElementById('hc').textContent = allJobs.filter(j=>j.prob==='high').length;
+  document.getElementById('mc').textContent = allJobs.filter(j=>j.prob==='medium').length;
+  document.getElementById('lc').textContent = allJobs.filter(j=>j.prob==='low').length;
+  document.getElementById('cl2').textContent = `Showing ${f.length} of ${allJobs.length} jobs`;
+
+  const srcClass = s => `src src-${s.toLowerCase()}`;
+
+  document.getElementById('jt').innerHTML = f.length === 0
+    ? `<tr><td colspan="7" class="loading">No jobs match your filters.</td></tr>`
+    : f.map(j => `
+    <tr>
+      <td>
+        <a class="jl" href="${j.url}" target="_blank" rel="noopener">${j.title}${isNew(j.date)?'<span class="new-tag">NEW</span>':''}</a>
+        <div class="jr">${j.date}</div>
+      </td>
+      <td style="font-size:13px;color:#cbd5e1">${j.company}</td>
+      <td><span class="${srcClass(j.source)}">${j.source}</span></td>
+      <td><span class="dp">${dl[j.domain]||'General'}</span></td>
+      <td class="loc">📍 ${j.location}</td>
+      <td><span class="badge ${j.prob}">${j.prob==='high'?'✦ High':j.prob==='medium'?'◆ Possible':'○ Stretch'}</span></td>
+      <td><a class="ap" href="${j.url}" target="_blank" rel="noopener">Apply →</a></td>
+    </tr>`).join('');
+}
+
+// Load jobs from JSON
+fetch('data/jobs.json')
+  .then(r => r.json())
+  .then(data => {
+    allJobs = data.jobs || [];
+    document.getElementById('updated').textContent = `🕐 Last updated: ${data.updated}`;
+    render();
+  })
+  .catch(() => {
+    document.getElementById('jt').innerHTML =
+      `<tr><td colspan="7" class="error">⚠️ Could not load jobs. Run the scraper first via GitHub Actions.</td></tr>`;
+    document.getElementById('updated').textContent = 'Not yet scraped';
+  });
+</script>
+</body>
+</html>
