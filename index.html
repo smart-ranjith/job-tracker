@@ -52,6 +52,10 @@ tr:hover td{background:#252a3d}
 .loc{font-size:12px;color:#64748b}
 .ap{color:#6366f1;font-size:12px;text-decoration:none;font-weight:600}
 .ap:hover{color:#818cf8}
+.mode{display:inline-block;padding:2px 7px;border-radius:6px;font-size:10px;font-weight:700}
+.mode-chennai{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+.mode-online{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.25)}
+.mode-remote{background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.25)}
 .loading{text-align:center;padding:60px;color:#64748b;font-size:14px}
 .error{text-align:center;padding:40px;color:#f87171;font-size:13px}
 .new-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:4px;background:rgba(74,222,128,.15);color:#4ade80;margin-left:5px;font-weight:700;vertical-align:middle}
@@ -111,7 +115,8 @@ tr:hover td{background:#252a3d}
       <th style="width:18%">Company</th>
       <th style="width:10%">Source</th>
       <th style="width:11%">Domain</th>
-      <th style="width:13%">Location</th>
+      <th style="width:11%">Location</th>
+      <th style="width:7%">Mode</th>
       <th style="width:11%">Match</th>
       <th style="width:7%">Apply</th>
     </tr></thead>
@@ -184,6 +189,7 @@ function render() {
       <td><span class="${srcClass(j.source)}">${j.source}</span></td>
       <td><span class="dp">${dl[j.domain]||'General'}</span></td>
       <td class="loc">📍 ${j.location}</td>
+      <td><span class="mode mode-${j.loc_type||'remote'}">${j.loc_type==='chennai'?'🏙 Chennai':j.loc_type==='online'?'💻 Online':'🌐 Remote'}</span></td>
       <td><span class="badge ${j.prob}">${j.prob==='high'?'✦ High':j.prob==='medium'?'◆ Possible':'○ Stretch'}</span></td>
       <td><a class="ap" href="${j.url}" target="_blank" rel="noopener">Apply →</a></td>
     </tr>`).join('');
