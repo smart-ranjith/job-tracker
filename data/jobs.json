@@ -1,78 +1,138 @@
 {
-  "updated": "2026-08-05 15:19 UTC",
-  "total": 54,
+  "updated": "2026-08-06 05:37 UTC",
+  "total": 64,
   "jobs": [
+    {
+      "title": "Embedded/IoT Developer- Fresher/Experienced",
+      "company": "ELK Education Consultants Pvt Ltd",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/embedded-iot-developer-fresher-experienced-at-elk-education-consultants-pvt-ltd-4422773399?position=4&pageNum=0&refId=QDuOs%2FMbVXzV3qC7AF7fHg%3D%3D&trackingId=sYkAysWxL7MMietm%2BLKP2g%3D%3D",
+      "prob": "high",
+      "score": 12,
+      "domain": "iot",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Software Developer Intern",
+      "company": "MEL Systems and Services Ltd.",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/software-developer-intern-at-mel-systems-and-services-ltd-4317770784?position=2&pageNum=0&refId=EJvb%2Fc8OtkBPI7LJOMC3zQ%3D%3D&trackingId=dIvUeXfv0DvBsGlkM2jEgg%3D%3D",
+      "prob": "high",
+      "score": 8,
+      "domain": "general",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Backend & Systems Engineering Intern (SDE - Golang)",
+      "company": "Raptee.HV",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/backend-systems-engineering-intern-sde-golang-at-raptee-hv-4410410342?position=2&pageNum=0&refId=cao6eyqosUL8Ku3CcVL2sg%3D%3D&trackingId=rHwBwKrIzOGveLt78U4t9Q%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Software Development Intern",
+      "company": "Keel Info Solution",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/software-development-intern-at-keel-info-solution-4449908713?position=3&pageNum=0&refId=cao6eyqosUL8Ku3CcVL2sg%3D%3D&trackingId=vYv%2BXD8pX%2Beubr4LNWLyxg%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "domain": "general",
+      "date": "2026-08-06"
+    },
     {
       "title": "Intern (Java/Ai-native)",
       "company": "Yubi",
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/intern-java-ai-native-at-yubi-4439862245?position=1&pageNum=0&refId=QE3L1YFLgAngx%2BuBcZhLrA%3D%3D&trackingId=eK%2BS7z5NNNB13yqO4m5sHA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/intern-java-ai-native-at-yubi-4439862245?position=5&pageNum=0&refId=cao6eyqosUL8Ku3CcVL2sg%3D%3D&trackingId=SOpwoyEnd5i5%2F0QWrNlHMQ%3D%3D",
       "prob": "medium",
       "score": 7,
       "domain": "java",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Intern - System Contributor",
-      "company": "Valeo",
+      "title": "MERN stack Developer Intern",
+      "company": "Rapid Acceleration Partners",
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/intern-system-contributor-at-valeo-4199558398?position=2&pageNum=0&refId=QE3L1YFLgAngx%2BuBcZhLrA%3D%3D&trackingId=ZCkcCVf9wHLUTFfVC5Y2ig%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/mern-stack-developer-intern-at-rapid-acceleration-partners-4429601192?position=1&pageNum=0&refId=Y838N4bQur4gZEDoWgWjVA%3D%3D&trackingId=onqgBSMTUiv6Ryd6XvJYBA%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "UI Developer Intern",
+      "company": "BlitzenX",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/ui-developer-intern-at-blitzenx-4319579376?position=5&pageNum=0&refId=Y838N4bQur4gZEDoWgWjVA%3D%3D&trackingId=%2Fr5%2B4tEN35Q3t0algMwXTw%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "domain": "general",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "1 year  Internship_SW_CDC",
+      "company": "Qualcomm",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/1-year-internship-sw-cdc-at-qualcomm-4376091071?position=1&pageNum=0&refId=cao6eyqosUL8Ku3CcVL2sg%3D%3D&trackingId=M1uHmhJsAjFQKKDBDjCbUQ%3D%3D",
       "prob": "medium",
       "score": 6,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Industrial And Production Engineering Internship in Chennai",
-      "company": "KritiLabs Technologies",
+      "title": "Business Development Executive - International Night Shift",
+      "company": "Icert Global",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Unstop",
+      "url": "https://unstop.com/jobs/jobs/business-development-executive-international-night-shift-icert-global-1731445",
+      "prob": "medium",
+      "score": 6,
+      "domain": "general",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Junior IOT Developer",
+      "company": "Metayb",
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/industrial-and-production-engineering-internship-in-chennai-at-kritilabs-technologies-4438530951?position=1&pageNum=0&refId=77sn90kAD%2F50hkfMoPSy9w%3D%3D&trackingId=q3z3Hx9mGsUWkLa%2BUAkXxA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/junior-iot-developer-at-metayb-4394773937?position=3&pageNum=0&refId=QDuOs%2FMbVXzV3qC7AF7fHg%3D%3D&trackingId=olJfaTkJT3Y0OLGkklqJuw%3D%3D",
       "prob": "medium",
-      "score": 6,
-      "domain": "ml",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Physician Assistant (Female) Internship in Chennai",
-      "company": "Velozity Global Solutions India Pvt. Ltd.",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/physician-assistant-female-internship-in-chennai-at-velozity-global-solutions-india-pvt-ltd-4443048859?position=2&pageNum=0&refId=77sn90kAD%2F50hkfMoPSy9w%3D%3D&trackingId=Dey5vs0fz95ADsNJSYErRw%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "domain": "ml",
-      "date": "2026-08-05"
+      "score": 5,
+      "domain": "iot",
+      "date": "2026-08-06"
     },
     {
       "title": "Iot",
-      "company": "SmartsevakActively hiring",
+      "company": "FlickstreeActively hiring",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/ai-content-growth--digital-marketing-internship-in-jaipur-at-smartsevak1785415058",
+      "url": "https://internshala.com/internship/detail/marketing-internship-in-mumbai-at-flickstree1784892846",
       "prob": "medium",
       "score": 4,
       "domain": "iot",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Iot",
-      "company": "StoryMirror Infotech Private LimitedActively hiring",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/founders-office-internship-in-mumbai-at-storymirror-infotech-private-limited1785733264",
-      "prob": "medium",
-      "score": 4,
-      "domain": "iot",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Iot",
@@ -84,19 +144,31 @@
       "prob": "medium",
       "score": 4,
       "domain": "iot",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Iot",
-      "company": "LeadNexus LLPActively hiring",
+      "company": "Sygnific Careers Private LimitedActively hiring",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/social-media-marketing-internship-in-pune-at-leadnexus-llp1785758508",
+      "url": "https://internshala.com/internship/detail/sales-and-marketing-internship-in-bhopal-at-sygnific-careers-private-limited1784953403",
       "prob": "medium",
       "score": 4,
       "domain": "iot",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Iot",
+      "company": "StoryMirror Infotech Private LimitedActively hiring",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/founders-office-internship-in-mumbai-at-storymirror-infotech-private-limited1785733264",
+      "prob": "medium",
+      "score": 4,
+      "domain": "iot",
+      "date": "2026-08-06"
     },
     {
       "title": "Iot",
@@ -108,118 +180,178 @@
       "prob": "medium",
       "score": 4,
       "domain": "iot",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
+    },
+    {
+      "title": "IOT Fullstack_4C",
+      "company": "Birlasoft",
+      "location": "Greater Chennai Area",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/iot-fullstack-4c-at-birlasoft-4423812765?position=1&pageNum=0&refId=QDuOs%2FMbVXzV3qC7AF7fHg%3D%3D&trackingId=VfBx3RogmUWP4Z%2BM7ekWTw%3D%3D",
+      "prob": "medium",
+      "score": 4,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Designer: IoT Connectivity-Development Engineering -Husky (India) Chennai,Guindy",
+      "company": "Husky Technologies",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/designer-iot-connectivity-development-engineering-husky-india-chennai-guindy-at-husky-technologies-4449358377?position=2&pageNum=0&refId=QDuOs%2FMbVXzV3qC7AF7fHg%3D%3D&trackingId=NzKYAX0OABxLds2dhXJYIA%3D%3D",
+      "prob": "medium",
+      "score": 4,
+      "domain": "iot",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "IOT Fullstack Lead-5A",
+      "company": "Birlasoft",
+      "location": "Greater Chennai Area",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/iot-fullstack-lead-5a-at-birlasoft-4437040101?position=5&pageNum=0&refId=QDuOs%2FMbVXzV3qC7AF7fHg%3D%3D&trackingId=SMjlLIYVxPmhY5HNamuiEQ%3D%3D",
+      "prob": "medium",
+      "score": 4,
+      "domain": "fullstack",
+      "date": "2026-08-06"
     },
     {
       "title": "Python Developer",
-      "company": "Wonderkids.club",
+      "company": "Axivence",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-wonderkidsclub1785474455",
+      "url": "https://internshala.com/internship/detail/full-stack-development-internship-in-ernakulam-at-axivence1784268650",
       "prob": "low",
       "score": 2,
       "domain": "python",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Python Developer",
-      "company": "Invly",
+      "company": "GTA & CO LLP",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-part-time-react-native-development-internship-at-invly1783320989",
+      "url": "https://internshala.com/internship/detail/java-development-internship-in-nagpur-at-gta-co-llp1785155956",
       "prob": "low",
       "score": 2,
       "domain": "python",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Python Developer",
-      "company": "Sneha Raikwar",
+      "company": "Arfina Design",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-part-time-front-end-development-internship-at-sneha-raikwar1785139196",
+      "url": "https://internshala.com/internship/detail/work-from-home-web-development-internship-at-arfina-design1783584228",
       "prob": "low",
       "score": 2,
       "domain": "python",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Python Developer",
-      "company": "Learners Track",
+      "company": "DP Info System",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-data-analytics-internship-at-learners-track1784192267",
+      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-dp-info-system1783582454",
       "prob": "low",
       "score": 2,
       "domain": "python",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Python Developer",
-      "company": "Studentpod Private Limited",
+      "company": "Fluence Pay (Dubai, United Arab Emirates)",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-studentpod-pte-limited1784109211",
+      "url": "https://internshala.com/internship/detail/work-from-home-mobile-app-development-internship-at-fluence-pay1783578298",
       "prob": "low",
       "score": 2,
       "domain": "python",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Software Developer",
-      "company": "First Shift",
+      "company": "Axivence",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-development-internship-at-first-shift1785607032",
+      "url": "https://internshala.com/internship/detail/full-stack-development-internship-in-ernakulam-at-axivence1784268650",
       "prob": "low",
       "score": 2,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Software Developer",
-      "company": "LAXAI LABS",
+      "company": "GTA & CO LLP",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-part-time-quality-analyst-internship-at-laxai-labs1784117704",
+      "url": "https://internshala.com/internship/detail/java-development-internship-in-nagpur-at-gta-co-llp1785155956",
       "prob": "low",
       "score": 2,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Software Developer",
-      "company": "IGurus Consultancy Services LLP",
+      "company": "Arfina Design",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-android-app-development-internship-at-igurus-consultancy-services-llp1783356645",
+      "url": "https://internshala.com/internship/detail/work-from-home-web-development-internship-at-arfina-design1783584228",
       "prob": "low",
       "score": 2,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Software Developer",
-      "company": "GR Software",
+      "company": "DP Info System",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-wordpress-developer-internship-at-ganesh-raj1783423062",
+      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-dp-info-system1783582454",
       "prob": "low",
       "score": 2,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Software Developer",
+      "company": "Fluence Pay (Dubai, United Arab Emirates)",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-mobile-app-development-internship-at-fluence-pay1783578298",
+      "prob": "low",
+      "score": 2,
+      "domain": "general",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Web Developer",
+      "company": "RAJ SHARMA",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-cyber-security-internship-at-iiesp1785203511",
+      "prob": "low",
+      "score": 2,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Web Developer",
       "company": "Lumor Tech",
       "location": "India",
       "loc_type": "remote",
@@ -227,92 +359,44 @@
       "url": "https://internshala.com/internship/detail/work-from-home-software-testing-internship-at-lumor-tech1783760835",
       "prob": "low",
       "score": 2,
-      "domain": "general",
-      "date": "2026-08-05"
+      "domain": "fullstack",
+      "date": "2026-08-06"
     },
     {
       "title": "Web Developer",
-      "company": "First Shift",
+      "company": "Zebnux Technologies",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-development-internship-at-first-shift1785607032",
+      "url": "https://internshala.com/internship/detail/work-from-home-web-development-internship-at-zebnux-technologies1785523737",
       "prob": "low",
       "score": 2,
       "domain": "fullstack",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Web Developer",
-      "company": "Prime Teal",
+      "company": "GTA & CO LLP",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-project-management-internship-at-prime-teal1783333982",
+      "url": "https://internshala.com/internship/detail/java-development-internship-in-nagpur-at-gta-co-llp1785155956",
       "prob": "low",
       "score": 2,
       "domain": "fullstack",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Web Developer",
-      "company": "Naineet Tech",
+      "company": "Axivence",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-engineer-internship-at-naineet-tech1784880804",
+      "url": "https://internshala.com/internship/detail/full-stack-development-internship-in-ernakulam-at-axivence1784268650",
       "prob": "low",
       "score": 2,
       "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Web Developer",
-      "company": "Rural Games",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-game-development-internship-at-rural-games1783312829",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Web Developer",
-      "company": "Togepe",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-togepe1783625896",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Data Analytics",
-      "company": "Women First India FoundationActively hiring",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-data-analytics-internship-at-women-first-india-foundation1785927716",
-      "prob": "low",
-      "score": 2,
-      "domain": "data",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Data Analytics",
-      "company": "VenkateshActively hiring",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/data-analytics-internship-in-multiple-locations-at-venkatesh1785828670",
-      "prob": "low",
-      "score": 2,
-      "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analytics",
@@ -324,7 +408,7 @@
       "prob": "low",
       "score": 2,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analytics",
@@ -336,7 +420,19 @@
       "prob": "low",
       "score": 2,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Data Analytics",
+      "company": "Rajat Khanna",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-part-time-data-analytics-internship-at-rajat-khanna1785992293",
+      "prob": "low",
+      "score": 2,
+      "domain": "data",
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analytics",
@@ -348,118 +444,70 @@
       "prob": "low",
       "score": 2,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Data Analytics",
+      "company": "Creative Galileo",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/business-development-sales-internship-in-mumbai-at-creative-galileo1785921858",
+      "prob": "low",
+      "score": 2,
+      "domain": "data",
+      "date": "2026-08-06"
     },
     {
       "title": "Java Developer",
-      "company": "First Shift",
+      "company": "VirtusInfotech",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-development-internship-at-first-shift1785607032",
+      "url": "https://internshala.com/internship/detail/work-from-home-fullstack-developer-mern-internship-at-virtusinfotech1783422655",
       "prob": "low",
       "score": 2,
       "domain": "java",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Java Developer",
-      "company": "Togepe",
+      "company": "RAJ SHARMA",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-togepe1783625896",
+      "url": "https://internshala.com/internship/detail/work-from-home-cyber-security-internship-at-iiesp1785203511",
       "prob": "low",
       "score": 2,
       "domain": "java",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Java Developer",
-      "company": "Naineet Tech",
+      "company": "Lumor Tech",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-engineer-internship-at-naineet-tech1784880804",
+      "url": "https://internshala.com/internship/detail/work-from-home-software-testing-internship-at-lumor-tech1783760835",
       "prob": "low",
       "score": 2,
       "domain": "java",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Java Developer",
-      "company": "DP Info System",
+      "company": "Madhyam - Change Foundation",
       "location": "India",
       "loc_type": "remote",
       "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-full-stack-development-internship-at-dp-info-system1783582454",
+      "url": "https://internshala.com/internship/detail/work-from-home-framer-website-developer-internship-at-madhyam-change-foundation1784713686",
       "prob": "low",
       "score": 2,
       "domain": "java",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Java Developer",
-      "company": "IGurus Consultancy Services LLP",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-android-app-development-internship-at-igurus-consultancy-services-llp1783356645",
-      "prob": "low",
-      "score": 2,
-      "domain": "java",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Full Stack Developer",
-      "company": "First Shift",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-software-development-internship-at-first-shift1785607032",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Full Stack Developer",
-      "company": "Prime Teal",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-project-management-internship-at-prime-teal1783333982",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Full Stack Developer",
-      "company": "LAXAI LABS",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-part-time-quality-analyst-internship-at-laxai-labs1784117704",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Full Stack Developer",
-      "company": "IGurus Consultancy Services LLP",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-android-app-development-internship-at-igurus-consultancy-services-llp1783356645",
-      "prob": "low",
-      "score": 2,
-      "domain": "fullstack",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Full Stack Developer",
       "company": "GR Software",
       "location": "India",
       "loc_type": "remote",
@@ -467,8 +515,128 @@
       "url": "https://internshala.com/internship/detail/work-from-home-wordpress-developer-internship-at-ganesh-raj1783423062",
       "prob": "low",
       "score": 2,
+      "domain": "java",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "VirtusInfotech",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-fullstack-developer-mern-internship-at-virtusinfotech1783422655",
+      "prob": "low",
+      "score": 2,
       "domain": "fullstack",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "RAJ SHARMA",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-cyber-security-internship-at-iiesp1785203511",
+      "prob": "low",
+      "score": 2,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "PSYT PRIVATE LIMITED",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-mobile-app-development-internship-at-psyt-private-limited1783682678",
+      "prob": "low",
+      "score": 2,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "OTB",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-shopify-development-internship-at-otb1784539459",
+      "prob": "low",
+      "score": 2,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Full Stack Developer",
+      "company": "Suresh TechLabs",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/work-from-home-part-time-software-testing-internship-at-suresh-techlabs1784711853",
+      "prob": "low",
+      "score": 2,
+      "domain": "fullstack",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Python Developer",
+      "company": "Clouddata Technologies",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-clouddata-technologies-4448935748?position=1&pageNum=0&refId=EJvb%2Fc8OtkBPI7LJOMC3zQ%3D%3D&trackingId=dCTVeMDVm095dklnXuAeuw%3D%3D",
+      "prob": "low",
+      "score": 2,
+      "domain": "python",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Python Developer",
+      "company": "Neurealm",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-neurealm-4446726994?position=3&pageNum=0&refId=EJvb%2Fc8OtkBPI7LJOMC3zQ%3D%3D&trackingId=eBK4Zh6OHIruX3xIMAiO%2Fg%3D%3D",
+      "prob": "low",
+      "score": 2,
+      "domain": "python",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Python Developer",
+      "company": "Infosys",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-infosys-4445422559?position=4&pageNum=0&refId=EJvb%2Fc8OtkBPI7LJOMC3zQ%3D%3D&trackingId=iI2HLKoftAIkPh0De1H%2BMQ%3D%3D",
+      "prob": "low",
+      "score": 2,
+      "domain": "python",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Python Developer &#8211; 3 Years Experience",
+      "company": "LetzBizz",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-%238211-3-years-experience-at-letzbizz-4439318483?position=5&pageNum=0&refId=EJvb%2Fc8OtkBPI7LJOMC3zQ%3D%3D&trackingId=Uww%2FUdZ3H2%2Fhc5vOnxK4lw%3D%3D",
+      "prob": "low",
+      "score": 2,
+      "domain": "python",
+      "date": "2026-08-06"
+    },
+    {
+      "title": "Niagara Software Developer",
+      "company": "Cognavi India Private Limited",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Unstop",
+      "url": "https://unstop.com/jobs/jobs/niagara-software-developer-cognavi-india-private-limited-1731552",
+      "prob": "low",
+      "score": 2,
+      "domain": "general",
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analyst",
@@ -476,11 +644,11 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-sourcingxpress-4402544578?position=1&pageNum=0&refId=FKXLhFGeEV8HepFMttk1NA%3D%3D&trackingId=ZfVcOlXoaVho%2FjCQyHJDPQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-sourcingxpress-4402544578?position=1&pageNum=0&refId=pqFxQHhXDkcmgRivZr3OTg%3D%3D&trackingId=TV5DbiN0OE2bjbP24YZyRA%3D%3D",
       "prob": "low",
       "score": 1,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analyst (Junior level) \u2013 (6 months-4 years)",
@@ -488,11 +656,11 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analyst-junior-level-%E2%80%93-6-months-4-years-at-enpowertek-india-4438951996?position=2&pageNum=0&refId=FKXLhFGeEV8HepFMttk1NA%3D%3D&trackingId=DFtz6efU0%2F%2BBLxteaXR9Ug%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analyst-junior-level-%E2%80%93-6-months-4-years-at-enpowertek-india-4438951996?position=2&pageNum=0&refId=pqFxQHhXDkcmgRivZr3OTg%3D%3D&trackingId=zGXq6l0nEjWqln3COjnS2Q%3D%3D",
       "prob": "low",
       "score": 1,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analyst",
@@ -500,11 +668,11 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-hitachi-energy-4441605491?position=3&pageNum=0&refId=FKXLhFGeEV8HepFMttk1NA%3D%3D&trackingId=pPvmDoEBes6WKXLUkyMb%2Fw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-hitachi-energy-4441605491?position=3&pageNum=0&refId=pqFxQHhXDkcmgRivZr3OTg%3D%3D&trackingId=KhcGJr1CKqQjHjNe7NO9mA%3D%3D",
       "prob": "low",
       "score": 1,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analyst",
@@ -512,11 +680,11 @@
       "location": "Greater Chennai Area",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-spillbox-innovation-private-ltd-4447792703?position=4&pageNum=0&refId=FKXLhFGeEV8HepFMttk1NA%3D%3D&trackingId=z0lPYqEPIuXqasqo4G7zWg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-spillbox-innovation-private-ltd-4447792703?position=4&pageNum=0&refId=pqFxQHhXDkcmgRivZr3OTg%3D%3D&trackingId=6VFep66yW5DwWntey9G5Eg%3D%3D",
       "prob": "low",
       "score": 1,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
       "title": "Data Analyst",
@@ -524,131 +692,83 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-bahwan-cybertek-4445495538?position=5&pageNum=0&refId=FKXLhFGeEV8HepFMttk1NA%3D%3D&trackingId=uqTk0ASXO7wkBBS5SMd1Lw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analyst-at-bahwan-cybertek-4445495538?position=5&pageNum=0&refId=pqFxQHhXDkcmgRivZr3OTg%3D%3D&trackingId=kXYa1ShIfWxY8j78at4E2g%3D%3D",
       "prob": "low",
       "score": 1,
       "domain": "data",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Software Engineer",
-      "company": "Maytrixtech",
+      "title": "HR Manager",
+      "company": "M.Ramsingh Agro Foods Pvt Ltd",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/software-engineer-maytrixtech-1731296",
-      "prob": "low",
-      "score": 1,
-      "domain": "general",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Senior Data Engineer",
-      "company": "Hiring Hood",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/senior-data-engineer-hiring-hood-1731152",
-      "prob": "low",
-      "score": 1,
-      "domain": "data",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Graphic Designer",
-      "company": "TEZTRADE EXPORTS PRIVATE LIMITED",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/graphic-designer-teztrade-exports-private-limited-1731352",
+      "url": "https://unstop.com/jobs/jobs/hr-manager-mramsingh-agro-foods-pvt-ltd-1731559",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Pre-Sales Technical Engineer",
-      "company": "Visionleap Ventures Pvt Ltd",
+      "title": "Video Editor",
+      "company": "Fifth Column Design Studio",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/pre-sales-technical-engineer-visionleap-ventures-pvt-ltd-1731331",
+      "url": "https://unstop.com/jobs/jobs/video-editor-fifth-column-design-studio-1731483",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Marketing Manager",
-      "company": "ApniClass",
+      "title": "Marketing Executive (SaaS Product)",
+      "company": "Idli Technologies Pvt Ltd",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/marketing-manager-apniclass-1731328",
+      "url": "https://unstop.com/jobs/jobs/marketing-executive-saas-product-idli-technologies-pvt-ltd-1731471",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Field Sales Executive",
-      "company": "Jazz Beats LLP",
+      "title": "Academic Counsellor - Inside Sales",
+      "company": "Leo Placement Consultant",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/field-sales-executive-jazz-beats-llp-1731320",
+      "url": "https://unstop.com/jobs/jobs/academic-counsellor-inside-sales-leo-placement-consultant-1731225",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Retail Field Sales Executive",
-      "company": "Hireginie Talent Cloud Pvt. Ltd.",
+      "title": "Video Editor",
+      "company": "Icert Global",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/retail-field-sales-executive-hireginie-talent-cloud-pvt-ltd-1731300",
-      "prob": "irrelevant",
-      "score": 0,
-      "domain": "ml",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Sales Manager",
-      "company": "Quickinsure Insurance Broker Pvt Ltd",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/sales-manager-quickinsure-insurance-broker-pvt-ltd-1731156",
+      "url": "https://unstop.com/jobs/jobs/video-editor-icert-global-1731446",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     },
     {
-      "title": "Senior Accountant",
-      "company": "BIPL",
+      "title": "Digital Marketing Executive",
+      "company": "Icert Global",
       "location": "India",
       "loc_type": "remote",
       "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/senior-accountant-bipl-1731292",
+      "url": "https://unstop.com/jobs/jobs/digital-marketing-executive-icert-global-1731442",
       "prob": "irrelevant",
       "score": 0,
       "domain": "general",
-      "date": "2026-08-05"
-    },
-    {
-      "title": "Graphic Designer",
-      "company": "Chocovic",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/graphic-designer-chocovic-1731158",
-      "prob": "irrelevant",
-      "score": 0,
-      "domain": "general",
-      "date": "2026-08-05"
+      "date": "2026-08-06"
     }
   ]
 }
