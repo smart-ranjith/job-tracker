@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import re
-from datetime import datetime
+from datetime import datetime, timezone
 import time
 import random
 
@@ -10,85 +9,131 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Referer": "https://www.google.com/",
 }
 
-# ── PROFILE ─────────────────────────────────────────────────────────
+# ── PROFILE ────────────────────────────────────────────────────────
 PROFILE = {
-    "skills": ["python", "java", "mysql", "html", "css", "iot", "firebase",
+    "skills": ["python", "java", "mysql", "html", "css", "firebase",
                "git", "excel", "data analytics", "automation", "tailwind",
-               "embedded", "sql", "rest api"],
-    "strong": ["mysql", "excel", "python automation", "iot", "html", "css"],
-    "weak":   ["react", "rest api", "machine learning", "vite"],
-    "keywords": ["python", "java", "full stack", "data", "iot", "embedded",
+               "sql", "rest api", "backend", "web"],
+    "strong": ["mysql", "excel", "python", "html", "css", "sql", "automation"],
+    "weak":   ["react", "rest api", "machine learning", "vite", "django", "flask"],
+    "keywords": ["python", "java", "full stack", "data", "backend", "embedded",
                  "software", "developer", "intern", "fresher", "automation",
-                 "backend", "web", "mysql", "analytics"],
+                 "web", "mysql", "analytics", "sql", "business analyst",
+                 "data engineer", "api", "engineer"],
     "avoid": ["hr", "sales", "marketing", "content writer", "accountant",
-              "finance", "legal", "graphic design", "video editor"]
+              "finance", "legal", "graphic design", "video editor",
+              "telecaller", "bpo", "receptionist"]
 }
 
-# ── LOCATION FILTER ─────────────────────────────────────────────────
-CHENNAI_KEYWORDS = ["chennai", "tambaram", "sholinganallur", "adyar",
-                    "anna nagar", "t nagar", "kodambakkam", "velachery",
-                    "chengalpattu", "perambur", "ambattur", "avadi",
-                    "porur", "maduravoyal", "chromepet", "pallavaram"]
+# All skills to check for match/missing
+ALL_SKILLS = [
+    "python", "java", "mysql", "sql", "html", "css", "javascript",
+    "react", "node", "django", "flask", "fastapi", "spring", "git",
+    "github", "rest api", "firebase", "excel", "power bi", "tableau",
+    "pandas", "numpy", "machine learning", "deep learning", "aws",
+    "docker", "linux", "mongodb", "postgresql", "tailwind", "automation",
+    "selenium", "data analytics", "backend", "full stack"
+]
 
-ONLINE_KEYWORDS  = ["remote", "work from home", "wfh", "online",
-                    "hybrid", "virtual", "anywhere"]
+KNOWN_SKILLS = set([
+    "python", "java", "mysql", "sql", "html", "css", "git",
+    "github", "firebase", "excel", "tailwind", "automation",
+    "backend", "data analytics"
+])
+
+# ── LOCATION ───────────────────────────────────────────────────────
+CHENNAI_KEYWORDS = [
+    "chennai", "tambaram", "sholinganallur", "adyar", "anna nagar",
+    "t nagar", "kodambakkam", "velachery", "chengalpattu", "perambur",
+    "ambattur", "avadi", "porur", "maduravoyal", "chromepet", "pallavaram",
+    "guindy", "teynampet", "nungambakkam", "mylapore"
+]
+ONLINE_KEYWORDS = ["remote", "work from home", "wfh", "online",
+                   "hybrid", "virtual", "anywhere", "pan india"]
 
 def is_location_allowed(location, desc=""):
-    """
-    Chennai company  → always include
-    Outside Chennai  → include ONLY if online/remote/hybrid interview
-    """
     loc  = location.lower()
     text = (location + " " + desc).lower()
-
     if any(c in loc for c in CHENNAI_KEYWORDS):
         return True, "chennai"
-
     if any(o in text for o in ONLINE_KEYWORDS):
         return True, "online"
-
-    # Unknown location (scrapers sometimes return empty) → keep, mark unknown
-    if loc.strip() in ["", "india", "pan india"]:
+    if loc.strip() in ["", "india", "pan india", "across india"]:
         return True, "remote"
-
     return False, "skip"
 
-# ── SCORING ─────────────────────────────────────────────────────────
-def score_job(title, desc="", location=""):
+# ── FAKE JOB FILTER ────────────────────────────────────────────────
+SUSPICIOUS = [
+    "urgent hiring", "no experience needed", "earn from home",
+    "data entry", "copy paste", "whatsapp", "telegram",
+    "guaranteed job", "100% placement", "fees required",
+    "registration fee", "processing fee", "pay to apply"
+]
+
+def is_fake(title, company, desc=""):
+    text = (title + " " + company + " " + desc).lower()
+    if any(s in text for s in SUSPICIOUS):
+        return True
+    if company.strip().lower() in ["", "unknown", "n/a"]:
+        return True
+    return False
+
+# ── RESUME MATCH ───────────────────────────────────────────────────
+def resume_match(title, desc=""):
+    text = (title + " " + desc).lower()
+    required = [s for s in ALL_SKILLS if s in text]
+    if not required:
+        return 50, []  # neutral if no skills mentioned
+    matched = [s for s in required if s in KNOWN_SKILLS]
+    missing = [s for s in required if s not in KNOWN_SKILLS]
+    pct = int((len(matched) / len(required)) * 100) if required else 50
+    return pct, missing[:5]  # cap missing at 5
+
+# ── SCORING ────────────────────────────────────────────────────────
+def score_job(title, desc="", location="", posted_date=None):
     text = (title + " " + desc).lower()
     score = 0
-    matched = []
 
-    # Avoid irrelevant roles
     for bad in PROFILE["avoid"]:
         if bad in text:
-            return 0, "irrelevant"
+            return 0, "skip"
 
-    # Strong skill match
     for skill in PROFILE["strong"]:
         if skill in text:
             score += 3
-            matched.append(skill)
 
-    # General keyword match
     for kw in PROFILE["keywords"]:
         if kw in text:
             score += 1
 
-    # Fresher bonus
-    if any(w in text for w in ["fresher", "intern", "trainee", "entry level", "graduate"]):
+    if any(w in text for w in ["fresher", "intern", "trainee", "entry level", "graduate", "0-1", "0 - 1"]):
         score += 5
 
-    # Weak skills — lower score
     for skill in PROFILE["weak"]:
-        if skill in text and skill not in matched:
+        if skill in text:
             score -= 1
 
-    if score >= 8:
+    # Date boost — newer = higher score
+    if posted_date:
+        try:
+            now = datetime.now()
+            pd  = datetime.strptime(posted_date, "%Y-%m-%d")
+            days_old = (now - pd).days
+            if days_old <= 1:
+                score += 6
+            elif days_old <= 2:
+                score += 4
+            elif days_old <= 7:
+                score += 2
+        except:
+            pass
+
+    if score >= 10:
         prob = "high"
-    elif score >= 4:
+    elif score >= 5:
         prob = "medium"
     elif score > 0:
         prob = "low"
@@ -97,281 +142,413 @@ def score_job(title, desc="", location=""):
 
     return score, prob
 
-# ── INTERNSHALA ─────────────────────────────────────────────────────
-def scrape_internshala():
-    jobs = []
-    searches = [
-        "python-developer", "software-developer", "web-developer",
-        "data-analytics", "iot", "java-developer", "full-stack-developer"
-    ]
-    for search in searches:
-        try:
-            url = f"https://internshala.com/internships/{search}-internship/"
-            r = requests.get(url, headers=HEADERS, timeout=10)
-            soup = BeautifulSoup(r.text, "html.parser")
-            cards = soup.select(".internship_meta") or soup.select(".individual_internship")
-            for card in cards[:5]:
-                try:
-                    title_el = card.select_one(".profile") or card.select_one("h3")
-                    company_el = card.select_one(".company_name") or card.select_one(".company-name")
-                    location_el = card.select_one(".location_link") or card.select_one(".location")
-                    link_el = card.select_one("a")
-
-                    title = title_el.get_text(strip=True) if title_el else search.replace("-", " ").title()
-                    company = company_el.get_text(strip=True) if company_el else "Unknown"
-                    location = location_el.get_text(strip=True) if location_el else "India"
-                    link = "https://internshala.com" + link_el["href"] if link_el and link_el.get("href","").startswith("/") else (link_el["href"] if link_el else url)
-
-                    allowed, loc_type = is_location_allowed(location)
-                    if not allowed:
-                        continue
-
-                    score, prob = score_job(title, location=location)
-                    if prob == "skip":
-                        continue
-
-                    jobs.append({
-                        "title": title,
-                        "company": company,
-                        "location": location,
-                        "loc_type": loc_type,
-                        "source": "Internshala",
-                        "url": link,
-                        "prob": prob,
-                        "score": score,
-                        "domain": categorize(title),
-                        "date": datetime.now().strftime("%Y-%m-%d")
-                    })
-                except:
-                    continue
-            time.sleep(random.uniform(1, 2))
-        except Exception as e:
-            print(f"Internshala error ({search}): {e}")
-    return jobs
-
-# ── NAUKRI ──────────────────────────────────────────────────────────
-def scrape_naukri():
-    jobs = []
-    searches = [
-        ("python-developer", "0-1"),
-        ("software-developer", "0-1"),
-        ("data-analyst", "0-1"),
-        ("java-developer", "0-1"),
-        ("web-developer", "0-1"),
-        ("iot-developer", "0-1"),
-        ("full-stack-developer", "0-1"),
-    ]
-    for keyword, exp in searches:
-        try:
-            url = f"https://www.naukri.com/{keyword}-jobs-in-chennai?experience={exp}"
-            r = requests.get(url, headers=HEADERS, timeout=12)
-            soup = BeautifulSoup(r.text, "html.parser")
-            cards = soup.select(".jobTuple") or soup.select("article.jobTupleHeader") or soup.select("[class*='job-container']")
-            for card in cards[:5]:
-                try:
-                    title_el = card.select_one(".title") or card.select_one("a.title") or card.select_one("[class*='title']")
-                    company_el = card.select_one(".companyInfo") or card.select_one("[class*='company']")
-                    location_el = card.select_one(".location") or card.select_one("[class*='location']")
-                    link_el = card.select_one("a.title") or card.select_one("a")
-
-                    title = title_el.get_text(strip=True) if title_el else keyword.replace("-", " ").title()
-                    company = company_el.get_text(strip=True) if company_el else "Unknown"
-                    location = location_el.get_text(strip=True) if location_el else "Chennai"
-                    link = link_el["href"] if link_el and link_el.get("href") else url
-
-                    allowed, loc_type = is_location_allowed(location)
-                    if not allowed:
-                        continue
-
-                    score, prob = score_job(title, location=location)
-                    if prob == "skip":
-                        continue
-
-                    jobs.append({
-                        "title": title,
-                        "company": company,
-                        "location": location,
-                        "loc_type": loc_type,
-                        "source": "Naukri",
-                        "url": link,
-                        "prob": prob,
-                        "score": score,
-                        "domain": categorize(title),
-                        "date": datetime.now().strftime("%Y-%m-%d")
-                    })
-                except:
-                    continue
-            time.sleep(random.uniform(1.5, 3))
-        except Exception as e:
-            print(f"Naukri error ({keyword}): {e}")
-    return jobs
-
-# ── LINKEDIN PUBLIC ──────────────────────────────────────────────────
-def scrape_linkedin():
-    jobs = []
-    searches = [
-        ("python developer intern", "Chennai"),
-        ("software engineer intern", "Chennai"),
-        ("data analyst intern", "Chennai"),
-        ("full stack developer intern", "Chennai"),
-        ("IoT intern", "Chennai"),
-        ("java developer intern", "India"),
-    ]
-    for keyword, location in searches:
-        try:
-            kw_enc = keyword.replace(" ", "%20")
-            loc_enc = location.replace(" ", "%20")
-            url = f"https://www.linkedin.com/jobs/search/?keywords={kw_enc}&location={loc_enc}&f_JT=I&f_E=1"
-            r = requests.get(url, headers=HEADERS, timeout=12)
-            soup = BeautifulSoup(r.text, "html.parser")
-            cards = soup.select(".jobs-search__results-list li") or soup.select(".base-card")
-            for card in cards[:5]:
-                try:
-                    title_el = card.select_one(".base-search-card__title") or card.select_one("h3")
-                    company_el = card.select_one(".base-search-card__subtitle") or card.select_one("h4")
-                    location_el = card.select_one(".job-search-card__location") or card.select_one("[class*='location']")
-                    link_el = card.select_one("a.base-card__full-link") or card.select_one("a")
-
-                    title = title_el.get_text(strip=True) if title_el else keyword
-                    company = company_el.get_text(strip=True) if company_el else "Unknown"
-                    location_text = location_el.get_text(strip=True) if location_el else location
-                    link = link_el["href"] if link_el and link_el.get("href") else url
-
-                    allowed, loc_type = is_location_allowed(location_text)
-                    if not allowed:
-                        continue
-
-                    score, prob = score_job(title, location=location_text)
-                    if prob == "skip":
-                        continue
-
-                    jobs.append({
-                        "title": title,
-                        "company": company,
-                        "location": location_text,
-                        "loc_type": loc_type,
-                        "source": "LinkedIn",
-                        "url": link,
-                        "prob": prob,
-                        "score": score,
-                        "domain": categorize(title),
-                        "date": datetime.now().strftime("%Y-%m-%d")
-                    })
-                except:
-                    continue
-            time.sleep(random.uniform(2, 3))
-        except Exception as e:
-            print(f"LinkedIn error ({keyword}): {e}")
-    return jobs
-
-# ── UNSTOP ──────────────────────────────────────────────────────────
-def scrape_unstop():
-    jobs = []
-    try:
-        url = "https://unstop.com/api/public/opportunity/search-result?opportunity=jobs&per_page=20&filters[type][]=1&filters[eligible][]=1"
-        r = requests.get(url, headers=HEADERS, timeout=10)
-        data = r.json()
-        items = data.get("data", {}).get("data", [])
-        for item in items[:15]:
-            try:
-                title = item.get("title", "")
-                company = item.get("organisation", {}).get("name", "Unknown")
-                location = item.get("city", "India")
-                link = f"https://unstop.com/jobs/{item.get('public_url','')}"
-
-                allowed, loc_type = is_location_allowed(location)
-                if not allowed:
-                    continue
-
-                score, prob = score_job(title, location=location)
-                if prob == "skip":
-                    continue
-                jobs.append({
-                    "title": title,
-                    "company": company,
-                    "location": location,
-                    "loc_type": loc_type,
-                    "source": "Unstop",
-                    "url": link,
-                    "prob": prob,
-                    "score": score,
-                    "domain": categorize(title),
-                    "date": datetime.now().strftime("%Y-%m-%d")
-                })
-            except:
-                continue
-    except Exception as e:
-        print(f"Unstop error: {e}")
-    return jobs
-
-# ── CATEGORIES ──────────────────────────────────────────────────────
+# ── CATEGORIZE ─────────────────────────────────────────────────────
 def categorize(title):
     t = title.lower()
-    if any(x in t for x in ["full stack","fullstack","mern","mean","react","frontend","backend","web dev"]):
+    if any(x in t for x in ["full stack","fullstack","mern","mean","react","frontend","web dev"]):
         return "fullstack"
+    elif any(x in t for x in ["backend","api developer","server"]):
+        return "backend"
     elif any(x in t for x in ["python","django","flask","fastapi","automation"]):
         return "python"
-    elif any(x in t for x in ["data","analyst","analytics","sql","mysql","bi","power bi"]):
+    elif any(x in t for x in ["data engineer","etl","pipeline","big data"]):
+        return "dataeng"
+    elif any(x in t for x in ["data analyst","analytics","sql analyst","bi analyst","business analyst","power bi"]):
         return "data"
-    elif any(x in t for x in ["iot","embedded","hardware","firmware","arduino","raspberry","sensor"]):
-        return "iot"
     elif any(x in t for x in ["java","spring","android","mobile","kotlin"]):
         return "java"
     elif any(x in t for x in ["ml","machine learning","ai","deep learning","nlp"]):
         return "ml"
+    elif any(x in t for x in ["software","developer","engineer","programmer"]):
+        return "software"
     else:
         return "general"
 
-# ── DEDUP ───────────────────────────────────────────────────────────
+# ── BUILD JOB OBJECT ───────────────────────────────────────────────
+def make_job(title, company, location, source, url, desc="", posted_date=None):
+    if is_fake(title, company, desc):
+        return None
+
+    allowed, loc_type = is_location_allowed(location, desc)
+    if not allowed:
+        return None
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    date  = posted_date or today
+    score, prob = score_job(title, desc, location, date)
+    if prob == "skip":
+        return None
+
+    match_pct, missing = resume_match(title, desc)
+    days_old = (datetime.now() - datetime.strptime(date, "%Y-%m-%d")).days if date else 99
+    fresh = days_old <= 2
+
+    return {
+        "title":     title.strip(),
+        "company":   company.strip(),
+        "location":  location.strip(),
+        "loc_type":  loc_type,
+        "source":    source,
+        "url":       url,
+        "prob":      prob,
+        "score":     score,
+        "match_pct": match_pct,
+        "missing":   missing,
+        "domain":    categorize(title),
+        "date":      date,
+        "fresh":     fresh,
+    }
+
+# ── SCRAPER HELPERS ────────────────────────────────────────────────
+def safe_get(url, timeout=12):
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=timeout)
+        r.raise_for_status()
+        return r
+    except Exception as e:
+        print(f"  GET failed: {url[:60]}... → {e}")
+        return None
+
+def sleep():
+    time.sleep(random.uniform(1.5, 3.0))
+
+# ── INTERNSHALA ────────────────────────────────────────────────────
+def scrape_internshala():
+    jobs, searches = [], [
+        "python-developer", "software-developer", "web-developer",
+        "data-analytics", "java-developer", "full-stack-developer",
+        "backend-developer", "sql-developer", "business-analyst",
+        "data-engineer", "automation-testing"
+    ]
+    for search in searches:
+        r = safe_get(f"https://internshala.com/internships/{search}-internship/")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".individual_internship") or soup.select(".internship_meta")
+        for card in cards[:6]:
+            try:
+                title   = (card.select_one(".profile") or card.select_one("h3") or card.select_one(".title")).get_text(strip=True)
+                company = (card.select_one(".company_name") or card.select_one(".company-name")).get_text(strip=True)
+                loc_el  = card.select_one(".location_link") or card.select_one(".location")
+                location= loc_el.get_text(strip=True) if loc_el else "India"
+                link_el = card.select_one("a[href]")
+                url     = ("https://internshala.com" + link_el["href"]) if link_el and link_el["href"].startswith("/") else link_el["href"] if link_el else ""
+                j = make_job(title, company, location, "Internshala", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── NAUKRI ─────────────────────────────────────────────────────────
+def scrape_naukri():
+    jobs, searches = [], [
+        "python-developer", "software-developer", "data-analyst",
+        "java-developer", "web-developer", "full-stack-developer",
+        "backend-developer", "sql-developer", "business-analyst",
+        "data-engineer", "automation-engineer"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.naukri.com/{kw}-jobs-in-chennai?experience=0")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".jobTuple") or soup.select("article") or soup.select("[class*='job-container']")
+        for card in cards[:6]:
+            try:
+                title_el   = card.select_one(".title") or card.select_one("a.title") or card.select_one("[class*='title']")
+                company_el = card.select_one(".companyInfo span") or card.select_one("[class*='company']")
+                loc_el     = card.select_one(".location") or card.select_one("[class*='location']")
+                link_el    = card.select_one("a[href]")
+                title      = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
+                company    = company_el.get_text(strip=True) if company_el else "Unknown"
+                location   = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url        = link_el["href"] if link_el else ""
+                j = make_job(title, company, location, "Naukri", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── LINKEDIN ───────────────────────────────────────────────────────
+def scrape_linkedin():
+    jobs, searches = [], [
+        ("python developer intern", "Chennai"),
+        ("software engineer intern", "Chennai"),
+        ("data analyst intern", "Chennai"),
+        ("full stack developer intern", "Chennai"),
+        ("java developer intern", "Chennai"),
+        ("backend developer intern", "India"),
+        ("business analyst intern", "Chennai"),
+        ("data engineer intern", "India"),
+        ("sql developer intern", "India"),
+    ]
+    for kw, loc in searches:
+        url = f"https://www.linkedin.com/jobs/search/?keywords={kw.replace(' ','%20')}&location={loc.replace(' ','%20')}&f_JT=I&f_E=1"
+        r   = safe_get(url)
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".base-card") or soup.select(".jobs-search__results-list li")
+        for card in cards[:6]:
+            try:
+                title   = (card.select_one(".base-search-card__title") or card.select_one("h3")).get_text(strip=True)
+                company = (card.select_one(".base-search-card__subtitle") or card.select_one("h4")).get_text(strip=True)
+                loc_el  = card.select_one(".job-search-card__location")
+                location= loc_el.get_text(strip=True) if loc_el else loc
+                link_el = card.select_one("a.base-card__full-link") or card.select_one("a")
+                url2    = link_el["href"] if link_el else ""
+                j = make_job(title, company, location, "LinkedIn", url2)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── UNSTOP ─────────────────────────────────────────────────────────
+def scrape_unstop():
+    jobs = []
+    r    = safe_get("https://unstop.com/api/public/opportunity/search-result?opportunity=jobs&per_page=30&filters[type][]=1")
+    if not r: return jobs
+    try:
+        items = r.json().get("data", {}).get("data", [])
+        for item in items:
+            title    = item.get("title", "")
+            company  = item.get("organisation", {}).get("name", "Unknown")
+            location = item.get("city", "India")
+            url      = f"https://unstop.com/jobs/{item.get('public_url','')}"
+            j = make_job(title, company, location, "Unstop", url)
+            if j: jobs.append(j)
+    except: pass
+    return jobs
+
+# ── SHINE ──────────────────────────────────────────────────────────
+def scrape_shine():
+    jobs, searches = [], [
+        "python-developer", "software-engineer", "data-analyst",
+        "java-developer", "full-stack-developer", "backend-developer",
+        "business-analyst", "sql-developer"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.shine.com/job-search/{kw}-jobs-in-chennai/")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".jobCard") or soup.select("[class*='job-card']") or soup.select("article")
+        for card in cards[:5]:
+            try:
+                title_el   = card.select_one("h2") or card.select_one(".title") or card.select_one("a")
+                company_el = card.select_one(".company") or card.select_one("[class*='company']")
+                loc_el     = card.select_one(".location") or card.select_one("[class*='location']")
+                link_el    = card.select_one("a[href]")
+                title      = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
+                company    = company_el.get_text(strip=True) if company_el else "Unknown"
+                location   = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url        = link_el["href"] if link_el else ""
+                if url and not url.startswith("http"):
+                    url = "https://www.shine.com" + url
+                j = make_job(title, company, location, "Shine", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── FOUNDIT ────────────────────────────────────────────────────────
+def scrape_foundit():
+    jobs, searches = [], [
+        "python-developer", "software-engineer", "data-analyst",
+        "java-developer", "full-stack-developer", "backend-developer",
+        "business-analyst", "data-engineer"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.foundit.in/search?query={kw.replace('-','+')}+fresher&location=Chennai")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".jobCard") or soup.select("[class*='cardContainer']") or soup.select("article")
+        for card in cards[:5]:
+            try:
+                title_el = card.select_one("h3") or card.select_one(".title") or card.select_one("a")
+                co_el    = card.select_one(".company") or card.select_one("[class*='company']")
+                loc_el   = card.select_one(".location") or card.select_one("[class*='location']")
+                link_el  = card.select_one("a[href]")
+                title    = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
+                company  = co_el.get_text(strip=True) if co_el else "Unknown"
+                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url      = link_el["href"] if link_el else ""
+                if url and not url.startswith("http"):
+                    url = "https://www.foundit.in" + url
+                j = make_job(title, company, location, "Foundit", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── TIMESJOBS ──────────────────────────────────────────────────────
+def scrape_timesjobs():
+    jobs, searches = [], [
+        "python", "software+engineer", "data+analyst",
+        "java", "full+stack", "backend+developer", "business+analyst"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.timesjobs.com/candidate/job-search.html?searchType=Home_Search&sequence=0&startPage=1&textKeywords={kw}&cboWorkExp1=0&cboWorkExp2=0&txtLocation=Chennai")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".job-bx") or soup.select(".clearfix.job")
+        for card in cards[:5]:
+            try:
+                title_el = card.select_one("h2") or card.select_one(".job-title")
+                co_el    = card.select_one(".joblist-comp-name") or card.select_one(".company")
+                loc_el   = card.select_one(".job-locations") or card.select_one(".location")
+                link_el  = card.select_one("h2 a") or card.select_one("a[href]")
+                title    = title_el.get_text(strip=True) if title_el else kw
+                company  = co_el.get_text(strip=True) if co_el else "Unknown"
+                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url      = link_el["href"] if link_el else ""
+                j = make_job(title, company, location, "TimesJobs", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── FRESHERSWORLD ──────────────────────────────────────────────────
+def scrape_freshersworld():
+    jobs, searches = [], [
+        "python", "software-engineer", "java",
+        "full-stack", "data-analyst", "backend", "business-analyst"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.freshersworld.com/jobs/jobsearch/{kw}-jobs-for-freshers-in-Chennai")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".joblist") or soup.select("[class*='job-container']") or soup.select("li.job")
+        for card in cards[:5]:
+            try:
+                title_el = card.select_one("h3") or card.select_one(".title") or card.select_one("a")
+                co_el    = card.select_one(".company-name") or card.select_one(".company")
+                loc_el   = card.select_one(".location")
+                link_el  = card.select_one("a[href]")
+                title    = title_el.get_text(strip=True) if title_el else kw
+                company  = co_el.get_text(strip=True) if co_el else "Unknown"
+                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url      = link_el["href"] if link_el else ""
+                if url and not url.startswith("http"):
+                    url = "https://www.freshersworld.com" + url
+                j = make_job(title, company, location, "Freshersworld", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── HIRIST ─────────────────────────────────────────────────────────
+def scrape_hirist():
+    jobs, searches = [], [
+        "python", "java", "full-stack", "data-analyst",
+        "backend", "sql", "software-engineer"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://www.hirist.tech/search?q={kw}&l=Chennai&exp=0-1")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".job-card") or soup.select("[class*='jobCard']") or soup.select("article")
+        for card in cards[:5]:
+            try:
+                title_el = card.select_one("h2") or card.select_one(".title") or card.select_one("a")
+                co_el    = card.select_one(".company") or card.select_one("[class*='company']")
+                loc_el   = card.select_one(".location")
+                link_el  = card.select_one("a[href]")
+                title    = title_el.get_text(strip=True) if title_el else kw
+                company  = co_el.get_text(strip=True) if co_el else "Unknown"
+                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
+                url      = link_el["href"] if link_el else ""
+                if url and not url.startswith("http"):
+                    url = "https://www.hirist.tech" + url
+                j = make_job(title, company, location, "Hirist", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── WELLFOUND ──────────────────────────────────────────────────────
+def scrape_wellfound():
+    jobs, searches = [], [
+        "python", "software-engineer", "data",
+        "full-stack", "backend", "java"
+    ]
+    for kw in searches:
+        r = safe_get(f"https://wellfound.com/jobs?q={kw}&l=India&jobType=internship")
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select("[class*='JobListing']") or soup.select("div[data-test='JobListing']") or soup.select("article")
+        for card in cards[:5]:
+            try:
+                title_el = card.select_one("h2") or card.select_one("a") or card.select_one("[class*='title']")
+                co_el    = card.select_one("[class*='company']") or card.select_one("h3")
+                loc_el   = card.select_one("[class*='location']")
+                link_el  = card.select_one("a[href]")
+                title    = title_el.get_text(strip=True) if title_el else kw
+                company  = co_el.get_text(strip=True) if co_el else "Unknown"
+                location = loc_el.get_text(strip=True) if loc_el else "India"
+                url      = link_el["href"] if link_el else ""
+                if url and not url.startswith("http"):
+                    url = "https://wellfound.com" + url
+                j = make_job(title, company, location, "Wellfound", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── DEDUP ──────────────────────────────────────────────────────────
 def dedup(jobs):
-    seen = set()
-    result = []
+    seen, result = set(), []
     for j in jobs:
-        key = (j["title"].lower()[:30], j["company"].lower()[:20])
+        key = (j["title"].lower()[:35], j["company"].lower()[:25])
         if key not in seen:
             seen.add(key)
             result.append(j)
     return result
 
-# ── MAIN ────────────────────────────────────────────────────────────
+# ── MAIN ───────────────────────────────────────────────────────────
+SCRAPERS = [
+    ("Internshala",  scrape_internshala),
+    ("Naukri",       scrape_naukri),
+    ("LinkedIn",     scrape_linkedin),
+    ("Unstop",       scrape_unstop),
+    ("Shine",        scrape_shine),
+    ("Foundit",      scrape_foundit),
+    ("TimesJobs",    scrape_timesjobs),
+    ("Freshersworld",scrape_freshersworld),
+    ("Hirist",       scrape_hirist),
+    ("Wellfound",    scrape_wellfound),
+]
+
 def main():
-    print("🔍 Scraping Internshala...")
-    all_jobs = scrape_internshala()
-    print(f"   → {len(all_jobs)} jobs")
+    all_jobs = []
+    for name, fn in SCRAPERS:
+        print(f"🔍 Scraping {name}...")
+        try:
+            jobs = fn()
+            all_jobs += jobs
+            print(f"   → {len(jobs)} jobs")
+        except Exception as e:
+            print(f"   ✗ {name} failed: {e}")
 
-    print("🔍 Scraping Naukri...")
-    n = scrape_naukri()
-    all_jobs += n
-    print(f"   → {len(n)} jobs")
-
-    print("🔍 Scraping LinkedIn...")
-    l = scrape_linkedin()
-    all_jobs += l
-    print(f"   → {len(l)} jobs")
-
-    print("🔍 Scraping Unstop...")
-    u = scrape_unstop()
-    all_jobs += u
-    print(f"   → {len(u)} jobs")
-
-    # Dedup + sort by score
     all_jobs = dedup(all_jobs)
-    all_jobs.sort(key=lambda x: x["score"], reverse=True)
+    all_jobs.sort(key=lambda x: (x["score"], x["match_pct"]), reverse=True)
 
-    print(f"\n✅ Total unique jobs: {len(all_jobs)}")
-    print(f"   High: {len([j for j in all_jobs if j['prob']=='high'])}")
-    print(f"   Medium: {len([j for j in all_jobs if j['prob']=='medium'])}")
-    print(f"   Low: {len([j for j in all_jobs if j['prob']=='low'])}")
+    high   = [j for j in all_jobs if j["prob"] == "high"]
+    medium = [j for j in all_jobs if j["prob"] == "medium"]
+    low    = [j for j in all_jobs if j["prob"] == "low"]
+    fresh  = [j for j in all_jobs if j["fresh"]]
 
-    # Save JSON
+    print(f"\n✅ Total unique: {len(all_jobs)}")
+    print(f"   🟢 High:   {len(high)}")
+    print(f"   🟡 Medium: {len(medium)}")
+    print(f"   🔴 Low:    {len(low)}")
+    print(f"   ⚡ Fresh (<48h): {len(fresh)}")
+
     with open("data/jobs.json", "w") as f:
         json.dump({
             "updated": datetime.now().strftime("%Y-%m-%d %H:%M UTC"),
-            "total": len(all_jobs),
-            "jobs": all_jobs
+            "total":   len(all_jobs),
+            "jobs":    all_jobs
         }, f, indent=2)
 
-    print("💾 Saved to data/jobs.json")
+    print("💾 Saved → data/jobs.json")
 
 if __name__ == "__main__":
     main()
