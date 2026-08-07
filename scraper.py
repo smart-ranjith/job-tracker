@@ -92,6 +92,70 @@ def resume_match(title, desc=""):
     pct = int((len(matched) / len(required)) * 100) if required else 50
     return pct, missing[:5]  # cap missing at 5
 
+# ── RESUME SCORE X/10 ──────────────────────────────────────────────
+def resume_score(title, desc=""):
+    pct, missing = resume_match(title, desc)
+    score = round(pct / 10, 1)
+    tips = []
+    if missing:
+        tips.append(f"Add {', '.join(missing[:3])} to resume")
+    if pct < 50:
+        tips.append("Highlight automation internship experience")
+    if "intern" in (title + desc).lower() and pct >= 60:
+        tips.append("Strong match — apply immediately")
+    return score, tips
+
+# ── 5D FIT EVALUATION ──────────────────────────────────────────────
+def fit_evaluation(title, desc="", location="", date=None):
+    text = (title + " " + desc).lower()
+    scores = {}
+
+    # 1. Skills match
+    pct, _ = resume_match(title, desc)
+    scores["skills"] = round(pct / 10, 1)
+
+    # 2. Experience match
+    exp_score = 5
+    if any(w in text for w in ["fresher", "0-1", "0 year", "intern", "trainee", "entry"]):
+        exp_score = 9
+    elif any(w in text for w in ["2 year", "3 year", "senior", "lead", "manager"]):
+        exp_score = 2
+    elif any(w in text for w in ["1 year", "1-2"]):
+        exp_score = 6
+    scores["experience"] = exp_score
+
+    # 3. Location fit
+    _, loc_type = is_location_allowed(location)
+    scores["location"] = {"chennai":10,"online":8,"remote":7,"skip":1}.get(loc_type, 5)
+
+    # 4. Career alignment
+    targets = ["python","software","full stack","data","backend",
+               "java","automation","analyst","engineer","developer"]
+    hits = sum(1 for r in targets if r in text)
+    scores["career"] = min(10, round(4 + hits * 1.5, 1))
+
+    # 5. Role freshness
+    fresh_score = 5
+    if date:
+        try:
+            days = (datetime.now() - datetime.strptime(date, "%Y-%m-%d")).days
+            fresh_score = 10 if days<=1 else 9 if days<=2 else 7 if days<=7 else 4 if days<=10 else 2
+        except: pass
+    scores["freshness"] = fresh_score
+
+    overall = round(sum(scores.values()) / len(scores), 1)
+    return scores, overall
+
+# ── STALENESS ──────────────────────────────────────────────────────
+def staleness(date):
+    try:
+        days = (datetime.now() - datetime.strptime(date, "%Y-%m-%d")).days
+        if days > 10: return "dead"
+        if days > 7:  return "stale"
+        return "fresh"
+    except:
+        return "unknown"
+
 # ── SCORING ────────────────────────────────────────────────────────
 def score_job(title, desc="", location="", posted_date=None):
     text = (title + " " + desc).lower()
@@ -179,24 +243,32 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
     if prob == "skip":
         return None
 
-    match_pct, missing = resume_match(title, desc)
+    match_pct, missing      = resume_match(title, desc)
+    res_score, res_tips     = resume_score(title, desc)
+    fit_scores, fit_overall = fit_evaluation(title, desc, location, date)
     days_old = (datetime.now() - datetime.strptime(date, "%Y-%m-%d")).days if date else 99
     fresh = days_old <= 2
+    stale = staleness(date)
 
     return {
-        "title":     title.strip(),
-        "company":   company.strip(),
-        "location":  location.strip(),
-        "loc_type":  loc_type,
-        "source":    source,
-        "url":       url,
-        "prob":      prob,
-        "score":     score,
-        "match_pct": match_pct,
-        "missing":   missing,
-        "domain":    categorize(title),
-        "date":      date,
-        "fresh":     fresh,
+        "title":       title.strip(),
+        "company":     company.strip(),
+        "location":    location.strip(),
+        "loc_type":    loc_type,
+        "source":      source,
+        "url":         url,
+        "prob":        prob,
+        "score":       score,
+        "match_pct":   match_pct,
+        "missing":     missing,
+        "res_score":   res_score,
+        "res_tips":    res_tips,
+        "fit":         fit_scores,
+        "fit_overall": fit_overall,
+        "domain":      categorize(title),
+        "date":        date,
+        "fresh":       fresh,
+        "stale":       stale,
     }
 
 # ── SCRAPER HELPERS ────────────────────────────────────────────────
