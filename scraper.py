@@ -5,12 +5,33 @@ from datetime import datetime, timezone
 import time
 import random
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Referer": "https://www.google.com/",
-}
+import hashlib
+import os
+
+# ── HEADERS POOL (rotation) ────────────────────────────────────────
+HEADERS_POOL = [
+    {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": "https://www.google.com/",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "Accept-Language": "en-GB,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Referer": "https://www.bing.com/",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.7",
+        "Referer": "https://www.google.co.in/",
+    },
+]
+
+def get_headers():
+    return random.choice(HEADERS_POOL)
 
 # ── PROFILE ────────────────────────────────────────────────────────
 PROFILE = {
@@ -54,6 +75,11 @@ CHENNAI_KEYWORDS = [
 ONLINE_KEYWORDS = ["remote", "work from home", "wfh", "online",
                    "hybrid", "virtual", "anywhere", "pan india"]
 
+NEARBY_CITIES = [
+    "bangalore", "bengaluru", "hyderabad", "pune", "coimbatore",
+    "trichy", "madurai", "salem", "vellore"
+]
+
 def is_location_allowed(location, desc=""):
     loc  = location.lower()
     text = (location + " " + desc).lower()
@@ -63,7 +89,31 @@ def is_location_allowed(location, desc=""):
         return True, "online"
     if loc.strip() in ["", "india", "pan india", "across india"]:
         return True, "remote"
+    if any(c in loc for c in NEARBY_CITIES):
+        return True, "nearby"
     return False, "skip"
+
+# ── JOB ID (for dedup across runs) ────────────────────────────────
+def job_id(title, company):
+    key = f"{title.lower().strip()[:40]}-{company.lower().strip()[:25]}"
+    return hashlib.md5(key.encode()).hexdigest()[:12]
+
+# ── SEEN JOBS ──────────────────────────────────────────────────────
+def load_seen():
+    try:
+        with open("data/seen_jobs.json") as f:
+            return set(json.load(f).get("ids", []))
+    except:
+        return set()
+
+def save_seen(seen_ids):
+    os.makedirs("data", exist_ok=True)
+    with open("data/seen_jobs.json", "w") as f:
+        json.dump({
+            "ids": list(seen_ids),
+            "updated": datetime.now().strftime("%Y-%m-%d")
+        }, f)
+
 
 # ── FAKE JOB FILTER ────────────────────────────────────────────────
 SUSPICIOUS = [
@@ -251,6 +301,7 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
     stale = staleness(date)
 
     return {
+        "id":          job_id(title, company),
         "title":       title.strip(),
         "company":     company.strip(),
         "location":    location.strip(),
@@ -269,17 +320,22 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
         "date":        date,
         "fresh":       fresh,
         "stale":       stale,
+        "is_new":      False,  # set in main() after seen check
     }
 
-# ── SCRAPER HELPERS ────────────────────────────────────────────────
-def safe_get(url, timeout=12):
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=timeout)
-        r.raise_for_status()
-        return r
-    except Exception as e:
-        print(f"  GET failed: {url[:60]}... → {e}")
-        return None
+# ── SAFE GET WITH RETRY + HEADER ROTATION ─────────────────────────
+def safe_get(url, timeout=12, retries=3):
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers=get_headers(), timeout=timeout)
+            r.raise_for_status()
+            return r
+        except Exception as e:
+            if attempt < retries - 1:
+                time.sleep(random.uniform(2, 4))
+            else:
+                print(f"  ✗ Failed after {retries} tries: {url[:55]}")
+    return None
 
 def sleep():
     time.sleep(random.uniform(1.5, 3.0))
@@ -564,13 +620,12 @@ def scrape_wellfound():
         sleep()
     return jobs
 
-# ── DEDUP ──────────────────────────────────────────────────────────
+# ── DEDUP (by job ID across platforms) ────────────────────────────
 def dedup(jobs):
     seen, result = set(), []
     for j in jobs:
-        key = (j["title"].lower()[:35], j["company"].lower()[:25])
-        if key not in seen:
-            seen.add(key)
+        if j["id"] not in seen:
+            seen.add(j["id"])
             result.append(j)
     return result
 
@@ -589,17 +644,39 @@ SCRAPERS = [
 ]
 
 def main():
-    all_jobs = []
+    os.makedirs("data", exist_ok=True)
+    seen_ids     = load_seen()
+    all_jobs     = []
+    source_stats = {}
+
     for name, fn in SCRAPERS:
         print(f"🔍 Scraping {name}...")
         try:
             jobs = fn()
+            source_stats[name] = len(jobs)
             all_jobs += jobs
             print(f"   → {len(jobs)} jobs")
         except Exception as e:
+            source_stats[name] = 0
             print(f"   ✗ {name} failed: {e}")
 
     all_jobs = dedup(all_jobs)
+
+    # Smart expansion — if Chennai total low, nearby already included via loc filter
+    chennai_count = len([j for j in all_jobs if j["loc_type"] == "chennai"])
+    print(f"\n📍 Chennai jobs: {chennai_count} | Nearby/Remote: {len(all_jobs)-chennai_count}")
+
+    # Mark new vs seen
+    new_count = 0
+    for j in all_jobs:
+        j["is_new"] = j["id"] not in seen_ids
+        if j["is_new"]:
+            new_count += 1
+
+    # Update seen IDs
+    all_ids = seen_ids | {j["id"] for j in all_jobs}
+    save_seen(all_ids)
+
     all_jobs.sort(key=lambda x: (x["score"], x["match_pct"]), reverse=True)
 
     high   = [j for j in all_jobs if j["prob"] == "high"]
@@ -608,19 +685,22 @@ def main():
     fresh  = [j for j in all_jobs if j["fresh"]]
 
     print(f"\n✅ Total unique: {len(all_jobs)}")
-    print(f"   🟢 High:   {len(high)}")
-    print(f"   🟡 Medium: {len(medium)}")
-    print(f"   🔴 Low:    {len(low)}")
-    print(f"   ⚡ Fresh (<48h): {len(fresh)}")
+    print(f"   🟢 High:      {len(high)}")
+    print(f"   🟡 Medium:    {len(medium)}")
+    print(f"   🔴 Low:       {len(low)}")
+    print(f"   ⚡ Fresh<48h: {len(fresh)}")
+    print(f"   🆕 New today: {new_count}")
+    print(f"\n🔌 Source health: {source_stats}")
 
     with open("data/jobs.json", "w") as f:
         json.dump({
-            "updated": datetime.now().strftime("%Y-%m-%d %H:%M UTC"),
-            "total":   len(all_jobs),
-            "jobs":    all_jobs
+            "updated":      datetime.now().strftime("%Y-%m-%d %H:%M UTC"),
+            "total":        len(all_jobs),
+            "source_stats": source_stats,
+            "jobs":         all_jobs
         }, f, indent=2)
 
-    print("💾 Saved → data/jobs.json")
+    print("💾 Saved → data/jobs.json + data/seen_jobs.json")
 
 if __name__ == "__main__":
     main()
