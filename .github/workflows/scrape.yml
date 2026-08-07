@@ -2,8 +2,8 @@ name: Daily Job Scraper
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 8:30AM IST daily
-  workflow_dispatch:        # manual trigger anytime
+    - cron: "0 3 * * *" # 8:30AM IST daily
+  workflow_dispatch: # manual trigger anytime
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: pip install requests beautifulsoup4 lxml
@@ -33,14 +33,14 @@ jobs:
         run: |
           git config --global user.name "job-bot"
           git config --global user.email "job-bot@github.com"
-          git add data/jobs.json
+          git add data/jobs.json data/seen_jobs.json
           git diff --staged --quiet || git commit -m "🤖 Auto-update jobs $(date +'%Y-%m-%d')"
           git push
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: "."
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
