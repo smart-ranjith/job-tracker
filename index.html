@@ -454,22 +454,91 @@
         color: #0f1117;
       }
       /* STALENESS */
-      tr.stale-row td { opacity: .5; }
-      tr.dead-row td  { opacity: .25; text-decoration: line-through; }
-      .tag { display:inline-block;font-size:9px;padding:1px 4px;border-radius:3px;font-weight:700;vertical-align:middle;margin-left:3px; }
-      .tag-stale { background:rgba(248,113,113,.15);color:#f87171; }
-      .tag-dead  { background:rgba(100,116,139,.15);color:#64748b; }
-      .res-tips  { font-size:10px;color:#fbbf24;margin-top:2px; }
+      tr.stale-row td {
+        opacity: 0.5;
+      }
+      tr.dead-row td {
+        opacity: 0.25;
+        text-decoration: line-through;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 9px;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+        vertical-align: middle;
+        margin-left: 3px;
+      }
+      .tag-stale {
+        background: rgba(248, 113, 113, 0.15);
+        color: #f87171;
+      }
+      .tag-dead {
+        background: rgba(100, 116, 139, 0.15);
+        color: #64748b;
+      }
+      .res-tips {
+        font-size: 10px;
+        color: #fbbf24;
+        margin-top: 2px;
+      }
       /* 5D FIT */
-      .fit-wrap    { display:flex;flex-direction:column;gap:2px; }
-      .fit-row     { display:flex;align-items:center;gap:4px; }
-      .fit-label   { font-size:9px;color:#64748b;width:50px;flex-shrink:0; }
-      .fit-bar     { flex:1;height:3px;background:#2d3348;border-radius:999px;overflow:hidden; }
-      .fit-fill    { height:100%;border-radius:999px; }
-      .fit-val     { font-size:9px;font-weight:600;color:#a5b4fc;width:18px;text-align:right; }
-      .fit-overall { font-size:11px;font-weight:700;color:#6366f1;margin-bottom:3px; }
+      .fit-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .fit-row {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .fit-label {
+        font-size: 9px;
+        color: #64748b;
+        width: 50px;
+        flex-shrink: 0;
+      }
+      .fit-bar {
+        flex: 1;
+        height: 3px;
+        background: #2d3348;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .fit-fill {
+        height: 100%;
+        border-radius: 999px;
+      }
+      .fit-val {
+        font-size: 9px;
+        font-weight: 600;
+        color: #a5b4fc;
+        width: 18px;
+        text-align: right;
+      }
+      .fit-overall {
+        font-size: 11px;
+        font-weight: 700;
+        color: #6366f1;
+        margin-bottom: 3px;
+      }
       /* RESUME SCORE */
-      .res-score-val { font-size:10px;color:#6366f1;margin-top:2px; }
+      .res-score-val {
+        font-size: 10px;
+        color: #6366f1;
+        margin-top: 2px;
+      }
+
+      /* HEALTH PANEL */
+      .health-panel { background:#1e2130;border:1px solid #2d3348;border-radius:10px;padding:11px 14px;margin-bottom:13px; }
+      .health-title { font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px; }
+      .health-grid  { display:flex;flex-wrap:wrap;gap:6px; }
+      .health-item  { display:flex;align-items:center;gap:5px;font-size:11px;padding:3px 8px;border-radius:6px;background:#161a27; }
+      .h-dot { width:7px;height:7px;border-radius:50%; }
+      .h-green{background:#4ade80}.h-yellow{background:#fbbf24}.h-red{background:#f87171}
+      .mode-nearby{background:rgba(56,189,248,.1);color:#38bdf8;}
 
       .empty-state {
         text-align: center;
@@ -529,26 +598,17 @@
     <!-- JOBS TAB -->
     <div id="tab-jobs" class="tab-content active">
       <div class="stats">
-        <div class="stat">
-          <div class="sl">Total Jobs</div>
-          <div class="sv total" id="tc">—</div>
-        </div>
-        <div class="stat">
-          <div class="sl">✦ High Match</div>
-          <div class="sv high" id="hc">—</div>
-        </div>
-        <div class="stat">
-          <div class="sl">◆ Possible</div>
-          <div class="sv med" id="mc">—</div>
-        </div>
-        <div class="stat">
-          <div class="sl">○ Stretch</div>
-          <div class="sv low" id="lc">—</div>
-        </div>
-        <div class="stat">
-          <div class="sl">⚡ Fresh &lt;48h</div>
-          <div class="sv fresh" id="fc">—</div>
-        </div>
+        <div class="stat"><div class="sl">Total Jobs</div><div class="sv total" id="tc">—</div></div>
+        <div class="stat"><div class="sl">✦ High Match</div><div class="sv high" id="hc">—</div></div>
+        <div class="stat"><div class="sl">◆ Possible</div><div class="sv med" id="mc">—</div></div>
+        <div class="stat"><div class="sl">○ Stretch</div><div class="sv low" id="lc">—</div></div>
+        <div class="stat"><div class="sl">⚡ Fresh &lt;48h</div><div class="sv fresh" id="fc">—</div></div>
+        <div class="stat"><div class="sl">🆕 New Today</div><div class="sv" style="color:#a78bfa" id="nc">—</div></div>
+      </div>
+
+      <div class="health-panel">
+        <div class="health-title">🔌 Scraper Health (jobs per platform)</div>
+        <div class="health-grid" id="health-grid"><span style="color:#64748b;font-size:11px">Run scraper to see health data</span></div>
       </div>
 
       <div class="filter-row">
@@ -557,6 +617,7 @@
         <button class="fb" onclick="fp('medium', this)">◆ Possible</button>
         <button class="fb" onclick="fp('low', this)">○ Stretch</button>
         <button class="fb" onclick="ff('fresh', this)">⚡ Fresh</button>
+        <button class="fb" onclick="ff('new', this)">🆕 New Today</button>
         <button class="fb" onclick="fd('fullstack', this)">Full Stack</button>
         <button class="fb" onclick="fd('backend', this)">Backend</button>
         <button class="fb" onclick="fd('python', this)">Python</button>
@@ -586,12 +647,11 @@
       </div>
 
       <div class="filter-row">
-        <button class="fb active" onclick="fm('all', this)">
-          All Locations
-        </button>
+        <button class="fb active" onclick="fm('all', this)">All Locations</button>
         <button class="fb" onclick="fm('chennai', this)">🏙 Chennai</button>
         <button class="fb" onclick="fm('online', this)">💻 Online</button>
         <button class="fb" onclick="fm('remote', this)">🌐 Remote</button>
+        <button class="fb" onclick="fm('nearby', this)">📍 Nearby Cities</button>
       </div>
 
       <div class="search-row">
@@ -668,13 +728,7 @@
     </div>
 
     <script>
-      let allJobs = [],
-        applied = [],
-        pf = "all",
-        df = null,
-        sf = "all",
-        mf = "all",
-        freshOnly = false;
+      let allJobs = [], applied = [], pf = "all", df = null, sf = "all", mf = "all", specialF = null;
       const dl = {
         fullstack: "Full Stack",
         backend: "Backend",
@@ -749,8 +803,12 @@
         render();
       }
       function ff(t, btn) {
-        freshOnly = !freshOnly;
-        btn.classList.toggle("active", freshOnly);
+        specialF = specialF === t ? null : t;
+        // clear all special filter buttons
+        document.querySelectorAll("#tab-jobs .filter-row:nth-child(1) .fb").forEach(b => {
+          if(b.textContent.includes("Fresh") || b.textContent.includes("New Today")) b.classList.remove("active");
+        });
+        if(specialF) btn.classList.add("active");
         render();
       }
 
@@ -797,7 +855,8 @@
             (!df || j.domain === df) &&
             (sf === "all" || j.source === sf) &&
             (mf === "all" || j.loc_type === mf) &&
-            (!freshOnly || j.fresh) &&
+            (specialF !== "fresh" || j.fresh) &&
+            (specialF !== "new"   || j.is_new) &&
             (!q ||
               j.title.toLowerCase().includes(q) ||
               j.company.toLowerCase().includes(q) ||
@@ -814,54 +873,92 @@
         document.getElementById("mc").textContent = allJobs.filter(j=>j.prob==="medium").length;
         document.getElementById("lc").textContent = allJobs.filter(j=>j.prob==="low").length;
         document.getElementById("fc").textContent = allJobs.filter(j=>j.fresh).length;
+        document.getElementById("nc").textContent = allJobs.filter(j=>j.is_new).length;
         document.getElementById("jobs-badge").textContent = allJobs.length;
         document.getElementById("cl2").textContent = `Showing ${f.length} of ${allJobs.length} jobs`;
 
-        const fitLabels = {skills:"Skills",experience:"Exp",location:"Loc",career:"Career",freshness:"Fresh"};
-        const fitColor  = v => v>=7?"#4ade80":v>=4?"#fbbf24":"#f87171";
+        const fitLabels = {
+          skills: "Skills",
+          experience: "Exp",
+          location: "Loc",
+          career: "Career",
+          freshness: "Fresh",
+        };
+        const fitColor = (v) =>
+          v >= 7 ? "#4ade80" : v >= 4 ? "#fbbf24" : "#f87171";
 
         document.getElementById("jt").innerHTML =
           f.length === 0
             ? `<tr><td colspan="10" class="loading">No jobs match filters.</td></tr>`
-            : f.map((j, i) => {
-                  const realIdx  = allJobs.indexOf(j);
-                  const already  = isApplied(j);
-                  const col      = matchColor(j.match_pct);
-                  const staleClass = j.stale==="dead"?"dead-row":j.stale==="stale"?"stale-row":"";
-                  const missHtml = j.missing&&j.missing.length ? `<div class="missing-skills">⚠ ${j.missing.join(", ")}</div>` : "";
-                  const tipHtml  = j.res_tips&&j.res_tips.length ? `<div class="res-tips">💡 ${j.res_tips[0]}</div>` : "";
-                  const staleTag = j.stale==="dead"?'<span class="tag tag-dead">💀DEAD</span>':j.stale==="stale"?'<span class="tag tag-stale">⏰OLD</span>':"";
-                  const fitRows  = j.fit ? Object.entries(j.fit).map(([k,v])=>`
+            : f
+                .map((j, i) => {
+                  const realIdx = allJobs.indexOf(j);
+                  const already = isApplied(j);
+                  const col = matchColor(j.match_pct);
+                  const staleClass =
+                    j.stale === "dead"
+                      ? "dead-row"
+                      : j.stale === "stale"
+                        ? "stale-row"
+                        : "";
+                  const missHtml =
+                    j.missing && j.missing.length
+                      ? `<div class="missing-skills">⚠ ${j.missing.join(", ")}</div>`
+                      : "";
+                  const tipHtml =
+                    j.res_tips && j.res_tips.length
+                      ? `<div class="res-tips">💡 ${j.res_tips[0]}</div>`
+                      : "";
+                  const staleTag =
+                    j.stale === "dead"
+                      ? '<span class="tag tag-dead">💀DEAD</span>'
+                      : j.stale === "stale"
+                        ? '<span class="tag tag-stale">⏰OLD</span>'
+                        : "";
+                  const fitRows = j.fit
+                    ? Object.entries(j.fit)
+                        .map(
+                          ([k, v]) => `
                     <div class="fit-row">
-                      <span class="fit-label">${fitLabels[k]||k}</span>
-                      <div class="fit-bar"><div class="fit-fill" style="width:${v*10}%;background:${fitColor(v)}"></div></div>
+                      <span class="fit-label">${fitLabels[k] || k}</span>
+                      <div class="fit-bar"><div class="fit-fill" style="width:${v * 10}%;background:${fitColor(v)}"></div></div>
                       <span class="fit-val">${v}</span>
-                    </div>`).join("") : "";
-                  const locLabel = j.loc_type==="chennai"?"🏙 Chennai":j.loc_type==="online"?"💻 Online":"🌐 Remote";
+                    </div>`,
+                        )
+                        .join("")
+                    : "";
+                  const locLabel =
+                    j.loc_type === "chennai"
+                      ? "🏙 Chennai"
+                      : j.loc_type === "online"
+                        ? "💻 Online"
+                        : "🌐 Remote";
                   return `<tr class="${staleClass}">
         <td>
-          <a class="jl" href="${j.url}" target="_blank" rel="noopener">${j.title}${j.fresh?'<span class="fresh-tag">⚡NEW</span>':""}${staleTag}</a>
+          <a class="jl" href="${j.url}" target="_blank" rel="noopener">${j.title}${j.fresh ? '<span class="fresh-tag">⚡NEW</span>' : ""}${staleTag}</a>
           ${missHtml}${tipHtml}
         </td>
         <td style="color:#cbd5e1;font-size:11px">${j.company}</td>
         <td><span class="src src-${j.source}">${j.source}</span></td>
-        <td><span class="dp">${dl[j.domain]||"General"}</span></td>
-        <td><span class="mode mode-${j.loc_type||"remote"}">${locLabel}</span><div style="font-size:9px;color:#475569;margin-top:1px">${(j.location||"").substring(0,16)}</div></td>
+        <td><span class="dp">${dl[j.domain] || "General"}</span></td>
+        <td><span class="mode mode-${j.loc_type || "remote"}">${locLabel}</span><div style="font-size:9px;color:#475569;margin-top:1px">${(j.location || "").substring(0, 16)}</div></td>
         <td>
           <div class="match-bar-wrap">
             <div class="match-bar"><div class="match-fill" style="width:${j.match_pct}%;background:${col}"></div></div>
             <span class="match-pct" style="color:${col}">${j.match_pct}%</span>
           </div>
-          <div class="res-score-val">Score: ${j.res_score||"?"}/10</div>
+          <div class="res-score-val">Score: ${j.res_score || "?"}/10</div>
         </td>
         <td>
-          <div class="fit-overall">Overall: ${j.fit_overall||"?"}/10</div>
+          <div class="fit-overall">Overall: ${j.fit_overall || "?"}/10</div>
           <div class="fit-wrap">${fitRows}</div>
         </td>
-        <td><span class="badge ${j.prob}">${j.prob==="high"?"✦ High":j.prob==="medium"?"◆ Mid":"○ Low"}</span></td>
+        <td><span class="badge ${j.prob}">${j.prob === "high" ? "✦ High" : j.prob === "medium" ? "◆ Mid" : "○ Low"}</span></td>
         <td><a class="ap" href="${j.url}" target="_blank" rel="noopener">Apply →</a></td>
-        <td><button class="mark-btn ${already?"marked":""}" id="mbtn-${realIdx}" onclick="markApplied(${realIdx})">${already?"✓ Applied":"Track"}</button></td>
-      </tr>`; }).join("");
+        <td><button class="mark-btn ${already ? "marked" : ""}" id="mbtn-${realIdx}" onclick="markApplied(${realIdx})">${already ? "✓ Applied" : "Track"}</button></td>
+      </tr>`;
+                })
+                .join("");
       }
 
       // ── RENDER APPLIED ─────────────────────────────────────────────────
@@ -911,6 +1008,16 @@
         render();
       }
 
+      // ── HEALTH PANEL ──────────────────────────────────────────────────
+      function renderHealth(stats) {
+        if (!stats) return;
+        const grid = document.getElementById("health-grid");
+        grid.innerHTML = Object.entries(stats).map(([name, count]) => {
+          const cls = count > 5 ? "h-green" : count > 0 ? "h-yellow" : "h-red";
+          return `<div class="health-item"><div class="h-dot ${cls}"></div><span>${name}: ${count}</span></div>`;
+        }).join("");
+      }
+
       // ── LOAD DATA ─────────────────────────────────────────────────────
       loadApplied();
       document.getElementById("applied-badge").textContent = applied.length;
@@ -919,13 +1026,13 @@
         .then((r) => r.json())
         .then((data) => {
           allJobs = data.jobs || [];
-          document.getElementById("updated").textContent =
-            `🕐 Last updated: ${data.updated}`;
+          document.getElementById("updated").textContent = `🕐 Last updated: ${data.updated}`;
+          renderHealth(data.source_stats);
           render();
         })
         .catch(() => {
           document.getElementById("jt").innerHTML =
-            `<tr><td colspan="9" class="loading" style="color:#f87171">⚠️ Could not load jobs. Run the scraper via GitHub Actions first.</td></tr>`;
+            `<tr><td colspan="10" class="loading" style="color:#f87171">⚠️ Could not load jobs. Run the scraper via GitHub Actions first.</td></tr>`;
           document.getElementById("updated").textContent = "Not yet scraped";
         });
     </script>
