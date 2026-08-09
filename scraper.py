@@ -4,22 +4,54 @@ import json
 from datetime import datetime, timezone
 import time
 import random
-
 import hashlib
 import os
 from urllib.parse import quote_plus
 
 # ── SCRAPERAPI ─────────────────────────────────────────────────────
-SCRAPER_KEY = os.environ.get("SCRAPER_API_KEY", "")
+SCRAPER_KEY      = os.environ.get("SCRAPER_API_KEY", "")
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-}
+# ── TELEGRAM ───────────────────────────────────────────────────────
+TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+
+def send_telegram(msg):
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+        return
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage",
+            json={"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "HTML"},
+            timeout=10
+        )
+        print("  📱 Telegram sent!")
+    except Exception as e:
+        print(f"  ⚠ Telegram failed: {e}")
+
+# ── HEADERS ────────────────────────────────────────────────────────
+HEADERS_POOL = [
+    {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": "https://www.google.com/",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "Accept-Language": "en-GB,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Referer": "https://www.bing.com/",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.8",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.7",
+        "Referer": "https://www.google.co.in/",
+    },
+]
 
 def get_headers():
-    return HEADERS
+    return random.choice(HEADERS_POOL)
 
 # ── PROFILE ────────────────────────────────────────────────────────
 PROFILE = {
@@ -311,9 +343,9 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
         "is_new":      False,  # set in main() after seen check
     }
 
-# ── SAFE GET (ScraperAPI routes through residential IPs) ───────────
+# ── SAFE GET (ScraperAPI → bypasses IP blocks) ────────────────────
 def safe_get(url, timeout=30, retries=2):
-    # Try ScraperAPI first (bypasses blocks)
+    # Try ScraperAPI first (residential IPs bypass anti-bot)
     if SCRAPER_KEY:
         api_url = f"http://api.scraperapi.com?api_key={SCRAPER_KEY}&url={quote_plus(url)}&country_code=in"
         for attempt in range(retries):
@@ -393,6 +425,39 @@ def scrape_naukri():
                 location   = loc_el.get_text(strip=True) if loc_el else "Chennai"
                 url        = link_el["href"] if link_el else ""
                 j = make_job(title, company, location, "Naukri", url)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── LINKEDIN ───────────────────────────────────────────────────────
+def scrape_linkedin():
+    jobs, searches = [], [
+        ("python developer intern", "Chennai"),
+        ("software engineer intern", "Chennai"),
+        ("data analyst intern", "Chennai"),
+        ("full stack developer intern", "Chennai"),
+        ("java developer intern", "Chennai"),
+        ("backend developer intern", "India"),
+        ("business analyst intern", "Chennai"),
+        ("data engineer intern", "India"),
+        ("sql developer intern", "India"),
+    ]
+    for kw, loc in searches:
+        url = f"https://www.linkedin.com/jobs/search/?keywords={kw.replace(' ','%20')}&location={loc.replace(' ','%20')}&f_JT=I&f_E=1"
+        r   = safe_get(url)
+        if not r: sleep(); continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".base-card") or soup.select(".jobs-search__results-list li")
+        for card in cards[:6]:
+            try:
+                title   = (card.select_one(".base-search-card__title") or card.select_one("h3")).get_text(strip=True)
+                company = (card.select_one(".base-search-card__subtitle") or card.select_one("h4")).get_text(strip=True)
+                loc_el  = card.select_one(".job-search-card__location")
+                location= loc_el.get_text(strip=True) if loc_el else loc
+                link_el = card.select_one("a.base-card__full-link") or card.select_one("a")
+                url2    = link_el["href"] if link_el else ""
+                j = make_job(title, company, location, "LinkedIn", url2)
                 if j: jobs.append(j)
             except: continue
         sleep()
@@ -644,13 +709,9 @@ def scrape_indeed():
         ("java developer intern", "Chennai"),
         ("backend developer intern", "Chennai"),
         ("business analyst intern", "Chennai"),
-        ("data engineer intern", "Chennai"),
-        ("sql developer intern", "Chennai"),
         ("python intern fresher", "India"),
         ("software developer fresher", "Chennai"),
-        ("automation engineer intern", "Chennai"),
         ("web developer intern", "Chennai"),
-        ("IT intern fresher", "Chennai"),
     ]
     for kw, loc in searches:
         url = f"https://in.indeed.com/jobs?q={quote_plus(kw)}&l={quote_plus(loc)}&fromage=14"
@@ -660,7 +721,7 @@ def scrape_indeed():
         cards = soup.select(".job_seen_beacon") or soup.select(".tapItem") or soup.select("[class*='job_']")
         for card in cards[:8]:
             try:
-                t_el = card.select_one(".jobTitle") or card.select_one("h2") or card.select_one("a")
+                t_el = card.select_one(".jobTitle") or card.select_one("h2")
                 c_el = card.select_one(".companyName") or card.select_one("[class*='company']")
                 l_el = card.select_one(".companyLocation") or card.select_one("[class*='location']")
                 a_el = card.select_one("a[href]")
@@ -670,65 +731,6 @@ def scrape_indeed():
                 href     = a_el["href"] if a_el else ""
                 url2     = f"https://in.indeed.com{href}" if href.startswith("/") else href
                 j = make_job(title, company, location, "Indeed", url2)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── EXPAND LINKEDIN (30+ searches) ─────────────────────────────────
-def scrape_linkedin():
-    jobs, searches = [], [
-        # Chennai roles
-        ("python developer intern", "Chennai"),
-        ("software engineer intern", "Chennai"),
-        ("data analyst intern", "Chennai"),
-        ("full stack developer intern", "Chennai"),
-        ("java developer intern", "Chennai"),
-        ("backend developer intern", "Chennai"),
-        ("business analyst intern", "Chennai"),
-        ("data engineer intern", "Chennai"),
-        ("sql developer intern", "Chennai"),
-        ("web developer intern", "Chennai"),
-        ("automation engineer intern", "Chennai"),
-        ("software developer fresher", "Chennai"),
-        ("IT intern", "Chennai"),
-        ("python automation intern", "Chennai"),
-        # India-wide remote/online
-        ("python developer remote intern", "India"),
-        ("software engineer remote intern", "India"),
-        ("data analyst remote intern", "India"),
-        ("full stack remote intern", "India"),
-        ("backend developer remote", "India"),
-        ("java developer intern", "India"),
-        # Nearby cities
-        ("python intern", "Bangalore"),
-        ("software engineer intern", "Bangalore"),
-        ("data analyst intern", "Bangalore"),
-        ("full stack intern", "Bangalore"),
-        ("python intern", "Hyderabad"),
-        ("software developer intern", "Hyderabad"),
-        ("data analyst intern", "Hyderabad"),
-        ("java developer intern", "Bangalore"),
-        ("backend intern", "Bangalore"),
-        ("business analyst intern", "Bangalore"),
-    ]
-    for kw, loc in searches:
-        url = f"https://www.linkedin.com/jobs/search/?keywords={quote_plus(kw)}&location={quote_plus(loc)}&f_JT=I&f_E=1&f_TPR=r604800"
-        r   = safe_get(url)
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".base-card") or soup.select(".jobs-search__results-list li")
-        for card in cards[:8]:
-            try:
-                t_el = card.select_one(".base-search-card__title") or card.select_one("h3")
-                c_el = card.select_one(".base-search-card__subtitle") or card.select_one("h4")
-                l_el = card.select_one(".job-search-card__location")
-                a_el = card.select_one("a.base-card__full-link") or card.select_one("a")
-                title    = t_el.get_text(strip=True) if t_el else kw
-                company  = c_el.get_text(strip=True) if c_el else "Unknown"
-                location = l_el.get_text(strip=True) if l_el else loc
-                url2     = a_el["href"] if a_el else ""
-                j = make_job(title, company, location, "LinkedIn", url2)
                 if j: jobs.append(j)
             except: continue
         sleep()
@@ -751,6 +753,10 @@ SCRAPERS = [
 
 def main():
     os.makedirs("data", exist_ok=True)
+    # Debug secrets
+    print(f"🔑 ScraperAPI: {'✅ LOADED' if SCRAPER_KEY else '❌ NOT FOUND'}")
+    print(f"🔑 Telegram:   {'✅ LOADED' if TELEGRAM_TOKEN else '❌ NOT FOUND'}")
+
     seen_ids     = load_seen()
     all_jobs     = []
     source_stats = {}
@@ -768,7 +774,6 @@ def main():
 
     all_jobs = dedup(all_jobs)
 
-    # Smart expansion — if Chennai total low, nearby already included via loc filter
     chennai_count = len([j for j in all_jobs if j["loc_type"] == "chennai"])
     print(f"\n📍 Chennai jobs: {chennai_count} | Nearby/Remote: {len(all_jobs)-chennai_count}")
 
@@ -779,16 +784,15 @@ def main():
         if j["is_new"]:
             new_count += 1
 
-    # Update seen IDs
     all_ids = seen_ids | {j["id"] for j in all_jobs}
     save_seen(all_ids)
 
     all_jobs.sort(key=lambda x: (x["score"], x["match_pct"]), reverse=True)
 
-    high   = [j for j in all_jobs if j["prob"] == "high"]
-    medium = [j for j in all_jobs if j["prob"] == "medium"]
-    low    = [j for j in all_jobs if j["prob"] == "low"]
-    fresh  = [j for j in all_jobs if j["fresh"]]
+    high  = [j for j in all_jobs if j["prob"] == "high"]
+    medium= [j for j in all_jobs if j["prob"] == "medium"]
+    low   = [j for j in all_jobs if j["prob"] == "low"]
+    fresh = [j for j in all_jobs if j["fresh"]]
 
     print(f"\n✅ Total unique: {len(all_jobs)}")
     print(f"   🟢 High:      {len(high)}")
@@ -806,17 +810,30 @@ def main():
             "jobs":         all_jobs
         }, f, indent=2)
 
-    # Save trends
     trends = compute_trends(all_jobs)
     with open("data/trends.json", "w") as f:
         json.dump(trends, f, indent=2)
 
     print("💾 Saved → data/jobs.json + data/seen_jobs.json + data/trends.json")
 
-def main():
-    print(f"🔑 ScraperAPI: {'✅ LOADED' if SCRAPER_KEY else '❌ NOT FOUND'}")
-    print(f"🔑 Telegram: {'✅ LOADED' if TELEGRAM_TOKEN else '❌ NOT FOUND'}")
+    # ── TELEGRAM ALERT ─────────────────────────────────────────────
+    new_high = [j for j in all_jobs if j["is_new"] and j["prob"] == "high"]
+    if new_high:
+        lines = [f"🎯 <b>{len(new_high)} NEW High-Match Jobs!</b>\n📅 {datetime.now().strftime('%d %b %Y')}\n"]
+        for j in new_high[:5]:
+            ref = " 🤝" if j.get("referral") else ""
+            loc = {"chennai":"🏙","online":"💻","remote":"🌐","nearby":"📍"}.get(j["loc_type"],"📍")
+            lines.append(f"• <b>{j['title']}</b>{ref}\n  {j['company']} | {loc}\n  Match: {j['match_pct']}% | {j['url']}\n")
+        if len(new_high) > 5:
+            lines.append(f"...+{len(new_high)-5} more")
+        lines.append(f"\n🔗 https://smart-ranjith.github.io/job-tracker")
+        send_telegram("\n".join(lines))
+    else:
+        send_telegram(
+            f"📊 Daily Update — {datetime.now().strftime('%d %b %Y')}\n"
+            f"Total: {len(all_jobs)} | High: {len(high)} | New: {new_count}\n"
+            f"🔗 https://smart-ranjith.github.io/job-tracker"
+        )
 
 if __name__ == "__main__":
-    
     main()
