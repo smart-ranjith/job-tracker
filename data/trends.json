@@ -1,0 +1,135 @@
+{
+  "updated": "2026-08-09",
+  "top_skills": [
+    {
+      "skill": "python",
+      "count": 32
+    },
+    {
+      "skill": "full stack",
+      "count": 20
+    },
+    {
+      "skill": "backend",
+      "count": 14
+    },
+    {
+      "skill": "automation",
+      "count": 11
+    },
+    {
+      "skill": "java",
+      "count": 11
+    },
+    {
+      "skill": "sql",
+      "count": 8
+    },
+    {
+      "skill": "react",
+      "count": 4
+    },
+    {
+      "skill": "excel",
+      "count": 3
+    },
+    {
+      "skill": "aws",
+      "count": 2
+    },
+    {
+      "skill": "data analytics",
+      "count": 2
+    },
+    {
+      "skill": "power bi",
+      "count": 1
+    },
+    {
+      "skill": "pandas",
+      "count": 1
+    },
+    {
+      "skill": "fastapi",
+      "count": 1
+    },
+    {
+      "skill": "html",
+      "count": 1
+    },
+    {
+      "skill": "git",
+      "count": 1
+    }
+  ],
+  "gap_skills": [
+    {
+      "skill": "full stack",
+      "count": 20
+    },
+    {
+      "skill": "react",
+      "count": 4
+    },
+    {
+      "skill": "aws",
+      "count": 2
+    },
+    {
+      "skill": "power bi",
+      "count": 1
+    },
+    {
+      "skill": "pandas",
+      "count": 1
+    },
+    {
+      "skill": "fastapi",
+      "count": 1
+    }
+  ],
+  "domains": [
+    {
+      "domain": "general",
+      "count": 51
+    },
+    {
+      "domain": "software",
+      "count": 49
+    },
+    {
+      "domain": "data",
+      "count": 42
+    },
+    {
+      "domain": "python",
+      "count": 34
+    },
+    {
+      "domain": "fullstack",
+      "count": 33
+    },
+    {
+      "domain": "backend",
+      "count": 15
+    },
+    {
+      "domain": "ml",
+      "count": 13
+    },
+    {
+      "domain": "java",
+      "count": 10
+    },
+    {
+      "domain": "dataeng",
+      "count": 8
+    }
+  ],
+  "sources": {
+    "LinkedIn": 184,
+    "Indeed": 41,
+    "Freshersworld": 14,
+    "Unstop": 16
+  }
+}
