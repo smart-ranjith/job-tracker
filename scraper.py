@@ -813,5 +813,10 @@ def main():
 
     print("💾 Saved → data/jobs.json + data/seen_jobs.json + data/trends.json")
 
+def main():
+    print(f"🔑 ScraperAPI: {'✅ LOADED' if SCRAPER_KEY else '❌ NOT FOUND'}")
+    print(f"🔑 Telegram: {'✅ LOADED' if TELEGRAM_TOKEN else '❌ NOT FOUND'}")
+
 if __name__ == "__main__":
+    
     main()
