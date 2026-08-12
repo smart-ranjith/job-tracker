@@ -347,7 +347,7 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
 def safe_get(url, timeout=30, retries=2):
     # Try ScraperAPI first (residential IPs bypass anti-bot)
     if SCRAPER_KEY:
-        api_url = f"http://api.scraperapi.com?api_key={SCRAPER_KEY}&url={quote_plus(url)}&country_code=in"
+        api_url = f"http://api.scraperapi.com?api_key={SCRAPER_KEY}&url={quote_plus(url)}&country_code=in&render=true"
         for attempt in range(retries):
             try:
                 r = requests.get(api_url, timeout=timeout)
