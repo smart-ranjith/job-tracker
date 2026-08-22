@@ -7,11 +7,11 @@ import random
 import hashlib
 import os
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
+load_dotenv()
 
-# ── SCRAPERAPI ─────────────────────────────────────────────────────
+# ── SCRAPERAPI + TELEGRAM ──────────────────────────────────────────
 SCRAPER_KEY      = os.environ.get("SCRAPER_API_KEY", "")
-
-# ── TELEGRAM ───────────────────────────────────────────────────────
 TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
@@ -28,7 +28,7 @@ def send_telegram(msg):
     except Exception as e:
         print(f"  ⚠ Telegram failed: {e}")
 
-# ── HEADERS ────────────────────────────────────────────────────────
+# ── HEADERS POOL ──────────────────────────────────────────────────
 HEADERS_POOL = [
     {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -52,6 +52,71 @@ HEADERS_POOL = [
 
 def get_headers():
     return random.choice(HEADERS_POOL)
+
+# ── SITES THAT WORK WITHOUT SCRAPERAPI ────────────────────────────
+DIRECT_ONLY = {"LinkedIn", "Indeed", "Unstop", "Freshersworld"}
+
+# ── DIAGNOSTICS ────────────────────────────────────────────────────
+SITE_ERRORS = {}
+
+def log_error(source, url, reason):
+    if source not in SITE_ERRORS:
+        SITE_ERRORS[source] = []
+    SITE_ERRORS[source].append(reason)
+    print(f"  ✗ [{source}] {reason}")
+
+def diagnose_response(r, source, url):
+    if r is None:
+        log_error(source, url, "Connection failed / timeout")
+        return
+    txt = r.text.lower()
+    if r.status_code == 403:
+        log_error(source, url, "403 Forbidden — IP blocked")
+    elif r.status_code == 429:
+        log_error(source, url, "429 Rate limited")
+    elif r.status_code == 302 or "login" in txt or "sign in" in txt:
+        log_error(source, url, "Redirected to login page")
+    elif "cloudflare" in txt or "cf-ray" in r.headers.get("Server","").lower():
+        log_error(source, url, "CloudFlare protection active")
+    elif "captcha" in txt or "robot" in txt:
+        log_error(source, url, "CAPTCHA / bot detection triggered")
+    elif len(r.text) < 500:
+        log_error(source, url, f"Empty/tiny response ({len(r.text)} bytes)")
+    elif "no jobs" in txt or "no result" in txt:
+        log_error(source, url, "No jobs found for search term")
+    else:
+        log_error(source, url, f"Job cards not found in HTML (HTTP {r.status_code}, {len(r.text)} bytes)")
+
+# ── SAFE GET ───────────────────────────────────────────────────────
+def safe_get(url, timeout=15, source=""):
+    # Use ScraperAPI for blocked sites
+    if SCRAPER_KEY and source not in DIRECT_ONLY:
+        api_url = f"http://api.scraperapi.com?api_key={SCRAPER_KEY}&url={quote_plus(url)}&country_code=in"
+        try:
+            r = requests.get(api_url, timeout=25)
+            if r.status_code == 200 and len(r.text) > 500:
+                return r
+            elif r.status_code == 401:
+                print(f"  ⚠ ScraperAPI credits exhausted!")
+            elif r.status_code == 403:
+                print(f"  ⚠ ScraperAPI plan limit")
+        except Exception as e:
+            print(f"  ⚠ ScraperAPI unreachable: {str(e)[:60]}")
+
+    # Direct request (fallback or DIRECT_ONLY sites)
+    try:
+        r = requests.get(url, headers=get_headers(), timeout=timeout)
+        r.raise_for_status()
+        return r
+    except requests.exceptions.ConnectionError:
+        log_error(source, url, "Connection error — site unreachable")
+    except requests.exceptions.Timeout:
+        log_error(source, url, f"Timeout after {timeout}s")
+    except requests.exceptions.HTTPError as e:
+        log_error(source, url, f"HTTP {e.response.status_code} error")
+    except Exception as e:
+        log_error(source, url, f"Unknown error: {str(e)[:50]}")
+    return None
 
 # ── PROFILE ────────────────────────────────────────────────────────
 PROFILE = {
@@ -343,120 +408,162 @@ def make_job(title, company, location, source, url, desc="", posted_date=None):
         "is_new":      False,  # set in main() after seen check
     }
 
-# ── SAFE GET (ScraperAPI → bypasses IP blocks) ────────────────────
-def safe_get(url, timeout=30, retries=2):
-    # Try ScraperAPI first (residential IPs bypass anti-bot)
-    if SCRAPER_KEY:
-        api_url = f"http://api.scraperapi.com?api_key={SCRAPER_KEY}&url={quote_plus(url)}&country_code=in&render=true"
-        for attempt in range(retries):
-            try:
-                r = requests.get(api_url, timeout=timeout)
-                if r.status_code == 200:
-                    return r
-                time.sleep(2)
-            except Exception as e:
-                if attempt == retries - 1:
-                    print(f"  ✗ ScraperAPI failed: {url[:50]} → {e}")
-                time.sleep(random.uniform(2, 4))
-
-    # Fallback: direct request
-    for attempt in range(retries):
-        try:
-            r = requests.get(url, headers=get_headers(), timeout=20)
-            r.raise_for_status()
-            return r
-        except Exception as e:
-            if attempt == retries - 1:
-                print(f"  ✗ Direct failed: {url[:50]}")
-            time.sleep(random.uniform(1, 3))
-    return None
-
 def sleep():
-    time.sleep(random.uniform(1.5, 3.0))
+    time.sleep(random.uniform(0.5, 1.5))
 
 # ── INTERNSHALA ────────────────────────────────────────────────────
 def scrape_internshala():
     jobs, searches = [], [
-        "python-developer", "software-developer", "web-developer",
-        "data-analytics", "java-developer", "full-stack-developer",
-        "backend-developer", "sql-developer", "business-analyst",
-        "data-engineer", "automation-testing"
+        "python", "software+development", "web+development",
+        "data+science", "java", "full+stack+development",
+        "backend", "sql", "business+analyst", "data+engineer"
     ]
     for search in searches:
-        r = safe_get(f"https://internshala.com/internships/{search}-internship/")
-        if not r: sleep(); continue
+        # Use search URL format that works without JS
+        url = f"https://internshala.com/internships/keywords-{search}/"
+        r = safe_get(url, source="Internshala")
+        if not r: continue
         soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".individual_internship") or soup.select(".internship_meta")
+        # Try multiple card selectors
+        cards = (soup.select(".individual_internship") or
+                 soup.select(".internship_meta") or
+                 soup.select("[id^='internship_']") or
+                 soup.select(".container-fluid .internship"))
+        if not cards:
+            # Try JSON data embedded in page
+            import re
+            match = re.search(r'"internships"\s*:\s*(\[.*?\])', r.text, re.DOTALL)
+            if match:
+                try:
+                    import json as _json
+                    items = _json.loads(match.group(1))[:6]
+                    for item in items:
+                        title    = item.get("profile","")
+                        company  = item.get("company_name","Unknown")
+                        location = item.get("location","India")
+                        url2     = f"https://internshala.com{item.get('internship_url','')}"
+                        j = make_job(title, company, location, "Internshala", url2)
+                        if j: jobs.append(j)
+                    sleep(); continue
+                except: pass
+            diagnose_response(r, "Internshala", url)
+            sleep(); continue
         for card in cards[:6]:
             try:
-                title   = (card.select_one(".profile") or card.select_one("h3") or card.select_one(".title")).get_text(strip=True)
-                company = (card.select_one(".company_name") or card.select_one(".company-name")).get_text(strip=True)
+                title   = (card.select_one(".profile") or card.select_one("h3") or
+                           card.select_one(".title") or card.select_one("a")).get_text(strip=True)
+                co_el   = (card.select_one(".company_name") or card.select_one(".company-name") or
+                           card.select_one("[class*='company']"))
+                company = co_el.get_text(strip=True) if co_el else "Unknown"
                 loc_el  = card.select_one(".location_link") or card.select_one(".location")
                 location= loc_el.get_text(strip=True) if loc_el else "India"
                 link_el = card.select_one("a[href]")
-                url     = ("https://internshala.com" + link_el["href"]) if link_el and link_el["href"].startswith("/") else link_el["href"] if link_el else ""
-                j = make_job(title, company, location, "Internshala", url)
+                url2    = ("https://internshala.com"+link_el["href"]) if link_el and link_el["href"].startswith("/") else (link_el["href"] if link_el else "")
+                j = make_job(title, company, location, "Internshala", url2)
                 if j: jobs.append(j)
             except: continue
         sleep()
     return jobs
 
-# ── NAUKRI ─────────────────────────────────────────────────────────
+# ── NAUKRI (JSON API) ──────────────────────────────────────────────
 def scrape_naukri():
     jobs, searches = [], [
-        "python-developer", "software-developer", "data-analyst",
-        "java-developer", "web-developer", "full-stack-developer",
-        "backend-developer", "sql-developer", "business-analyst",
-        "data-engineer", "automation-engineer"
+        "python developer", "software developer", "data analyst",
+        "java developer", "full stack developer", "backend developer",
+        "business analyst", "data engineer", "web developer"
     ]
+    # 406 = server rejects our Accept header — must match exactly what browser sends
+    naukri_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "appid": "109",
+        "systemid": "109",
+        "Referer": "https://www.naukri.com/",
+        "Origin": "https://www.naukri.com",
+    }
     for kw in searches:
-        r = safe_get(f"https://www.naukri.com/{kw}-jobs-in-chennai?experience=0")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".jobTuple") or soup.select("article") or soup.select("[class*='job-container']")
-        for card in cards[:6]:
-            try:
-                title_el   = card.select_one(".title") or card.select_one("a.title") or card.select_one("[class*='title']")
-                company_el = card.select_one(".companyInfo span") or card.select_one("[class*='company']")
-                loc_el     = card.select_one(".location") or card.select_one("[class*='location']")
-                link_el    = card.select_one("a[href]")
-                title      = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
-                company    = company_el.get_text(strip=True) if company_el else "Unknown"
-                location   = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url        = link_el["href"] if link_el else ""
-                j = make_job(title, company, location, "Naukri", url)
+        url = f"https://www.naukri.com/jobapi/v3/search?noOfResults=10&urlType=search_by_key_loc&searchType=adv&keyword={quote_plus(kw)}&location=chennai&experience=0&pageNo=1"
+        try:
+            r = requests.get(url, headers=naukri_headers, timeout=15)
+            if r.status_code == 406:
+                # Fallback: try HTML scraping via ScraperAPI
+                html_url = f"https://www.naukri.com/{kw.replace(' ','-')}-jobs-in-chennai?experience=0"
+                r2 = safe_get(html_url, source="Naukri")
+                if r2:
+                    soup  = BeautifulSoup(r2.text, "html.parser")
+                    cards = soup.select(".jobTuple") or soup.select("article.jobTupleHeader") or soup.select("[class*='srp-jobtuple']")
+                    for card in cards[:6]:
+                        try:
+                            t_el = card.select_one(".title") or card.select_one("a.title")
+                            c_el = card.select_one(".companyInfo span") or card.select_one("[class*='comp-name']")
+                            l_el = card.select_one(".location") or card.select_one("[class*='loc']")
+                            a_el = card.select_one("a[href]")
+                            title    = t_el.get_text(strip=True) if t_el else kw.title()
+                            company  = c_el.get_text(strip=True) if c_el else "Unknown"
+                            location = l_el.get_text(strip=True) if l_el else "Chennai"
+                            url2     = a_el["href"] if a_el else ""
+                            j = make_job(title, company, location, "Naukri", url2)
+                            if j: jobs.append(j)
+                        except: continue
+                else:
+                    log_error("Naukri", url, "406 + HTML fallback also failed")
+                sleep(); continue
+            if r.status_code != 200:
+                log_error("Naukri", url, f"API returned HTTP {r.status_code}")
+                sleep(); continue
+            items = r.json().get("jobDetails", [])
+            if not items:
+                log_error("Naukri", url, f"API OK but 0 results for '{kw}'")
+            for item in items[:6]:
+                title    = item.get("title","")
+                company  = item.get("companyName","Unknown")
+                location = item.get("placeholders",[{}])[0].get("label","Chennai") if item.get("placeholders") else "Chennai"
+                url2     = f"https://www.naukri.com/{item.get('staticUrl','')}" if item.get("staticUrl") else ""
+                j = make_job(title, company, location, "Naukri", url2)
                 if j: jobs.append(j)
-            except: continue
+        except Exception as e:
+            log_error("Naukri", url, f"Exception: {str(e)[:60]}")
         sleep()
     return jobs
 
 # ── LINKEDIN ───────────────────────────────────────────────────────
 def scrape_linkedin():
     jobs, searches = [], [
-        ("python developer intern", "Chennai"),
-        ("software engineer intern", "Chennai"),
-        ("data analyst intern", "Chennai"),
-        ("full stack developer intern", "Chennai"),
-        ("java developer intern", "Chennai"),
-        ("backend developer intern", "India"),
-        ("business analyst intern", "Chennai"),
-        ("data engineer intern", "India"),
-        ("sql developer intern", "India"),
+        ("python developer intern","Chennai"),
+        ("software engineer intern","Chennai"),
+        ("data analyst intern","Chennai"),
+        ("full stack developer intern","Chennai"),
+        ("java developer intern","Chennai"),
+        ("backend developer intern","Chennai"),
+        ("business analyst intern","Chennai"),
+        ("data engineer intern","India"),
+        ("python intern fresher","India"),
+        ("software developer fresher","Chennai"),
+        ("python developer remote","India"),
+        ("java developer intern","Bangalore"),
+        ("software engineer intern","Bangalore"),
+        ("data analyst intern","Bangalore"),
+        ("python intern","Hyderabad"),
     ]
     for kw, loc in searches:
-        url = f"https://www.linkedin.com/jobs/search/?keywords={kw.replace(' ','%20')}&location={loc.replace(' ','%20')}&f_JT=I&f_E=1"
-        r   = safe_get(url)
-        if not r: sleep(); continue
+        url = f"https://www.linkedin.com/jobs/search/?keywords={quote_plus(kw)}&location={quote_plus(loc)}&f_JT=I&f_E=1&f_TPR=r604800"
+        r   = safe_get(url, source="LinkedIn")
+        if not r: continue
         soup  = BeautifulSoup(r.text, "html.parser")
         cards = soup.select(".base-card") or soup.select(".jobs-search__results-list li")
-        for card in cards[:6]:
+        if not cards: diagnose_response(r, "LinkedIn", url); sleep(); continue
+        for card in cards[:8]:
             try:
-                title   = (card.select_one(".base-search-card__title") or card.select_one("h3")).get_text(strip=True)
-                company = (card.select_one(".base-search-card__subtitle") or card.select_one("h4")).get_text(strip=True)
-                loc_el  = card.select_one(".job-search-card__location")
-                location= loc_el.get_text(strip=True) if loc_el else loc
-                link_el = card.select_one("a.base-card__full-link") or card.select_one("a")
-                url2    = link_el["href"] if link_el else ""
+                t_el = card.select_one(".base-search-card__title") or card.select_one("h3")
+                c_el = card.select_one(".base-search-card__subtitle") or card.select_one("h4")
+                l_el = card.select_one(".job-search-card__location")
+                a_el = card.select_one("a.base-card__full-link") or card.select_one("a")
+                title    = t_el.get_text(strip=True) if t_el else kw
+                company  = c_el.get_text(strip=True) if c_el else "Unknown"
+                location = l_el.get_text(strip=True) if l_el else loc
+                url2     = a_el["href"] if a_el else ""
                 j = make_job(title, company, location, "LinkedIn", url2)
                 if j: jobs.append(j)
             except: continue
@@ -466,259 +573,77 @@ def scrape_linkedin():
 # ── UNSTOP ─────────────────────────────────────────────────────────
 def scrape_unstop():
     jobs = []
-    r    = safe_get("https://unstop.com/api/public/opportunity/search-result?opportunity=jobs&per_page=30&filters[type][]=1")
-    if not r: return jobs
+    url  = "https://unstop.com/api/public/opportunity/search-result?opportunity=jobs&per_page=30&filters[type][]=1"
+    r    = safe_get(url, source="Unstop")
+    if not r:
+        log_error("Unstop", url, "Request failed")
+        return jobs
     try:
         items = r.json().get("data", {}).get("data", [])
+        if not items: log_error("Unstop", url, "API OK but 0 items returned")
         for item in items:
-            title    = item.get("title", "")
-            company  = item.get("organisation", {}).get("name", "Unknown")
-            location = item.get("city", "India")
-            url      = f"https://unstop.com/jobs/{item.get('public_url','')}"
-            j = make_job(title, company, location, "Unstop", url)
+            title    = item.get("title","")
+            company  = item.get("organisation",{}).get("name","Unknown")
+            location = item.get("city","India")
+            url2     = f"https://unstop.com/jobs/{item.get('public_url','')}"
+            j = make_job(title, company, location, "Unstop", url2)
             if j: jobs.append(j)
-    except: pass
+    except Exception as e:
+        log_error("Unstop", url, f"JSON error: {str(e)[:50]}")
     return jobs
 
-# ── SHINE ──────────────────────────────────────────────────────────
-def scrape_shine():
-    jobs, searches = [], [
-        "python-developer", "software-engineer", "data-analyst",
-        "java-developer", "full-stack-developer", "backend-developer",
-        "business-analyst", "sql-developer"
-    ]
-    for kw in searches:
-        r = safe_get(f"https://www.shine.com/job-search/{kw}-jobs-in-chennai/")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".jobCard") or soup.select("[class*='job-card']") or soup.select("article")
-        for card in cards[:5]:
-            try:
-                title_el   = card.select_one("h2") or card.select_one(".title") or card.select_one("a")
-                company_el = card.select_one(".company") or card.select_one("[class*='company']")
-                loc_el     = card.select_one(".location") or card.select_one("[class*='location']")
-                link_el    = card.select_one("a[href]")
-                title      = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
-                company    = company_el.get_text(strip=True) if company_el else "Unknown"
-                location   = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url        = link_el["href"] if link_el else ""
-                if url and not url.startswith("http"):
-                    url = "https://www.shine.com" + url
-                j = make_job(title, company, location, "Shine", url)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── FOUNDIT ────────────────────────────────────────────────────────
+# ── FOUNDIT (fixed endpoint) ──────────────────────────────────────
 def scrape_foundit():
     jobs, searches = [], [
-        "python-developer", "software-engineer", "data-analyst",
-        "java-developer", "full-stack-developer", "backend-developer",
-        "business-analyst", "data-engineer"
+        "python developer","software engineer","data analyst",
+        "java developer","full stack developer","backend developer",
+        "business analyst","data engineer"
     ]
     for kw in searches:
-        r = safe_get(f"https://www.foundit.in/search?query={kw.replace('-','+')}+fresher&location=Chennai")
-        if not r: sleep(); continue
+        url = f"https://www.foundit.in/srp/results?query={quote_plus(kw)}&location=Chennai&experienceRanges=0%7C1&limit=10"
+        r = safe_get(url, source="Foundit")
+        if not r: continue
         soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".jobCard") or soup.select("[class*='cardContainer']") or soup.select("article")
+        cards = soup.select(".jobCard") or soup.select("[class*='card']") or soup.select("article")
+        if not cards: diagnose_response(r, "Foundit", url); sleep(); continue
         for card in cards[:5]:
             try:
-                title_el = card.select_one("h3") or card.select_one(".title") or card.select_one("a")
-                co_el    = card.select_one(".company") or card.select_one("[class*='company']")
-                loc_el   = card.select_one(".location") or card.select_one("[class*='location']")
-                link_el  = card.select_one("a[href]")
-                title    = title_el.get_text(strip=True) if title_el else kw.replace("-"," ").title()
-                company  = co_el.get_text(strip=True) if co_el else "Unknown"
-                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url      = link_el["href"] if link_el else ""
-                if url and not url.startswith("http"):
-                    url = "https://www.foundit.in" + url
-                j = make_job(title, company, location, "Foundit", url)
+                t_el = card.select_one("h3") or card.select_one("h2") or card.select_one("a")
+                c_el = card.select_one("[class*='company']") or card.select_one("[class*='org']")
+                l_el = card.select_one("[class*='location']") or card.select_one("[class*='loc']")
+                a_el = card.select_one("a[href]")
+                title    = t_el.get_text(strip=True) if t_el else kw.title()
+                company  = c_el.get_text(strip=True) if c_el else "Unknown"
+                location = l_el.get_text(strip=True) if l_el else "Chennai"
+                url2     = a_el["href"] if a_el else ""
+                if url2 and not url2.startswith("http"): url2 = "https://www.foundit.in"+url2
+                j = make_job(title, company, location, "Foundit", url2)
                 if j: jobs.append(j)
             except: continue
         sleep()
     return jobs
 
-# ── TIMESJOBS ──────────────────────────────────────────────────────
-def scrape_timesjobs():
-    jobs, searches = [], [
-        "python", "software+engineer", "data+analyst",
-        "java", "full+stack", "backend+developer", "business+analyst"
-    ]
-    for kw in searches:
-        r = safe_get(f"https://www.timesjobs.com/candidate/job-search.html?searchType=Home_Search&sequence=0&startPage=1&textKeywords={kw}&cboWorkExp1=0&cboWorkExp2=0&txtLocation=Chennai")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".job-bx") or soup.select(".clearfix.job")
-        for card in cards[:5]:
-            try:
-                title_el = card.select_one("h2") or card.select_one(".job-title")
-                co_el    = card.select_one(".joblist-comp-name") or card.select_one(".company")
-                loc_el   = card.select_one(".job-locations") or card.select_one(".location")
-                link_el  = card.select_one("h2 a") or card.select_one("a[href]")
-                title    = title_el.get_text(strip=True) if title_el else kw
-                company  = co_el.get_text(strip=True) if co_el else "Unknown"
-                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url      = link_el["href"] if link_el else ""
-                j = make_job(title, company, location, "TimesJobs", url)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── FRESHERSWORLD ──────────────────────────────────────────────────
-def scrape_freshersworld():
-    jobs, searches = [], [
-        "python", "software-engineer", "java",
-        "full-stack", "data-analyst", "backend", "business-analyst"
-    ]
-    for kw in searches:
-        r = safe_get(f"https://www.freshersworld.com/jobs/jobsearch/{kw}-jobs-for-freshers-in-Chennai")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".joblist") or soup.select("[class*='job-container']") or soup.select("li.job")
-        for card in cards[:5]:
-            try:
-                title_el = card.select_one("h3") or card.select_one(".title") or card.select_one("a")
-                co_el    = card.select_one(".company-name") or card.select_one(".company")
-                loc_el   = card.select_one(".location")
-                link_el  = card.select_one("a[href]")
-                title    = title_el.get_text(strip=True) if title_el else kw
-                company  = co_el.get_text(strip=True) if co_el else "Unknown"
-                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url      = link_el["href"] if link_el else ""
-                if url and not url.startswith("http"):
-                    url = "https://www.freshersworld.com" + url
-                j = make_job(title, company, location, "Freshersworld", url)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── HIRIST ─────────────────────────────────────────────────────────
-def scrape_hirist():
-    jobs, searches = [], [
-        "python", "java", "full-stack", "data-analyst",
-        "backend", "sql", "software-engineer"
-    ]
-    for kw in searches:
-        r = safe_get(f"https://www.hirist.tech/search?q={kw}&l=Chennai&exp=0-1")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select(".job-card") or soup.select("[class*='jobCard']") or soup.select("article")
-        for card in cards[:5]:
-            try:
-                title_el = card.select_one("h2") or card.select_one(".title") or card.select_one("a")
-                co_el    = card.select_one(".company") or card.select_one("[class*='company']")
-                loc_el   = card.select_one(".location")
-                link_el  = card.select_one("a[href]")
-                title    = title_el.get_text(strip=True) if title_el else kw
-                company  = co_el.get_text(strip=True) if co_el else "Unknown"
-                location = loc_el.get_text(strip=True) if loc_el else "Chennai"
-                url      = link_el["href"] if link_el else ""
-                if url and not url.startswith("http"):
-                    url = "https://www.hirist.tech" + url
-                j = make_job(title, company, location, "Hirist", url)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── WELLFOUND ──────────────────────────────────────────────────────
-def scrape_wellfound():
-    jobs, searches = [], [
-        "python", "software-engineer", "data",
-        "full-stack", "backend", "java"
-    ]
-    for kw in searches:
-        r = safe_get(f"https://wellfound.com/jobs?q={kw}&l=India&jobType=internship")
-        if not r: sleep(); continue
-        soup  = BeautifulSoup(r.text, "html.parser")
-        cards = soup.select("[class*='JobListing']") or soup.select("div[data-test='JobListing']") or soup.select("article")
-        for card in cards[:5]:
-            try:
-                title_el = card.select_one("h2") or card.select_one("a") or card.select_one("[class*='title']")
-                co_el    = card.select_one("[class*='company']") or card.select_one("h3")
-                loc_el   = card.select_one("[class*='location']")
-                link_el  = card.select_one("a[href]")
-                title    = title_el.get_text(strip=True) if title_el else kw
-                company  = co_el.get_text(strip=True) if co_el else "Unknown"
-                location = loc_el.get_text(strip=True) if loc_el else "India"
-                url      = link_el["href"] if link_el else ""
-                if url and not url.startswith("http"):
-                    url = "https://wellfound.com" + url
-                j = make_job(title, company, location, "Wellfound", url)
-                if j: jobs.append(j)
-            except: continue
-        sleep()
-    return jobs
-
-# ── DEDUP (by job ID across platforms) ────────────────────────────
-def dedup(jobs):
-    seen, result = set(), []
-    for j in jobs:
-        if j["id"] not in seen:
-            seen.add(j["id"])
-            result.append(j)
-    return result
-
-# ── TRENDS ─────────────────────────────────────────────────────────
-def compute_trends(jobs):
-    skill_count  = {}
-    domain_count = {}
-    source_count = {}
-
-    for j in jobs:
-        text = (j["title"] + " " + " ".join(j.get("missing", []))).lower()
-
-        # Count skills mentioned in job titles
-        for s in ALL_SKILLS:
-            if s in text:
-                skill_count[s] = skill_count.get(s, 0) + 1
-
-        # Count domains
-        d = j.get("domain", "general")
-        domain_count[d] = domain_count.get(d, 0) + 1
-
-        # Count sources
-        src = j.get("source", "Unknown")
-        source_count[src] = source_count.get(src, 0) + 1
-
-    top_skills  = sorted(skill_count.items(),  key=lambda x: x[1], reverse=True)[:15]
-    top_domains = sorted(domain_count.items(), key=lambda x: x[1], reverse=True)
-
-    # Skills gap — most requested skills you DON'T have
-    gap_skills = [(s, c) for s, c in top_skills if s not in KNOWN_SKILLS][:8]
-
-    return {
-        "updated":    datetime.now().strftime("%Y-%m-%d"),
-        "top_skills": [{"skill": k, "count": v} for k, v in top_skills],
-        "gap_skills": [{"skill": k, "count": v} for k, v in gap_skills],
-        "domains":    [{"domain": k, "count": v} for k, v in top_domains],
-        "sources":    source_count,
-    }
-
-# ── INDEED ─────────────────────────────────────────────────────────
+# ── INDEED (via ScraperAPI) ────────────────────────────────────────
 def scrape_indeed():
     jobs, searches = [], [
-        ("python developer intern", "Chennai"),
-        ("software engineer intern", "Chennai"),
-        ("data analyst intern", "Chennai"),
-        ("full stack developer intern", "Chennai"),
-        ("java developer intern", "Chennai"),
-        ("backend developer intern", "Chennai"),
-        ("business analyst intern", "Chennai"),
-        ("python intern fresher", "India"),
-        ("software developer fresher", "Chennai"),
-        ("web developer intern", "Chennai"),
+        ("python developer intern","Chennai"),
+        ("software engineer intern","Chennai"),
+        ("data analyst intern","Chennai"),
+        ("full stack developer intern","Chennai"),
+        ("java developer intern","Chennai"),
+        ("backend developer intern","Chennai"),
+        ("business analyst intern","Chennai"),
+        ("python intern fresher","India"),
+        ("software developer fresher","Chennai"),
+        ("web developer intern","Chennai"),
     ]
     for kw, loc in searches:
         url = f"https://in.indeed.com/jobs?q={quote_plus(kw)}&l={quote_plus(loc)}&fromage=14"
-        r   = safe_get(url)
-        if not r: sleep(); continue
+        r   = safe_get(url, source="Indeed")
+        if not r: continue
         soup  = BeautifulSoup(r.text, "html.parser")
         cards = soup.select(".job_seen_beacon") or soup.select(".tapItem") or soup.select("[class*='job_']")
+        if not cards: diagnose_response(r, "Indeed", url); sleep(); continue
         for card in cards[:8]:
             try:
                 t_el = card.select_one(".jobTitle") or card.select_one("h2")
@@ -736,6 +661,92 @@ def scrape_indeed():
         sleep()
     return jobs
 
+# ── FRESHERSWORLD ──────────────────────────────────────────────────
+def scrape_freshersworld():
+    jobs, searches = [], [
+        "python","software-engineer","java",
+        "full-stack","data-analyst","backend","business-analyst"
+    ]
+    for kw in searches:
+        url = f"https://www.freshersworld.com/jobs/jobsearch/{kw}-jobs-for-freshers-in-Chennai"
+        r   = safe_get(url, source="Freshersworld")
+        if not r: continue
+        soup  = BeautifulSoup(r.text, "html.parser")
+        cards = soup.select(".joblist") or soup.select("[class*='job-container']") or soup.select("li.job")
+        if not cards: diagnose_response(r, "Freshersworld", url); sleep(); continue
+        for card in cards[:5]:
+            try:
+                t_el = card.select_one("h3") or card.select_one(".title") or card.select_one("a")
+                c_el = card.select_one(".company-name") or card.select_one(".company")
+                l_el = card.select_one(".location")
+                a_el = card.select_one("a[href]")
+                title    = t_el.get_text(strip=True) if t_el else kw
+                company  = c_el.get_text(strip=True) if c_el else "Unknown"
+                location = l_el.get_text(strip=True) if l_el else "Chennai"
+                url2     = a_el["href"] if a_el else ""
+                if url2 and not url2.startswith("http"): url2 = "https://www.freshersworld.com"+url2
+                j = make_job(title, company, location, "Freshersworld", url2)
+                if j: jobs.append(j)
+            except: continue
+        sleep()
+    return jobs
+
+# ── REMOTIVE (filter for relevant tech roles only) ────────────────
+def scrape_remotive():
+    jobs, searches = [], [
+        "python intern","software engineer intern",
+        "data analyst","java developer","backend developer","full stack"
+    ]
+    RELEVANT = ["python","java","software","data","backend","full stack","developer","engineer","analyst","intern"]
+    for kw in searches:
+        url = f"https://remotive.com/api/remote-jobs?search={quote_plus(kw)}&limit=10"
+        try:
+            r = requests.get(url, headers=get_headers(), timeout=15)
+            if r.status_code != 200:
+                log_error("Remotive", url, f"API {r.status_code}"); sleep(); continue
+            items = r.json().get("jobs",[])
+            for item in items[:10]:
+                title = item.get("title","")
+                # Filter — only relevant tech roles
+                if not any(kw.lower() in title.lower() for kw in RELEVANT):
+                    continue
+                company  = item.get("company_name","Unknown")
+                location = "Remote"
+                url2     = item.get("url","")
+                j = make_job(title, company, location, "Remotive", url2)
+                if j: jobs.append(j)
+        except Exception as e:
+            log_error("Remotive", url, f"Exception: {str(e)[:60]}")
+        sleep()
+    return jobs
+
+# ── ARBEITNOW (free API, 175+ jobs, India filter) ─────────────────
+def scrape_arbeitnow():
+    jobs, searches = [], [
+        "python developer","software engineer","data analyst",
+        "java developer","full stack developer","backend developer",
+        "business analyst","web developer"
+    ]
+    for kw in searches:
+        url = f"https://www.arbeitnow.com/api/job-board-api?search={quote_plus(kw)}&location=india"
+        try:
+            r = requests.get(url, headers=get_headers(), timeout=15)
+            if r.status_code != 200:
+                log_error("Arbeitnow", url, f"API {r.status_code}"); sleep(); continue
+            items = r.json().get("data",[])
+            if not items: log_error("Arbeitnow", url, f"0 results for '{kw}'")
+            for item in items[:6]:
+                title    = item.get("title","")
+                company  = item.get("company",{}).get("name","Unknown") if isinstance(item.get("company"),dict) else item.get("company","Unknown")
+                location = item.get("location","India")
+                url2     = item.get("url","")
+                j = make_job(title, company, location, "Arbeitnow", url2)
+                if j: jobs.append(j)
+        except Exception as e:
+            log_error("Arbeitnow", url, f"Exception: {str(e)[:60]}")
+        sleep()
+    return jobs
+
 # ── MAIN ───────────────────────────────────────────────────────────
 SCRAPERS = [
     ("Internshala",   scrape_internshala),
@@ -743,95 +754,133 @@ SCRAPERS = [
     ("LinkedIn",      scrape_linkedin),
     ("Indeed",        scrape_indeed),
     ("Unstop",        scrape_unstop),
-    ("Shine",         scrape_shine),
     ("Foundit",       scrape_foundit),
-    ("TimesJobs",     scrape_timesjobs),
     ("Freshersworld", scrape_freshersworld),
-    ("Hirist",        scrape_hirist),
-    ("Wellfound",     scrape_wellfound),
+    ("Remotive",      scrape_remotive),
+    ("Arbeitnow",     scrape_arbeitnow),
+    # Removed: Cutshort (404), Instahyre (404), Shine (login),
+    #          TimesJobs (JS), Hirist (login), Wellfound (login)
 ]
+
+# ── DEDUP ──────────────────────────────────────────────────────────
+def dedup(jobs):
+    seen, result = set(), []
+    for j in jobs:
+        if j["id"] not in seen:
+            seen.add(j["id"])
+            result.append(j)
+    return result
+
+# ── TRENDS ─────────────────────────────────────────────────────────
+def compute_trends(jobs):
+    skill_count, domain_count, source_count = {}, {}, {}
+    for j in jobs:
+        text = (j["title"] + " " + " ".join(j.get("missing",[])) ).lower()
+        for s in ALL_SKILLS:
+            if s in text: skill_count[s] = skill_count.get(s,0)+1
+        d = j.get("domain","general")
+        domain_count[d] = domain_count.get(d,0)+1
+        src = j.get("source","Unknown")
+        source_count[src] = source_count.get(src,0)+1
+    top_skills  = sorted(skill_count.items(), key=lambda x:x[1], reverse=True)[:15]
+    top_domains = sorted(domain_count.items(), key=lambda x:x[1], reverse=True)
+    gap_skills  = [(s,c) for s,c in top_skills if s not in KNOWN_SKILLS][:8]
+    return {
+        "updated":    datetime.now().strftime("%Y-%m-%d"),
+        "top_skills": [{"skill":k,"count":v} for k,v in top_skills],
+        "gap_skills": [{"skill":k,"count":v} for k,v in gap_skills],
+        "domains":    [{"domain":k,"count":v} for k,v in top_domains],
+        "sources":    source_count,
+    }
 
 def main():
     os.makedirs("data", exist_ok=True)
-    # Debug secrets
-    print(f"🔑 ScraperAPI: {'✅ LOADED' if SCRAPER_KEY else '❌ NOT FOUND'}")
-    print(f"🔑 Telegram:   {'✅ LOADED' if TELEGRAM_TOKEN else '❌ NOT FOUND'}")
 
-    seen_ids     = load_seen()
-    all_jobs     = []
-    source_stats = {}
+    # Secrets check
+    print(f"🔑 ScraperAPI: {'✅ LOADED' if SCRAPER_KEY else '❌ NOT FOUND (blocked sites will fail)'}")
+    print(f"🔑 Telegram:   {'✅ LOADED' if TELEGRAM_TOKEN else '❌ NOT FOUND'}\n")
 
+    seen_ids, all_jobs, source_stats = load_seen(), [], {}
+
+    # Run scrapers
     for name, fn in SCRAPERS:
         print(f"🔍 Scraping {name}...")
         try:
             jobs = fn()
             source_stats[name] = len(jobs)
             all_jobs += jobs
-            print(f"   → {len(jobs)} jobs")
+            icon = "✅" if jobs else "⚠️ "
+            print(f"   {icon} → {len(jobs)} jobs")
         except Exception as e:
             source_stats[name] = 0
-            print(f"   ✗ {name} failed: {e}")
+            log_error(name, "", f"CRASHED: {str(e)[:80]}")
+            print(f"   ❌ CRASHED: {e}")
+
+    # Diagnostic report
+    print("\n" + "─"*55)
+    print("📋 SCRAPER DIAGNOSTIC REPORT")
+    print("─"*55)
+    from collections import Counter
+    for name, count in source_stats.items():
+        if count > 0:
+            print(f"✅ {name:<15} → {count} jobs")
+        else:
+            errs = SITE_ERRORS.get(name, [])
+            reason = Counter(errs).most_common(1)[0][0] if errs else "No requests made / unknown"
+            print(f"❌ {name:<15} → 0 jobs | {reason}")
+    print("─"*55)
 
     all_jobs = dedup(all_jobs)
+    chennai = len([j for j in all_jobs if j["loc_type"] == "chennai"])
+    print(f"\n📍 Chennai: {chennai} | Other: {len(all_jobs)-chennai}")
 
-    chennai_count = len([j for j in all_jobs if j["loc_type"] == "chennai"])
-    print(f"\n📍 Chennai jobs: {chennai_count} | Nearby/Remote: {len(all_jobs)-chennai_count}")
-
-    # Mark new vs seen
     new_count = 0
     for j in all_jobs:
         j["is_new"] = j["id"] not in seen_ids
-        if j["is_new"]:
-            new_count += 1
+        if j["is_new"]: new_count += 1
 
-    all_ids = seen_ids | {j["id"] for j in all_jobs}
-    save_seen(all_ids)
-
+    save_seen(seen_ids | {j["id"] for j in all_jobs})
     all_jobs.sort(key=lambda x: (x["score"], x["match_pct"]), reverse=True)
 
-    high  = [j for j in all_jobs if j["prob"] == "high"]
-    medium= [j for j in all_jobs if j["prob"] == "medium"]
-    low   = [j for j in all_jobs if j["prob"] == "low"]
-    fresh = [j for j in all_jobs if j["fresh"]]
+    high   = [j for j in all_jobs if j["prob"] == "high"]
+    medium = [j for j in all_jobs if j["prob"] == "medium"]
+    low    = [j for j in all_jobs if j["prob"] == "low"]
+    fresh  = [j for j in all_jobs if j["fresh"]]
 
-    print(f"\n✅ Total unique: {len(all_jobs)}")
-    print(f"   🟢 High:      {len(high)}")
-    print(f"   🟡 Medium:    {len(medium)}")
-    print(f"   🔴 Low:       {len(low)}")
-    print(f"   ⚡ Fresh<48h: {len(fresh)}")
-    print(f"   🆕 New today: {new_count}")
-    print(f"\n🔌 Source health: {source_stats}")
+    print(f"\n✅ Total: {len(all_jobs)} | 🟢 {len(high)} | 🟡 {len(medium)} | 🔴 {len(low)}")
+    print(f"   ⚡ Fresh: {len(fresh)} | 🆕 New: {new_count}")
 
+    # Save jobs.json
     with open("data/jobs.json", "w") as f:
         json.dump({
             "updated":      datetime.now().strftime("%Y-%m-%d %H:%M UTC"),
             "total":        len(all_jobs),
             "source_stats": source_stats,
+            "site_errors":  {k: list(dict.fromkeys(v)) for k, v in SITE_ERRORS.items()},
             "jobs":         all_jobs
         }, f, indent=2)
 
-    trends = compute_trends(all_jobs)
+    # Save trends.json
     with open("data/trends.json", "w") as f:
-        json.dump(trends, f, indent=2)
+        json.dump(compute_trends(all_jobs), f, indent=2)
 
     print("💾 Saved → data/jobs.json + data/seen_jobs.json + data/trends.json")
 
-    # ── TELEGRAM ALERT ─────────────────────────────────────────────
+    # Telegram alert
     new_high = [j for j in all_jobs if j["is_new"] and j["prob"] == "high"]
     if new_high:
-        lines = [f"🎯 <b>{len(new_high)} NEW High-Match Jobs!</b>\n📅 {datetime.now().strftime('%d %b %Y')}\n"]
+        lines = [f"🎯 <b>{len(new_high)} NEW High-Match Jobs!</b> {datetime.now().strftime('%d %b %Y')}\n"]
         for j in new_high[:5]:
             ref = " 🤝" if j.get("referral") else ""
-            loc = {"chennai":"🏙","online":"💻","remote":"🌐","nearby":"📍"}.get(j["loc_type"],"📍")
-            lines.append(f"• <b>{j['title']}</b>{ref}\n  {j['company']} | {loc}\n  Match: {j['match_pct']}% | {j['url']}\n")
-        if len(new_high) > 5:
-            lines.append(f"...+{len(new_high)-5} more")
+            loc = {"chennai":"🏙","online":"💻","remote":"🌐","nearby":"📍"}.get(j.get("loc_type",""),"📍")
+            lines.append(f"• <b>{j['title']}</b>{ref}\n  {j['company']} | {loc} | {j['match_pct']}%\n  {j['url']}\n")
+        if len(new_high) > 5: lines.append(f"+{len(new_high)-5} more")
         lines.append(f"\n🔗 https://smart-ranjith.github.io/job-tracker")
         send_telegram("\n".join(lines))
     else:
         send_telegram(
-            f"📊 Daily Update — {datetime.now().strftime('%d %b %Y')}\n"
-            f"Total: {len(all_jobs)} | High: {len(high)} | New: {new_count}\n"
+            f"📊 Job Update {datetime.now().strftime('%d %b %Y')}\n"
+            f"Total: {len(all_jobs)} | 🟢 High: {len(high)} | 🆕 New: {new_count}\n"
             f"🔗 https://smart-ranjith.github.io/job-tracker"
         )
 
