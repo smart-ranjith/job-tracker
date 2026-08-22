@@ -1,9 +1,9 @@
-name: Daily Job Scraper
+name: Job Scraper
 
 on:
-  schedule:
-    - cron: "0 3 * * *"
   workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 0"
 
 permissions:
   contents: write
@@ -23,7 +23,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 lxml
+        run: pip install requests beautifulsoup4 lxml python-dotenv
 
       - name: Run scraper
         env:
@@ -37,7 +37,7 @@ jobs:
           git config --global user.name "job-bot"
           git config --global user.email "job-bot@github.com"
           git add data/jobs.json data/seen_jobs.json data/trends.json
-          git diff --staged --quiet || git commit -m "🤖 Auto-update jobs $(date +'%Y-%m-%d')"
+          git diff --staged --quiet || git commit -m "🤖 Jobs updated $(date +'%Y-%m-%d')"
           git push
 
       - name: Upload Pages artifact
