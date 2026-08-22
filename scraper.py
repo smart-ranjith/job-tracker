@@ -749,49 +749,18 @@ def scrape_arbeitnow():
 
 # ── MAIN ───────────────────────────────────────────────────────────
 SCRAPERS = [
-    ("Internshala",   scrape_internshala),
-    ("Naukri",        scrape_naukri),
-    ("LinkedIn",      scrape_linkedin),
-    ("Indeed",        scrape_indeed),
-    ("Unstop",        scrape_unstop),
-    ("Foundit",       scrape_foundit),
-    ("Freshersworld", scrape_freshersworld),
-    ("Remotive",      scrape_remotive),
-    ("Arbeitnow",     scrape_arbeitnow),
-    # Removed: Cutshort (404), Instahyre (404), Shine (login),
-    #          TimesJobs (JS), Hirist (login), Wellfound (login)
+    ("Internshala",   scrape_internshala),   # ✅ works
+    ("LinkedIn",      scrape_linkedin),       # ✅ works
+    ("Unstop",        scrape_unstop),         # ✅ works
+    ("Remotive",      scrape_remotive),       # ✅ works
+    # Temporarily disabled (blocked on GitHub IPs):
+    # ("Naukri",        scrape_naukri),       # ❌ SSL block
+    # ("Indeed",        scrape_indeed),       # ❌ 403 block
+    # ("Foundit",       scrape_foundit),      # ❌ login wall
+    # ("Freshersworld", scrape_freshersworld),# ❌ 403 on GitHub
+    # ("Arbeitnow",     scrape_arbeitnow),    # ❌ SSL reset
+    # Re-enable when ScraperAPI credits refresh
 ]
-
-# ── DEDUP ──────────────────────────────────────────────────────────
-def dedup(jobs):
-    seen, result = set(), []
-    for j in jobs:
-        if j["id"] not in seen:
-            seen.add(j["id"])
-            result.append(j)
-    return result
-
-# ── TRENDS ─────────────────────────────────────────────────────────
-def compute_trends(jobs):
-    skill_count, domain_count, source_count = {}, {}, {}
-    for j in jobs:
-        text = (j["title"] + " " + " ".join(j.get("missing",[])) ).lower()
-        for s in ALL_SKILLS:
-            if s in text: skill_count[s] = skill_count.get(s,0)+1
-        d = j.get("domain","general")
-        domain_count[d] = domain_count.get(d,0)+1
-        src = j.get("source","Unknown")
-        source_count[src] = source_count.get(src,0)+1
-    top_skills  = sorted(skill_count.items(), key=lambda x:x[1], reverse=True)[:15]
-    top_domains = sorted(domain_count.items(), key=lambda x:x[1], reverse=True)
-    gap_skills  = [(s,c) for s,c in top_skills if s not in KNOWN_SKILLS][:8]
-    return {
-        "updated":    datetime.now().strftime("%Y-%m-%d"),
-        "top_skills": [{"skill":k,"count":v} for k,v in top_skills],
-        "gap_skills": [{"skill":k,"count":v} for k,v in gap_skills],
-        "domains":    [{"domain":k,"count":v} for k,v in top_domains],
-        "sources":    source_count,
-    }
 
 def main():
     os.makedirs("data", exist_ok=True)
