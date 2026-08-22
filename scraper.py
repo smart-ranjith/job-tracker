@@ -785,11 +785,11 @@ SCRAPERS = [
     ("Unstop",        scrape_unstop),         # ✅ works
     ("Remotive",      scrape_remotive),       # ✅ works
     # Temporarily disabled (blocked on GitHub IPs):
-    # ("Naukri",        scrape_naukri),       # ❌ SSL block
-    # ("Indeed",        scrape_indeed),       # ❌ 403 block
-    # ("Foundit",       scrape_foundit),      # ❌ login wall
-    # ("Freshersworld", scrape_freshersworld),# ❌ 403 on GitHub
-    # ("Arbeitnow",     scrape_arbeitnow),    # ❌ SSL reset
+    ("Naukri",        scrape_naukri),       # ❌ SSL block
+    ("Indeed",        scrape_indeed),       # ❌ 403 block
+    ("Foundit",       scrape_foundit),      # ❌ login wall
+    ("Freshersworld", scrape_freshersworld),# ❌ 403 on GitHub
+    ("Arbeitnow",     scrape_arbeitnow),    # ❌ SSL reset
     # Re-enable when ScraperAPI credits refresh
 ]
 
