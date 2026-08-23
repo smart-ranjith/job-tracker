@@ -1,21 +1,25 @@
 {
-  "updated": "2026-08-22",
+  "updated": "2026-08-23",
   "top_skills": [
     {
       "skill": "python",
-      "count": 19
+      "count": 20
     },
     {
       "skill": "java",
-      "count": 9
+      "count": 13
     },
     {
       "skill": "backend",
-      "count": 8
+      "count": 10
     },
     {
       "skill": "full stack",
       "count": 5
+    },
+    {
+      "skill": "automation",
+      "count": 3
     },
     {
       "skill": "data analytics",
@@ -26,11 +30,11 @@
       "count": 3
     },
     {
-      "skill": "automation",
+      "skill": "react",
       "count": 2
     },
     {
-      "skill": "react",
+      "skill": "spring",
       "count": 2
     },
     {
@@ -43,10 +47,6 @@
     },
     {
       "skill": "git",
-      "count": 1
-    },
-    {
-      "skill": "spring",
       "count": 1
     }
   ],
@@ -64,33 +64,41 @@
       "count": 2
     },
     {
-      "skill": "machine learning",
-      "count": 1
+      "skill": "spring",
+      "count": 2
     },
     {
-      "skill": "spring",
+      "skill": "machine learning",
       "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 36
-    },
-    {
-      "domain": "software",
-      "count": 23
+      "count": 31
     },
     {
       "domain": "python",
-      "count": 19
+      "count": 21
+    },
+    {
+      "domain": "software",
+      "count": 21
+    },
+    {
+      "domain": "backend",
+      "count": 11
+    },
+    {
+      "domain": "data",
+      "count": 11
     },
     {
       "domain": "fullstack",
       "count": 9
     },
     {
-      "domain": "backend",
+      "domain": "java",
       "count": 9
     },
     {
@@ -98,20 +106,12 @@
       "count": 7
     },
     {
-      "domain": "java",
-      "count": 7
-    },
-    {
-      "domain": "data",
-      "count": 4
-    },
-    {
       "domain": "dataeng",
       "count": 2
     }
   ],
   "sources": {
-    "LinkedIn": 77,
+    "LinkedIn": 83,
     "Internshala": 18,
     "Unstop": 16,
     "Remotive": 5

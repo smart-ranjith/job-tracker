@@ -1,9 +1,9 @@
 {
-  "updated": "2026-08-22 17:12 UTC",
-  "total": 116,
+  "updated": "2026-08-23 03:58 UTC",
+  "total": 122,
   "source_stats": {
-    "Internshala": 22,
-    "LinkedIn": 111,
+    "Internshala": 21,
+    "LinkedIn": 110,
     "Unstop": 16,
     "Remotive": 30,
     "Naukri": 0,
@@ -17,7 +17,6 @@
       "Unknown error: Exceeded 30 redirects."
     ],
     "Indeed": [
-      "HTTP 401 error",
       "HTTP 403 error"
     ],
     "Foundit": [
@@ -35,7 +34,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-full-stack-developer-%E2%80%93-intern-entry-level-at-arohana-tech-solutions-private-limited-4454740144?position=1&pageNum=0&refId=K0vOc3yXcoT8bQ7AlXOR1Q%3D%3D&trackingId=1%2BJmIkcFnX1l1X4zWrZbiA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-full-stack-developer-%E2%80%93-intern-entry-level-at-arohana-tech-solutions-private-limited-4454740144?position=1&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=w2Z%2Ba%2FcXLA%2FP70vYNgk8OQ%3D%3D",
       "prob": "high",
       "score": 18,
       "match_pct": 50,
@@ -55,10 +54,10 @@
       },
       "fit_overall": 7.5,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "ab37ead5fa1a",
@@ -85,10 +84,10 @@
       },
       "fit_overall": 8.6,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "785ee8ba1070",
@@ -97,7 +96,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/product-engineering-intern-ai-automation-at-mploychek-4454714406?position=2&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=ZktSH97W7sLDL72TAdf8Hw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/product-engineering-intern-ai-automation-at-mploychek-4454714406?position=2&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=nTzWmL3ISAb96Wx4bnU6gQ%3D%3D",
       "prob": "high",
       "score": 17,
       "match_pct": 100,
@@ -115,10 +114,10 @@
       },
       "fit_overall": 9.2,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f87ea0101b3e",
@@ -127,7 +126,7 @@
       "location": "Pune Division, Maharashtra, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-intern-at-ve3-4456212272?position=4&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=Hno5okAwawHf6fW5YysFtQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-intern-at-ve3-4456212272?position=4&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=TccjapjyzYKpOkOMRjoD%2FQ%3D%3D",
       "prob": "high",
       "score": 17,
       "match_pct": 100,
@@ -145,10 +144,10 @@
       },
       "fit_overall": 8.2,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "8bbebcd9a8bb",
@@ -157,7 +156,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-%E2%80%93-network-embedded-application-development-summer-internship-india-eg-requisition-at-cisco-4457511742?position=2&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=7o%2BasHN6BDlrCMpofIlK%2BQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-%E2%80%93-network-embedded-application-development-summer-internship-india-eg-requisition-at-cisco-4457511742?position=4&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=iYUWCKQYBu1uika0oaFeGA%3D%3D",
       "prob": "high",
       "score": 15,
       "match_pct": 50,
@@ -173,10 +172,10 @@
       },
       "fit_overall": 7.2,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "19cf7942cb0f",
@@ -185,7 +184,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-development-engineering-web-internship-in-bangalore-at-chai-point-4455991191?position=8&pageNum=0&refId=K0vOc3yXcoT8bQ7AlXOR1Q%3D%3D&trackingId=Kcs%2Fh6Wpodqo4V46Mo1uoA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-development-engineering-web-internship-in-bangalore-at-chai-point-4455991191?position=8&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=0QfyKVdyIWsyQUo8Kvsnww%3D%3D",
       "prob": "high",
       "score": 15,
       "match_pct": 50,
@@ -201,10 +200,10 @@
       },
       "fit_overall": 7.2,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "249ce90107c8",
@@ -213,7 +212,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineering-intern-full-stack-ai-at-mploychek-4454703717?position=4&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=3CwxTeyXAxBIJaGHH9QmoA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineering-intern-full-stack-ai-at-mploychek-4454703717?position=4&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=CkrsSTkV1Y1nbEB5NLB55Q%3D%3D",
       "prob": "high",
       "score": 15,
       "match_pct": 0,
@@ -234,10 +233,10 @@
       },
       "fit_overall": 7.5,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "cf77f92b4a74",
@@ -246,7 +245,7 @@
       "location": "Bangalore Urban, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineering-intern-full-stack-at-joveo-4453427249?position=2&pageNum=0&refId=K0vOc3yXcoT8bQ7AlXOR1Q%3D%3D&trackingId=fMoX1x7jODrYdN%2BLsRGSAA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineering-intern-full-stack-at-joveo-4453427249?position=2&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=B1bKm02RiyTtm5q1IfT3tw%3D%3D",
       "prob": "high",
       "score": 15,
       "match_pct": 0,
@@ -267,7 +266,7 @@
       },
       "fit_overall": 6.5,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": false
@@ -279,7 +278,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/intern-backend-developer-at-kavi-india-4456223561?position=1&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=wZjBy%2FG4gkaFz3Xpdr%2Ffxw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/intern-backend-developer-at-kavi-india-4456223561?position=1&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=s5GmcM9fskNWcHwtRkJydQ%3D%3D",
       "prob": "high",
       "score": 14,
       "match_pct": 100,
@@ -297,10 +296,10 @@
       },
       "fit_overall": 9.2,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "e746cde0fd53",
@@ -309,7 +308,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-analytics-intern-at-freight-tiger-4457083427?position=1&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=x3Zz0a2w%2By0hCgkB9QCWJw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-analytics-intern-at-freight-tiger-4457083427?position=1&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=ahNNe0fPWwBjBhdhdrI2UQ%3D%3D",
       "prob": "high",
       "score": 14,
       "match_pct": 100,
@@ -327,66 +326,10 @@
       },
       "fit_overall": 7.9,
       "domain": "data",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "a58a81299553",
-      "title": "Software Engineer, Intern",
-      "company": "Stripe",
-      "location": "Bengaluru, Karnataka, India",
-      "loc_type": "nearby",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-stripe-4454538326?position=1&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=TdEP1XHJ1laL9javPNHfoQ%3D%3D",
-      "prob": "high",
-      "score": 14,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 5,
-        "career": 7.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.2,
-      "domain": "software",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "97745e8a0de4",
-      "title": "Software Engineer Intern",
-      "company": "Weekday (YC W21)",
-      "location": "Bengaluru, Karnataka, India",
-      "loc_type": "nearby",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-weekday-yc-w21-4453416357?position=3&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=fxUvAd72o2P1uUZ7zWIhQg%3D%3D",
-      "prob": "high",
-      "score": 14,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 5,
-        "career": 7.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.2,
-      "domain": "software",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "c2f6cd915ad4",
@@ -395,7 +338,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-frnd-4455599485?position=5&pageNum=0&refId=K0vOc3yXcoT8bQ7AlXOR1Q%3D%3D&trackingId=jlVbSE2vRmMXkGOqsHXM1w%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-frnd-4455599485?position=5&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=2guOi2XnCQOnPZ38wwCEFQ%3D%3D",
       "prob": "high",
       "score": 14,
       "match_pct": 50,
@@ -411,10 +354,66 @@
       },
       "fit_overall": 7.2,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
+    },
+    {
+      "id": "97745e8a0de4",
+      "title": "Software Engineer Intern",
+      "company": "Weekday (YC W21)",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-weekday-yc-w21-4453416357?position=6&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=%2BZXzzzFfAeSLww6k%2FE5qEQ%3D%3D",
+      "prob": "high",
+      "score": 14,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 9,
+        "location": 5,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 7.2,
+      "domain": "software",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "a58a81299553",
+      "title": "Software Engineer, Intern",
+      "company": "Stripe",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-intern-at-stripe-4454538326?position=7&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=7TikJMjVdXAfoRKOWoh2sQ%3D%3D",
+      "prob": "high",
+      "score": 14,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 9,
+        "location": 5,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 7.2,
+      "domain": "software",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
     },
     {
       "id": "b383a875a00d",
@@ -423,7 +422,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/fresher-ai-ml-engineer-at-united-techno-4456167737?position=3&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=dqxX7Cz18XZkHXXezbydmg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/fresher-ai-ml-engineer-at-united-techno-4456167737?position=3&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=T6SD9tH9Jhm7OixDLpV2IA%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -439,10 +438,10 @@
       },
       "fit_overall": 7.9,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "b86c5e9cae78",
@@ -451,7 +450,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/product-engineering-intern-at-burdenoff-consultancy-services-4453966403?position=7&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=VILkxlX%2F9pH5ayLv2UrVkw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/product-engineering-intern-at-burdenoff-consultancy-services-4453966403?position=7&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=aw8z3YwVbzV892zf7dHvOw%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -467,10 +466,10 @@
       },
       "fit_overall": 7.9,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "60bed77265de",
@@ -479,7 +478,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/frontend-developer-intern-at-kavi-india-4456226431?position=4&pageNum=0&refId=Z29DX2TNoNY9nLwbnynbyw%3D%3D&trackingId=xRk0GSp%2FfwMyJRKwZS2V%2Bg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/frontend-developer-intern-at-kavi-india-4456226431?position=4&pageNum=0&refId=QRzzGV1orM%2FwTYk4M6PLEg%3D%3D&trackingId=4O4HIJUosj%2Binv9QzR%2FYjA%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -495,10 +494,10 @@
       },
       "fit_overall": 7.9,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "19c050496ee8",
@@ -507,7 +506,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/web-development-intern-at-cloutgency-4457392275?position=7&pageNum=0&refId=Z29DX2TNoNY9nLwbnynbyw%3D%3D&trackingId=0qDr52OKRZOyMuu7urtw6A%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/web-development-intern-at-cloutgency-4457392275?position=7&pageNum=0&refId=QRzzGV1orM%2FwTYk4M6PLEg%3D%3D&trackingId=lA7wGeNAcRCGH4FzXYEZQw%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -523,10 +522,10 @@
       },
       "fit_overall": 7.6,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f9792a497c61",
@@ -535,7 +534,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/ai-engineering-intern-at-veena-4455496602?position=5&pageNum=0&refId=eQbDmGDPDtJNvQ1HWREnhg%3D%3D&trackingId=Tb%2FESkArBk20tIblo6Ff%2Bg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/ai-engineering-intern-at-veena-4455496602?position=5&pageNum=0&refId=J20fWjOjxIpbSDXWBdU7sw%3D%3D&trackingId=cmm8%2FeovmkVyherSFkjchg%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -551,10 +550,10 @@
       },
       "fit_overall": 7.3,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "b9ad6e66250b",
@@ -563,7 +562,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/fullstack-developer-internship-at-greedygame-4454473630?position=8&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=STNBnzPrBwgN%2FfiVBGDUJw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/fullstack-developer-internship-at-greedygame-4454473630?position=3&pageNum=0&refId=v1GBybgQ36F8LonZ1gJI0w%3D%3D&trackingId=iZjdHJPU6iBZ%2B2pOiGSPog%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -579,7 +578,7 @@
       },
       "fit_overall": 6.9,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": false
@@ -591,7 +590,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/data-operations-analyst-intern-at-instawork-4428369297?position=2&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=DDtMvrO8eCQptubk4N8bOA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/data-operations-analyst-intern-at-instawork-4428369297?position=2&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=xVGYTJzFMTOFAlxd52gyqw%3D%3D",
       "prob": "high",
       "score": 13,
       "match_pct": 50,
@@ -607,10 +606,10 @@
       },
       "fit_overall": 7.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f416c74742da",
@@ -635,10 +634,10 @@
       },
       "fit_overall": 7.0,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "ce3ace6b6dfa",
@@ -647,7 +646,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/internship-at-poornatha-business-leadership-education-company-4454490421?position=3&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=EJOvjvGuML1SVydxuoxwtg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/internship-at-poornatha-business-leadership-education-company-4454490421?position=3&pageNum=0&refId=YNmfaxBwfUXKCfO4nQqvFg%3D%3D&trackingId=M2LdbMUmreFUXm%2BhVkfwug%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -663,10 +662,10 @@
       },
       "fit_overall": 7.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "9e0caa33f13d",
@@ -675,7 +674,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/cma-intern-at-hsbc-4456473398?position=4&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=t4kDe0my9if%2FWGagZaG9aA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/cma-intern-at-hsbc-4456473398?position=4&pageNum=0&refId=YNmfaxBwfUXKCfO4nQqvFg%3D%3D&trackingId=yFO%2BvecKWB18TcmaiNoZ5A%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -691,10 +690,10 @@
       },
       "fit_overall": 7.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "608657f272c9",
@@ -703,7 +702,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/eic-intern-commercial-real-estate-chennai-at-cushman-wakefield-4446719637?position=5&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=Fb1yjVMT8UlEvOCnKk2plA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/eic-intern-commercial-real-estate-chennai-at-cushman-wakefield-4446719637?position=5&pageNum=0&refId=YNmfaxBwfUXKCfO4nQqvFg%3D%3D&trackingId=46Edi3ohGoHs24OByovUcw%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -719,38 +718,10 @@
       },
       "fit_overall": 7.6,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "3afbf8233fb7",
-      "title": "Management Intern",
-      "company": "TrueInfo Labs",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/management-intern-at-trueinfo-labs-4456030239?position=7&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=XrAlCmgzPg91DTuMBtbGWA%3D%3D",
-      "prob": "high",
-      "score": 12,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.6,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "93a370007315",
@@ -759,7 +730,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/graduate-developer-at-standard-chartered-india-4455443333?position=8&pageNum=0&refId=HVZdvVKZyI86D%2FdRGuJRuw%3D%3D&trackingId=TGSPnXUsdHYNWI7vtgXHuQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/graduate-developer-at-standard-chartered-india-4455443333?position=8&pageNum=0&refId=YvhwEmKKxNP4VwVr1CUzqw%3D%3D&trackingId=ZfjewLrAh7nekybN3WzmmA%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -775,94 +746,10 @@
       },
       "fit_overall": 7.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "70dac4b77d18",
-      "title": "Associate Product Manager - Interns",
-      "company": "Kumaran Systems",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/associate-product-manager-interns-at-kumaran-systems-4456461470?position=8&pageNum=0&refId=PiC95QYJtjHgtXbw4JQh6A%3D%3D&trackingId=vGrjDiEZt4tJ70%2Buv0G32g%3D%3D",
-      "prob": "high",
-      "score": 12,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.6,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "dc19d00670c9",
-      "title": "Interim Intern_OneIT",
-      "company": "Qualcomm",
-      "location": "Bengaluru, Karnataka, India",
-      "loc_type": "nearby",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/interim-intern-oneit-at-qualcomm-4447180609?position=4&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=TGfje5EMZMZcshote72sRw%3D%3D",
-      "prob": "high",
-      "score": 12,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 5,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.6,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "f8162b9e2872",
-      "title": "GBS Bangalore Interns",
-      "company": "Fresenius Medical Care",
-      "location": "Bengaluru, Karnataka, India",
-      "loc_type": "nearby",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/gbs-bangalore-interns-at-fresenius-medical-care-4456423542?position=7&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=U7dQj4x%2F076I6HHcmvdXyg%3D%3D",
-      "prob": "high",
-      "score": 12,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 5,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.6,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "88d6f1f9926f",
@@ -871,7 +758,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/research-analyst-intern-at-consuma-4452563873?position=3&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=7507Ktmh8VJzslL7YLTFIA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/research-analyst-intern-at-consuma-4452563873?position=3&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=cmpG03KZvzb22mhaPPRDVw%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -887,10 +774,10 @@
       },
       "fit_overall": 6.9,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "009f08eb7dab",
@@ -899,7 +786,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/business-operations-strategy-intern-at-joveo-4453412349?position=4&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=Drue7AcSUl0i%2Fwal2C%2FqEg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/business-operations-strategy-intern-at-joveo-4453412349?position=4&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=4Sishf01Jl7J5psBO5IUYQ%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -915,10 +802,38 @@
       },
       "fit_overall": 6.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
+    },
+    {
+      "id": "f8162b9e2872",
+      "title": "GBS Bangalore Interns",
+      "company": "Fresenius Medical Care",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/gbs-bangalore-interns-at-fresenius-medical-care-4456423542?position=5&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=B151GX0t802QGsQdaUe2mw%3D%3D",
+      "prob": "high",
+      "score": 12,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 9,
+        "location": 5,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.6,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
     },
     {
       "id": "5e82ca1881bc",
@@ -927,7 +842,7 @@
       "location": "Greater Bengaluru Area",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/operations-strategy-intern-at-joveo-4453411375?position=7&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=%2B5UnkR5K0sEYvKWMwY5%2FIQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/operations-strategy-intern-at-joveo-4453411375?position=8&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=Ax9oimGhgQ1Mr2RZ9fxrbg%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 50,
@@ -943,38 +858,10 @@
       },
       "fit_overall": 6.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "0f8f335430bf",
-      "title": "Financial Analyst Intern, AMZL",
-      "company": "ACCA Careers",
-      "location": "Bengaluru, Karnataka, India",
-      "loc_type": "nearby",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/financial-analyst-intern-amzl-at-acca-careers-4457304718?position=8&pageNum=0&refId=YfizrvX8oPZkAnnROsZhiA%3D%3D&trackingId=9ohXJETG4YsZtm2mbLcbGA%3D%3D",
-      "prob": "high",
-      "score": 12,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 9,
-        "location": 5,
-        "career": 5.5,
-        "freshness": 10
-      },
-      "fit_overall": 6.9,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "a07fab99a710",
@@ -983,7 +870,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/machine-learning-operations-engineer-intern-at-tc-consulting-services-4454150065?position=6&pageNum=0&refId=eQbDmGDPDtJNvQ1HWREnhg%3D%3D&trackingId=Qd1vniwnVFD2p%2FWZS5DZSg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/machine-learning-operations-engineer-intern-at-tc-consulting-services-4454150065?position=6&pageNum=0&refId=J20fWjOjxIpbSDXWBdU7sw%3D%3D&trackingId=EFbhIHj1ENH02fW0jpMntw%3D%3D",
       "prob": "high",
       "score": 12,
       "match_pct": 0,
@@ -1004,19 +891,19 @@
       },
       "fit_overall": 6.3,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "c60362f3a2bb",
       "title": "Python Developer",
       "company": "Infosys",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
+      "location": "Bengaluru East, Karnataka, India",
+      "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-infosys-4445422559?position=5&pageNum=0&refId=2I1jBAtdkvtbJtWyiDa9jw%3D%3D&trackingId=spYUWBazrWQ0qm%2FmlJ4Pvg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-infosys-4454262392?position=1&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=jTSVYs7Dfb0lWRtkeGANVA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1026,13 +913,13 @@
       "fit": {
         "skills": 10.0,
         "experience": 5,
-        "location": 10,
+        "location": 5,
         "career": 7.0,
         "freshness": 10
       },
-      "fit_overall": 8.4,
+      "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": false
@@ -1044,7 +931,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-rehlat-4456499551?position=2&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=AIXACY51Ls6cF909z36neg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-rehlat-4456499551?position=2&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=tYwB6sz%2BPbEL7H%2F%2Bk3RD8w%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1060,10 +947,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "a194c68a2b00",
@@ -1072,7 +959,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-indium-4453443884?position=3&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=PixWodDeBgCZsGGJDlkZfw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-indium-4453443884?position=3&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=G6WNpCAvzKDawCAjlNiC1g%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1088,7 +975,7 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": false
@@ -1100,7 +987,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-neerinfo-solutions-4457090993?position=6&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=PVIG0cqbODW7WG75EX%2FEJQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-neerinfo-solutions-4457090993?position=6&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=uO4DcWLngF5tac5wSLvlkA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1116,10 +1003,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "1cc39b5250db",
@@ -1128,7 +1015,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-quest-global-4455648916?position=7&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=faRlWw9ZeFTwehtKVWtNfA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-quest-global-4455648916?position=7&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=5NcvTFVwAX9xjOZ177Rgzw%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1144,10 +1031,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "b2a55e42d9b5",
@@ -1156,7 +1043,7 @@
       "location": "Pune District, Maharashtra, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-bqarlson-software-technologies-private-limited-4454658383?position=8&pageNum=0&refId=JQwSvhrPIYdd2xhN%2BQpxiA%3D%3D&trackingId=lNpkzw48jhrGvi7haseLgA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-bqarlson-software-technologies-private-limited-4454658383?position=8&pageNum=0&refId=nkoCfpNMx0wj855CpuuG6w%3D%3D&trackingId=o7EaN0paAwtmp2aXJhrxnQ%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1172,10 +1059,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "2228af63e497",
@@ -1184,7 +1071,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/applications-developer-net-sql-angular-at-ups-4248974224?position=6&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=ew%2Fk5vAIpQVMjDfoK6dqOA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/applications-developer-net-sql-angular-at-ups-4248974224?position=6&pageNum=0&refId=1dJXBap3Z6af5pgjfRzvBw%3D%3D&trackingId=eoSBmd7%2F%2Bh2GXPpRD05%2BdQ%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1200,10 +1087,10 @@
       },
       "fit_overall": 8.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "8a4c26f756c1",
@@ -1212,7 +1099,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-immediate-joiners-only-at-techolution-4455687941?position=1&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=ypQVNhCBQ3wrfKiAvtKAbg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-immediate-joiners-only-at-techolution-4455687941?position=1&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=7rpKSWyz2hkQ6aKrSk3Nnw%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1228,10 +1115,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "6016a8967011",
@@ -1240,7 +1127,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-scalereal-technologies-pvt-ltd-4410133310?position=2&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=GKprlD7t9vYcf%2FmEVdqa0A%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-scalereal-technologies-pvt-ltd-4410133310?position=2&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=M62%2FmJq2G0ltx0YbtYdVeA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1256,10 +1143,10 @@
       },
       "fit_overall": 7.8,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "376c2ce842e2",
@@ -1268,7 +1155,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/applied-ai-engineer-python-at-jove-4455417893?position=4&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=3rrOsnTocakiuM%2F2qAjdDw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/applied-ai-engineer-python-at-jove-4455417893?position=4&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=szQmhwxuTH6rXmqbBFUsPQ%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1284,10 +1171,10 @@
       },
       "fit_overall": 7.8,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "0d695a727a65",
@@ -1296,7 +1183,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-umalis-software-solutions-pvt-ltd-4454182982?position=5&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=nuGxmXJrIa%2FAHvxNW1GJHQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-umalis-software-solutions-pvt-ltd-4454182982?position=5&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=gkSOaBfBv3nP6b3GzL1Z8g%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1312,7 +1199,35 @@
       },
       "fit_overall": 7.8,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "bddcaf3349c6",
+      "title": "Python Engineer (Remote)",
+      "company": "Hired",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/python-engineer-remote-at-hired-4457877118?position=6&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=MKNKMkHyQ2iMmkM3Q%2B0GEw%3D%3D",
+      "prob": "high",
+      "score": 11,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 7,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 7.8,
+      "domain": "python",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -1324,7 +1239,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-sais-4455496675?position=4&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=00EQ3i0vWxrJPYhsp9MCfA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-sais-4455496675?position=4&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=E54By6yS7lwJ3jY2cGQwFg%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1340,10 +1255,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "c876e56ba960",
@@ -1352,7 +1267,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-developer-at-tech-mahindra-4453404968?position=7&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=Cr7Q6bGfiX4%2FYmg2XKqSNQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-developer-at-tech-mahindra-4453404968?position=7&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=5Gk9RcWukQtYMd9ABncjDw%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1368,10 +1283,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "0480297fd273",
@@ -1380,7 +1295,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/python-pyspark-developer-at-infosys-4445795802?position=8&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=YnaIUuJ7snX2zTSfSn1NqA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/python-pyspark-developer-at-infosys-4445795802?position=8&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=OXFdHcfZefZO%2BdN1J8BZnw%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 100,
@@ -1396,10 +1311,10 @@
       },
       "fit_overall": 7.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "c1211d9e8dd2",
@@ -1408,7 +1323,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/digital-python-gen-ai-fast-api-aws-at-tata-consultancy-services-4455606419?position=3&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=j%2F8LqCqnHpwd290eCvXYdQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/digital-python-gen-ai-fast-api-aws-at-tata-consultancy-services-4455606419?position=3&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=s0tL6irlBqnMi3Ja0IHymA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 66,
@@ -1428,10 +1343,10 @@
       },
       "fit_overall": 6.4,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "d4d8a36a4c50",
@@ -1456,10 +1371,10 @@
       },
       "fit_overall": 7.0,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f052a4e6cea8",
@@ -1468,7 +1383,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/full-stack-python-and-react-engineer-ii-at-spreetail-4305171322?position=6&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=EEDLU6Z7H%2FuBlhm6dRPEsQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/full-stack-python-and-react-engineer-ii-at-spreetail-4305171322?position=7&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=zlmS9qJhspkhElMSvzil%2BA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 33,
@@ -1490,10 +1405,10 @@
       },
       "fit_overall": 6.8,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "709f19fd7188",
@@ -1502,7 +1417,7 @@
       "location": "Greater Chennai Area",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/next-js-react-js-intern-%E2%80%93-3-months-at-srk-solutions-limited-4457584212?position=3&pageNum=0&refId=Z29DX2TNoNY9nLwbnynbyw%3D%3D&trackingId=5CmH4WganrMIqN4zjMytJw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/next-js-react-js-intern-%E2%80%93-3-months-at-srk-solutions-limited-4457584212?position=3&pageNum=0&refId=QRzzGV1orM%2FwTYk4M6PLEg%3D%3D&trackingId=Y4uGGuxLDWq06lo6tnQnfA%3D%3D",
       "prob": "high",
       "score": 11,
       "match_pct": 0,
@@ -1523,7 +1438,35 @@
       },
       "fit_overall": 6.6,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "223796f08af6",
+      "title": "Automation Testing",
+      "company": "InstaWeb Labs Private LimitedActively hiring",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/automation-testing-internship-in-mumbai-at-instaweb-labs-private-limited1787130764",
+      "prob": "high",
+      "score": 10,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 7,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.5,
+      "domain": "python",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -1535,7 +1478,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/de-python-ai-gds-at-ey-4409610832?position=5&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=yivNtC57VNH2FJJWdlULaQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/de-python-ai-gds-at-ey-4409610832?position=5&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=W3SvSBO3jqmtfpJNlYbaQQ%3D%3D",
       "prob": "high",
       "score": 10,
       "match_pct": 100,
@@ -1551,10 +1494,10 @@
       },
       "fit_overall": 7.1,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "46779dd51aaa",
@@ -1563,7 +1506,7 @@
       "location": "Hyderabad, Telangana, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/ai-python-lead-at-sais-4453836548?position=6&pageNum=0&refId=nRLgGAudRi9NfRJLx2MuaQ%3D%3D&trackingId=DfKbWtL7OHDBY2o%2Frrc%2B2A%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/ai-python-lead-at-sais-4453836548?position=6&pageNum=0&refId=fRdHifEIjEVfKxK%2BvVO%2F%2BA%3D%3D&trackingId=VPaNzOf6a8rLNAzNAg0s%2FA%3D%3D",
       "prob": "high",
       "score": 10,
       "match_pct": 100,
@@ -1579,10 +1522,10 @@
       },
       "fit_overall": 6.5,
       "domain": "python",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "51e4e33c43e6",
@@ -1591,7 +1534,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/java-software-engineer-at-tata-consultancy-services-4454239100?position=1&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=ydEuCmWuXrhKAKLF4T5%2FHw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/java-software-engineer-at-tata-consultancy-services-4454239100?position=1&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=zV8wbhqnSK8EKh2BokL7fw%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 100,
@@ -1607,7 +1550,7 @@
       },
       "fit_overall": 8.7,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": false
@@ -1619,7 +1562,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-java-at-cloudbees-4447552770?position=8&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=nEWsixIws%2FeNA8g1QBrxVg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-java-at-cloudbees-4447552770?position=8&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=6PB5urp8UbBCYp4w0mzvKg%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 100,
@@ -1635,7 +1578,63 @@
       },
       "fit_overall": 8.7,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "706a339ca7c1",
+      "title": "Java Backend Engineer",
+      "company": "Ascendion",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/java-backend-engineer-at-ascendion-4456223737?position=4&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=IkOGPBEph%2F49CM7%2FaQDgRA%3D%3D",
+      "prob": "medium",
+      "score": 9,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 5,
+        "career": 8.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.7,
+      "domain": "backend",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "c2ff9b3ce72f",
+      "title": "Java Backend Developer",
+      "company": "Tata Consultancy Services",
+      "location": "Greater Bengaluru Area",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/java-backend-developer-at-tata-consultancy-services-4454265223?position=7&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=Rw%2FnrCJg5tPJdT223EcYFA%3D%3D",
+      "prob": "medium",
+      "score": 9,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 5,
+        "career": 8.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.7,
+      "domain": "backend",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -1647,7 +1646,7 @@
       "location": "Greater Chennai Area",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/java-backend-developer-with-basic-aws-knowledge-at-xylem-4260094537?position=6&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=ky0sYNWwFfHnHAHun3XRYA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/java-backend-developer-with-basic-aws-knowledge-at-xylem-4260094537?position=6&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=yuRg94TwZj%2FL09FP5bP3SQ%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 66,
@@ -1667,7 +1666,35 @@
       },
       "fit_overall": 8.0,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "d35cef775ab9",
+      "title": "Software Development Engineering (Web)",
+      "company": "Tupl",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/software-development-engineering-web-internship-in-multiple-locations-at-tupl1787410153",
+      "prob": "medium",
+      "score": 9,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 7,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.8,
+      "domain": "software",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -1679,7 +1706,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/java-api-developer-aws-at-tata-consultancy-services-4455271253?position=5&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=friEzvixEhN2okskDGmn0g%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/java-api-developer-aws-at-tata-consultancy-services-4455271253?position=5&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=8ZoP%2FABMNCvmI%2B%2FfnN7CDA%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 50,
@@ -1699,10 +1726,10 @@
       },
       "fit_overall": 7.4,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "daa55c2a58b9",
@@ -1711,7 +1738,7 @@
       "location": "Pune Division, Maharashtra, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/apprentice-data-engineer-at-stonex-group-inc-4453485444?position=2&pageNum=0&refId=eQbDmGDPDtJNvQ1HWREnhg%3D%3D&trackingId=11jSnv%2FoCCcjuaDmTXHWxw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/apprentice-data-engineer-at-stonex-group-inc-4453485444?position=2&pageNum=0&refId=J20fWjOjxIpbSDXWBdU7sw%3D%3D&trackingId=DEbz6aDm5xckdRyKHkK0%2FA%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 50,
@@ -1727,10 +1754,10 @@
       },
       "fit_overall": 6.4,
       "domain": "dataeng",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "9dddc2ff7ac1",
@@ -1739,7 +1766,7 @@
       "location": "India",
       "loc_type": "remote",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-human-data-platforms-at-hired-4457561290?position=8&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=A5DZQUqEeO8I9mU1T5t8Uw%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-human-data-platforms-at-hired-4457875234?position=8&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=oJ9y4NekdefYxFdLn58Cig%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 50,
@@ -1755,10 +1782,10 @@
       },
       "fit_overall": 7.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "27a01a710e2d",
@@ -1783,10 +1810,10 @@
       },
       "fit_overall": 6.4,
       "domain": "dataeng",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "d5a58140a97e",
@@ -1795,7 +1822,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-full-stack-at-kla-4414017482?position=1&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=E6eeeNnCH0LVKi6DeRsVyg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-full-stack-at-kla-4414017482?position=1&pageNum=0&refId=1dJXBap3Z6af5pgjfRzvBw%3D%3D&trackingId=fRGhJDIs%2BG6saPOq7yTaUw%3D%3D",
       "prob": "medium",
       "score": 9,
       "match_pct": 0,
@@ -1816,38 +1843,10 @@
       },
       "fit_overall": 6.7,
       "domain": "fullstack",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "f4e04bf8c61a",
-      "title": "Data Analytics",
-      "company": "Basti Ki Pathshala FoundationActively hiring",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-data-analytics-internship-at-basti-ki-pathshala-foundation1787308383",
-      "prob": "medium",
-      "score": 8,
-      "match_pct": 100,
-      "missing": [],
-      "res_score": 10.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 10.0,
-        "experience": 5,
-        "location": 7,
-        "career": 5.5,
-        "freshness": 10
-      },
-      "fit_overall": 7.5,
-      "domain": "data",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f4ac56553b1a",
@@ -1872,10 +1871,10 @@
       },
       "fit_overall": 7.5,
       "domain": "data",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "9e5bfa1299e5",
@@ -1884,7 +1883,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/java-developer-at-hcltech-4452229076?position=3&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=OLlFlCYsFolTLN7lQDmkCA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/java-developer-at-hcltech-4452229076?position=3&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=v7G3jrIs2J%2BhTc3r7Jdk9Q%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 100,
@@ -1900,10 +1899,10 @@
       },
       "fit_overall": 8.4,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "4f3e67abd5a9",
@@ -1912,7 +1911,7 @@
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/backend-engineer-at-mem0-4457558420?position=3&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=7eg20VigDtwNdEGdIpfLng%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/backend-engineer-at-mem0-4457558420?position=3&pageNum=0&refId=OITl%2FXt7CWrgUsYdgYQyww%3D%3D&trackingId=InsTTGqxUMIMfU%2FO9I8AYQ%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 100,
@@ -1928,7 +1927,91 @@
       },
       "fit_overall": 7.4,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "68679a701c9e",
+      "title": "Java Developer",
+      "company": "Infosys",
+      "location": "Bengaluru East, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/java-developer-at-infosys-4438352398?position=2&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=7YIx7YfR1FMKyvF1ea4bZw%3D%3D",
+      "prob": "medium",
+      "score": 8,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 5,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 7.4,
+      "domain": "java",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "308f4202c65c",
+      "title": "Java Developer",
+      "company": "Owision",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/java-developer-at-owision-4452563812?position=5&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=6R%2FiZlNNUgjEDVXvzGxd5Q%3D%3D",
+      "prob": "medium",
+      "score": 8,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 5,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 7.4,
+      "domain": "java",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "7cbb56d089b9",
+      "title": "Udaan Data Analytics",
+      "company": "Myntra",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/udaan-data-analytics-at-myntra-4420409112?position=7&pageNum=0&refId=sc7pwa5PK%2ByOPVwnQTsueQ%3D%3D&trackingId=ZUvaYLIsxNBFRD%2FokZtqkg%3D%3D",
+      "prob": "medium",
+      "score": 8,
+      "match_pct": 100,
+      "missing": [],
+      "res_score": 10.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 10.0,
+        "experience": 5,
+        "location": 5,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -1956,10 +2039,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "895ab9a9050d",
@@ -1968,7 +2051,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-at-lorven-technologies-inc-4455675515?position=7&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=kycT6VRCTgBAnEIHR5%2FxyA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-at-lorven-technologies-inc-4455675515?position=7&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=xnuB6z5vOtbJbs4z9FVkFQ%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 50,
@@ -1984,66 +2067,10 @@
       },
       "fit_overall": 7.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "5c2b57aa81e2",
-      "title": "Software Engineer - Golang",
-      "company": "CloudBees",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-golang-at-cloudbees-4455278546?position=2&pageNum=0&refId=2I1jBAtdkvtbJtWyiDa9jw%3D%3D&trackingId=kWS%2Byo%2BjiCVW5TeiGFet4g%3D%3D",
-      "prob": "medium",
-      "score": 8,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 10,
-        "career": 7.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.4,
-      "domain": "software",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "a2328bd11ad7",
-      "title": "Software Engineer",
-      "company": "Megan Soft Inc",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-at-megan-soft-inc-4448158109?position=4&pageNum=0&refId=2I1jBAtdkvtbJtWyiDa9jw%3D%3D&trackingId=pl8eGql00DQpMtAYqLlYBQ%3D%3D",
-      "prob": "medium",
-      "score": 8,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 10,
-        "career": 7.0,
-        "freshness": 10
-      },
-      "fit_overall": 7.4,
-      "domain": "software",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "a72bde4ac86c",
@@ -2052,7 +2079,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/associate-software-engineer-1-at-powerschool-4446058681?position=2&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=d72dQea2yc29r18TydgYuQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/associate-software-engineer-1-at-powerschool-4446058681?position=8&pageNum=0&refId=jdBzHpTujx%2BzG6aMVmv5wg%3D%3D&trackingId=tm4nt%2BnM1JDVHvifyXMOrg%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 50,
@@ -2068,10 +2095,10 @@
       },
       "fit_overall": 7.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "3b47c6349739",
@@ -2080,7 +2107,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/associate-software-engineer-at-kla-4435662451?position=4&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=czl4vEdH%2Flvfsqw9U1EFZA%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/associate-software-engineer-at-kla-4435662451?position=4&pageNum=0&refId=1dJXBap3Z6af5pgjfRzvBw%3D%3D&trackingId=1r%2FemXN3prko8GFJ9jr1Ng%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 50,
@@ -2096,10 +2123,10 @@
       },
       "fit_overall": 7.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "7d377044a51d",
@@ -2108,7 +2135,7 @@
       "location": "Greater Chennai Area",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/instrumentation-software-developer-at-agnikul-cosmos-4456083999?position=8&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=GsJ4jmn3qQsSOhT28EOdxQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/instrumentation-software-developer-at-agnikul-cosmos-4456083999?position=8&pageNum=0&refId=1dJXBap3Z6af5pgjfRzvBw%3D%3D&trackingId=UcDLMnaZALDNT0HN1Mih5g%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 50,
@@ -2124,19 +2151,51 @@
       },
       "fit_overall": 7.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "40b3e9356132",
+      "title": "Java Developer (Springboot )",
+      "company": "Comviva",
+      "location": "Bengaluru, Karnataka, India",
+      "loc_type": "nearby",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/java-developer-springboot-at-comviva-4455719022?position=1&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=mFVY4%2Fpb41P53C0Ne3DuNg%3D%3D",
+      "prob": "medium",
+      "score": 8,
+      "match_pct": 50,
+      "missing": [
+        "spring"
+      ],
+      "res_score": 5.0,
+      "res_tips": [
+        "Add spring to resume"
+      ],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 5,
+        "career": 7.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.4,
+      "domain": "java",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
     },
     {
-      "id": "32362d02b5af",
-      "title": "Engineer 1, Software",
-      "company": "Thermo Fisher Scientific",
-      "location": "Bengaluru East, Karnataka, India",
+      "id": "ae441ea63a67",
+      "title": "Software Engineer",
+      "company": "Eloelo",
+      "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/engineer-1-software-at-thermo-fisher-scientific-4456148237?position=5&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=l3Mf1qEkgFlh%2Bmgt8EzkLQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/software-engineer-at-eloelo-4454254178?position=6&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=EF56xZ%2FT3PagaA0dCs1uXw%3D%3D",
       "prob": "medium",
       "score": 8,
       "match_pct": 50,
@@ -2152,7 +2211,7 @@
       },
       "fit_overall": 6.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -2180,10 +2239,10 @@
       },
       "fit_overall": 6.4,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "fbc689a88856",
@@ -2208,10 +2267,10 @@
       },
       "fit_overall": 7.5,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "05290ce7f156",
@@ -2236,38 +2295,10 @@
       },
       "fit_overall": 7.5,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "8b4a61cec4e0",
-      "title": "Java Development",
-      "company": "OptimasysActively hiring",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/work-from-home-java-development-internship-at-optimasys1787375799",
-      "prob": "medium",
-      "score": 7,
-      "match_pct": 100,
-      "missing": [],
-      "res_score": 10.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 10.0,
-        "experience": 5,
-        "location": 7,
-        "career": 5.5,
-        "freshness": 10
-      },
-      "fit_overall": 7.5,
-      "domain": "java",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "75b95470fe47",
@@ -2292,10 +2323,10 @@
       },
       "fit_overall": 7.5,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "19bf5cdadbad",
@@ -2320,10 +2351,10 @@
       },
       "fit_overall": 7.5,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "fc16e923fbbb",
@@ -2348,10 +2379,10 @@
       },
       "fit_overall": 7.5,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "3e6615bbd4b4",
@@ -2376,10 +2407,10 @@
       },
       "fit_overall": 7.5,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "8f707b11c421",
@@ -2404,10 +2435,10 @@
       },
       "fit_overall": 7.5,
       "domain": "backend",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "903a8b425084",
@@ -2432,10 +2463,10 @@
       },
       "fit_overall": 6.5,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "933ddb679cb0",
@@ -2460,10 +2491,10 @@
       },
       "fit_overall": 6.5,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "e0fb042ff176",
@@ -2488,10 +2519,10 @@
       },
       "fit_overall": 6.2,
       "domain": "data",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "62d219faacbc",
@@ -2500,7 +2531,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/engineer-development-at-standard-chartered-india-4454252707?position=5&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=LqX3j7juslDYY83xMtPV0A%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/engineer-development-at-standard-chartered-india-4454252707?position=5&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=yNSTqvJru9%2Fsz4cMBpph6A%3D%3D",
       "prob": "medium",
       "score": 7,
       "match_pct": 50,
@@ -2516,10 +2547,10 @@
       },
       "fit_overall": 7.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "d3a2eec5053a",
@@ -2528,7 +2559,7 @@
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/java-ms-springboot-at-virtusa-4443686912?position=2&pageNum=0&refId=5RXfLQV%2FKIybHblrrs497Q%3D%3D&trackingId=PEVBv1AaPohTeDjS0162fg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/java-ms-springboot-at-virtusa-4443686912?position=2&pageNum=0&refId=nGbRiP3uTUKqg8F0dBRiig%3D%3D&trackingId=85EgAsPXm7n2OX9%2Fyq4nMA%3D%3D",
       "prob": "medium",
       "score": 7,
       "match_pct": 50,
@@ -2548,19 +2579,19 @@
       },
       "fit_overall": 7.1,
       "domain": "java",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
-      "id": "b9d44a402d32",
-      "title": "Golang Developer",
-      "company": "Kumaran Systems",
+      "id": "bd05593a2210",
+      "title": "Business Analyst",
+      "company": "GoDB Tech",
       "location": "Chennai, Tamil Nadu, India",
       "loc_type": "chennai",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/golang-developer-at-kumaran-systems-4456471288?position=6&pageNum=0&refId=2I1jBAtdkvtbJtWyiDa9jw%3D%3D&trackingId=ZNv6ye0gYI83Q4SREruPXQ%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-godb-tech-4454703484?position=1&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=vJA4kXBd76Y6VaexsLzu%2Fg%3D%3D",
       "prob": "medium",
       "score": 7,
       "match_pct": 50,
@@ -2575,20 +2606,188 @@
         "freshness": 10
       },
       "fit_overall": 7.1,
-      "domain": "software",
-      "date": "2026-08-22",
+      "domain": "data",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
     },
     {
-      "id": "5e6ac404db7b",
-      "title": "Associate Engineer",
-      "company": "Automation Anywhere",
+      "id": "55a7c927171b",
+      "title": "Business Analyst",
+      "company": "ACCA Careers",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-acca-careers-4456707973?position=2&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=A6RpcXL%2FOtzcQyUNhEGTJQ%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "38424fe81839",
+      "title": "Business Analyst",
+      "company": "Tata Consultancy Services",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-tata-consultancy-services-4455499509?position=3&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=0dg3Y5WQXxo7g%2BOIysGosA%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "a5d426fec74b",
+      "title": "Business Analyst - System Ticketing Platform",
+      "company": "Ventra Health",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-system-ticketing-platform-at-ventra-health-4454412107?position=4&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=n7qYuvXLm9nm%2F55yB2%2BSsw%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "3fe658630ee2",
+      "title": "Business Analyst",
+      "company": "Hewlett Packard Enterprise",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-hewlett-packard-enterprise-4457013652?position=6&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=bj9Nvss7R7krpeuTdG9usw%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "ad10d05100f0",
+      "title": "Business Analyst",
+      "company": "WORKALLTEK SOLUTIONS",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-workalltek-solutions-4456204415?position=7&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=a9T66J%2BWT825fIYG8eaa1Q%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "8bbe0dc56686",
+      "title": "Business Analyst",
+      "company": "OneMagnify",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/business-analyst-at-onemagnify-4446771066?position=8&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=ZWq%2BF%2FaGwzENPn3r3MYhLQ%3D%3D",
+      "prob": "medium",
+      "score": 7,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 5.5,
+        "freshness": 10
+      },
+      "fit_overall": 7.1,
+      "domain": "data",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "ec2257e653f4",
+      "title": "Back End Developer",
+      "company": "Duruper",
       "location": "Bengaluru, Karnataka, India",
       "loc_type": "nearby",
       "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/associate-engineer-at-automation-anywhere-4438826824?position=6&pageNum=0&refId=YTrDctVrJNihz8Iro7vDtQ%3D%3D&trackingId=5yPN%2BsAgcRO%2F8Pmx69hcsg%3D%3D",
+      "url": "https://in.linkedin.com/jobs/view/back-end-developer-at-duruper-4451703517?position=8&pageNum=0&refId=mKg0fQuwfP%2F%2B2d02%2BDucLg%3D%3D&trackingId=iPGPdu1kLIQOFPi2E%2FzjIA%3D%3D",
       "prob": "medium",
       "score": 7,
       "match_pct": 50,
@@ -2604,10 +2803,10 @@
       },
       "fit_overall": 6.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "e83a1e9b6648",
@@ -2632,10 +2831,10 @@
       },
       "fit_overall": 6.1,
       "domain": "software",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "35b7152649db",
@@ -2660,10 +2859,10 @@
       },
       "fit_overall": 6.1,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "a1695880c5ce",
@@ -2688,38 +2887,10 @@
       },
       "fit_overall": 6.1,
       "domain": "ml",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "103aade412c0",
-      "title": "Client Servicing",
-      "company": "Radhakrishna Foodland Private Limited",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Internshala",
-      "url": "https://internshala.com/internship/detail/client-servicing-internship-in-thane-at-radhakrishna-foodland-private-limited1784787524",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 7,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.2,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "30489b973202",
@@ -2744,159 +2915,19 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
-      "id": "09d9380abe9d",
-      "title": "An'yst, App Development",
-      "company": "Standard Chartered India",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/an-yst-app-development-at-standard-chartered-india-4454250736?position=6&pageNum=0&refId=NF7ypi3remtH%2Bq%2FROUY0iw%3D%3D&trackingId=C3fjYpf02yAttuhpzlwq7g%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.8,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "8c7e9120725b",
-      "title": "Senior Executive",
-      "company": "EXL",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/senior-executive-at-exl-4446734355?position=1&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=Om%2B6F%2FfcrpjLghDksu2Dcw%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 2,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.2,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "6731667eda27",
-      "title": "3838850-Senior Executive",
-      "company": "EXL",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/3838850-senior-executive-at-exl-4446732425?position=2&pageNum=0&refId=sOlZ4LUu4%2B9e%2BYOyjQ6rWQ%3D%3D&trackingId=AJKqy14OzZxAk4U%2BDSs59Q%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 2,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.2,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "f2815c3082ed",
-      "title": "owner",
-      "company": "Bara Creativa HN",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/owner-at-bara-creativa-hn-4454781002?position=6&pageNum=0&refId=PiC95QYJtjHgtXbw4JQh6A%3D%3D&trackingId=h4YyuIsB%2B4hf3rVDYEGRtg%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.8,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "45e5acf57a42",
-      "title": "An'yst, Development",
-      "company": "Standard Chartered India",
-      "location": "Chennai, Tamil Nadu, India",
-      "loc_type": "chennai",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/an-yst-development-at-standard-chartered-india-4455649008?position=5&pageNum=0&refId=kSzu%2FZVZbT2IkVpA2IhEtg%3D%3D&trackingId=Uq1g4iSnRDGklahQFRCJew%3D%3D",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 10,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.8,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "37d0ca7f9366",
-      "title": "Multiple Roles",
-      "company": "Meddflow",
+      "id": "1b8a976276c0",
+      "title": ".NET Development",
+      "company": "Softel Technologies Incorporation",
       "location": "India",
       "loc_type": "remote",
-      "source": "LinkedIn",
-      "url": "https://in.linkedin.com/jobs/view/multiple-roles-at-meddflow-4456215145?position=7&pageNum=0&refId=2yTJQy6lQvN0i%2FNsiRXK4Q%3D%3D&trackingId=2CeBWC%2B9hSPGQKbaOEZDLA%3D%3D",
+      "source": "Internshala",
+      "url": "https://internshala.com/internship/detail/net-development-internship-in-mumbai-at-softel-technologies-incorporation1787402224",
       "prob": "medium",
       "score": 6,
       "match_pct": 50,
@@ -2912,7 +2943,175 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "09d9380abe9d",
+      "title": "An'yst, App Development",
+      "company": "Standard Chartered India",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/an-yst-app-development-at-standard-chartered-india-4454250736?position=6&pageNum=0&refId=1RanQvMVGBSLTdeLpNmpqw%3D%3D&trackingId=OXCEKub1YL8zoVo9DRKdQw%3D%3D",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.8,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "8c7e9120725b",
+      "title": "Senior Executive",
+      "company": "EXL",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/senior-executive-at-exl-4446734355?position=1&pageNum=0&refId=YNmfaxBwfUXKCfO4nQqvFg%3D%3D&trackingId=urec3w%2FH2zclW%2BQUUgtRKw%3D%3D",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 2,
+        "location": 10,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.2,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "6731667eda27",
+      "title": "3838850-Senior Executive",
+      "company": "EXL",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/3838850-senior-executive-at-exl-4446732425?position=2&pageNum=0&refId=YNmfaxBwfUXKCfO4nQqvFg%3D%3D&trackingId=3t5DHBRUZfRPo9sJnqsCvA%3D%3D",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 2,
+        "location": 10,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.2,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "49bcf228a135",
+      "title": "BA -Client services",
+      "company": "Virtusa",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/ba-client-services-at-virtusa-4434854699?position=5&pageNum=0&refId=Oird2ieO%2F62T6hFSjmLEbg%3D%3D&trackingId=ExRbyCCuWg%2Bz4lRxY9Lc2w%3D%3D",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.8,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": true
+    },
+    {
+      "id": "45e5acf57a42",
+      "title": "An'yst, Development",
+      "company": "Standard Chartered India",
+      "location": "Chennai, Tamil Nadu, India",
+      "loc_type": "chennai",
+      "source": "LinkedIn",
+      "url": "https://in.linkedin.com/jobs/view/an-yst-development-at-standard-chartered-india-4455649008?position=5&pageNum=0&refId=1dJXBap3Z6af5pgjfRzvBw%3D%3D&trackingId=kfx0YamYlxU5%2FtLVB0jr%2BQ%3D%3D",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 10,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.8,
+      "domain": "general",
+      "date": "2026-08-23",
+      "fresh": true,
+      "stale": "fresh",
+      "is_new": false
+    },
+    {
+      "id": "cc932582015e",
+      "title": "Business Development Executive",
+      "company": "Inrext Private Limited",
+      "location": "India",
+      "loc_type": "remote",
+      "source": "Unstop",
+      "url": "https://unstop.com/jobs/jobs/business-development-executive-inrext-private-limited-1743055",
+      "prob": "medium",
+      "score": 6,
+      "match_pct": 50,
+      "missing": [],
+      "res_score": 5.0,
+      "res_tips": [],
+      "fit": {
+        "skills": 5.0,
+        "experience": 5,
+        "location": 7,
+        "career": 4.0,
+        "freshness": 10
+      },
+      "fit_overall": 6.2,
+      "domain": "general",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
       "is_new": true
@@ -2940,10 +3139,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "5737b643d61c",
@@ -2968,10 +3167,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "c4f52e37e70e",
@@ -2996,10 +3195,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "b1376f500036",
@@ -3024,10 +3223,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f7fdd7f46248",
@@ -3052,10 +3251,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "bd228d26a4c6",
@@ -3080,10 +3279,10 @@
       },
       "fit_overall": 5.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "440a5910938c",
@@ -3108,10 +3307,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "1b930ba44baa",
@@ -3136,10 +3335,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "9361855fb345",
@@ -3164,10 +3363,10 @@
       },
       "fit_overall": 5.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "962530d6de71",
@@ -3192,10 +3391,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "8fb0d47e490c",
@@ -3220,10 +3419,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "fc6f552d14b7",
@@ -3248,10 +3447,10 @@
       },
       "fit_overall": 5.6,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "4170e442a01c",
@@ -3276,10 +3475,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
+      "is_new": false
     },
     {
       "id": "f514799a2f02",
@@ -3304,38 +3503,10 @@
       },
       "fit_overall": 6.2,
       "domain": "general",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "fresh": true,
       "stale": "fresh",
-      "is_new": true
-    },
-    {
-      "id": "dab200a96565",
-      "title": "Admission Executive",
-      "company": "NextGen",
-      "location": "India",
-      "loc_type": "remote",
-      "source": "Unstop",
-      "url": "https://unstop.com/jobs/jobs/admission-executive-nextgen-1742720",
-      "prob": "medium",
-      "score": 6,
-      "match_pct": 50,
-      "missing": [],
-      "res_score": 5.0,
-      "res_tips": [],
-      "fit": {
-        "skills": 5.0,
-        "experience": 5,
-        "location": 7,
-        "career": 4.0,
-        "freshness": 10
-      },
-      "fit_overall": 6.2,
-      "domain": "general",
-      "date": "2026-08-22",
-      "fresh": true,
-      "stale": "fresh",
-      "is_new": true
+      "is_new": false
     }
   ]
 }
