@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30",
+  "updated": "2026-09-06",
   "top_skills": [
     {
       "skill": "python",
@@ -7,7 +7,7 @@
     },
     {
       "skill": "backend",
-      "count": 15
+      "count": 11
     },
     {
       "skill": "java",
@@ -15,109 +15,121 @@
     },
     {
       "skill": "full stack",
-      "count": 5
+      "count": 9
     },
     {
-      "skill": "data analytics",
-      "count": 5
+      "skill": "react",
+      "count": 3
     },
     {
-      "skill": "node",
+      "skill": "sql",
+      "count": 2
+    },
+    {
+      "skill": "fastapi",
       "count": 2
     },
     {
       "skill": "automation",
+      "count": 2
+    },
+    {
+      "skill": "machine learning",
+      "count": 2
+    },
+    {
+      "skill": "data analytics",
+      "count": 2
+    },
+    {
+      "skill": "mysql",
       "count": 1
     },
     {
-      "skill": "django",
+      "skill": "rest api",
       "count": 1
     },
     {
-      "skill": "git",
+      "skill": "aws",
       "count": 1
     },
     {
-      "skill": "mongodb",
-      "count": 1
-    },
-    {
-      "skill": "spring",
-      "count": 1
-    },
-    {
-      "skill": "react",
+      "skill": "power bi",
       "count": 1
     }
   ],
   "gap_skills": [
     {
       "skill": "full stack",
-      "count": 5
-    },
-    {
-      "skill": "node",
-      "count": 2
-    },
-    {
-      "skill": "django",
-      "count": 1
-    },
-    {
-      "skill": "mongodb",
-      "count": 1
-    },
-    {
-      "skill": "spring",
-      "count": 1
+      "count": 9
     },
     {
       "skill": "react",
+      "count": 3
+    },
+    {
+      "skill": "fastapi",
+      "count": 2
+    },
+    {
+      "skill": "machine learning",
+      "count": 2
+    },
+    {
+      "skill": "rest api",
+      "count": 1
+    },
+    {
+      "skill": "aws",
+      "count": 1
+    },
+    {
+      "skill": "power bi",
       "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 35
+      "count": 34
     },
     {
       "domain": "software",
-      "count": 23
-    },
-    {
-      "domain": "data",
-      "count": 15
-    },
-    {
-      "domain": "backend",
-      "count": 14
+      "count": 31
     },
     {
       "domain": "fullstack",
-      "count": 12
+      "count": 15
+    },
+    {
+      "domain": "data",
+      "count": 13
     },
     {
       "domain": "python",
+      "count": 12
+    },
+    {
+      "domain": "backend",
       "count": 11
     },
     {
-      "domain": "dataeng",
-      "count": 8
-    },
-    {
       "domain": "ml",
-      "count": 7
+      "count": 9
     },
     {
       "domain": "java",
-      "count": 6
+      "count": 7
+    },
+    {
+      "domain": "dataeng",
+      "count": 2
     }
   ],
   "sources": {
-    "LinkedIn": 86,
-    "Internshala": 20,
-    "Remotive": 7,
-    "Unstop": 18
+    "LinkedIn": 89,
+    "Internshala": 21,
+    "Unstop": 17,
+    "Remotive": 7
   }
 }
