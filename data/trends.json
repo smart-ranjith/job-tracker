@@ -1,56 +1,48 @@
 {
-  "updated": "2026-09-13",
+  "updated": "2026-09-20",
   "top_skills": [
     {
       "skill": "python",
-      "count": 13
+      "count": 12
     },
     {
       "skill": "backend",
-      "count": 9
+      "count": 11
+    },
+    {
+      "skill": "java",
+      "count": 6
     },
     {
       "skill": "sql",
       "count": 4
     },
     {
-      "skill": "java",
-      "count": 3
-    },
-    {
-      "skill": "full stack",
-      "count": 3
-    },
-    {
       "skill": "node",
       "count": 2
     },
     {
-      "skill": "automation",
+      "skill": "machine learning",
       "count": 2
     },
     {
-      "skill": "git",
-      "count": 1
+      "skill": "data analytics",
+      "count": 2
     },
     {
       "skill": "rest api",
       "count": 1
     },
     {
-      "skill": "fastapi",
+      "skill": "git",
       "count": 1
     },
     {
-      "skill": "postgresql",
+      "skill": "automation",
       "count": 1
     },
     {
-      "skill": "data analytics",
-      "count": 1
-    },
-    {
-      "skill": "aws",
+      "skill": "full stack",
       "count": 1
     },
     {
@@ -60,11 +52,11 @@
   ],
   "gap_skills": [
     {
-      "skill": "full stack",
-      "count": 3
+      "skill": "node",
+      "count": 2
     },
     {
-      "skill": "node",
+      "skill": "machine learning",
       "count": 2
     },
     {
@@ -72,15 +64,7 @@
       "count": 1
     },
     {
-      "skill": "fastapi",
-      "count": 1
-    },
-    {
-      "skill": "postgresql",
-      "count": 1
-    },
-    {
-      "skill": "aws",
+      "skill": "full stack",
       "count": 1
     },
     {
@@ -91,27 +75,31 @@
   "domains": [
     {
       "domain": "general",
-      "count": 35
+      "count": 40
     },
     {
       "domain": "software",
-      "count": 34
-    },
-    {
-      "domain": "python",
-      "count": 11
+      "count": 20
     },
     {
       "domain": "backend",
+      "count": 11
+    },
+    {
+      "domain": "python",
       "count": 9
+    },
+    {
+      "domain": "java",
+      "count": 8
     },
     {
       "domain": "ml",
-      "count": 9
+      "count": 8
     },
     {
       "domain": "fullstack",
-      "count": 6
+      "count": 4
     },
     {
       "domain": "data",
@@ -120,16 +108,12 @@
     {
       "domain": "dataeng",
       "count": 2
-    },
-    {
-      "domain": "java",
-      "count": 2
     }
   ],
   "sources": {
-    "LinkedIn": 68,
-    "Unstop": 21,
-    "Internshala": 17,
-    "Remotive": 5
+    "LinkedIn": 60,
+    "Unstop": 20,
+    "Internshala": 19,
+    "Remotive": 6
   }
 }
