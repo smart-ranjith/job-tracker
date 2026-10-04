@@ -1,36 +1,32 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-10-04",
   "top_skills": [
     {
       "skill": "python",
-      "count": 10
+      "count": 11
     },
     {
       "skill": "backend",
-      "count": 5
+      "count": 8
     },
     {
       "skill": "full stack",
       "count": 4
     },
     {
-      "skill": "machine learning",
-      "count": 3
-    },
-    {
-      "skill": "sql",
+      "skill": "django",
       "count": 2
     },
     {
-      "skill": "java",
+      "skill": "data analytics",
       "count": 2
     },
     {
-      "skill": "git",
+      "skill": "rest api",
       "count": 1
     },
     {
-      "skill": "automation",
+      "skill": "sql",
       "count": 1
     }
   ],
@@ -40,18 +36,22 @@
       "count": 4
     },
     {
-      "skill": "machine learning",
-      "count": 3
+      "skill": "django",
+      "count": 2
+    },
+    {
+      "skill": "rest api",
+      "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 44
+      "count": 34
     },
     {
       "domain": "software",
-      "count": 22
+      "count": 26
     },
     {
       "domain": "ml",
@@ -63,25 +63,25 @@
     },
     {
       "domain": "fullstack",
-      "count": 7
+      "count": 10
     },
     {
       "domain": "backend",
-      "count": 4
-    },
-    {
-      "domain": "java",
-      "count": 3
+      "count": 8
     },
     {
       "domain": "data",
-      "count": 1
+      "count": 5
+    },
+    {
+      "domain": "java",
+      "count": 2
     }
   ],
   "sources": {
-    "LinkedIn": 61,
-    "Internshala": 16,
-    "Unstop": 20,
+    "LinkedIn": 64,
+    "Internshala": 18,
+    "Unstop": 19,
     "Remotive": 8
   }
 }
