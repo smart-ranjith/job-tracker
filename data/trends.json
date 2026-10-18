@@ -1,90 +1,99 @@
 {
-  "updated": "2026-10-11",
+  "updated": "2026-10-18",
   "top_skills": [
     {
       "skill": "python",
-      "count": 14
+      "count": 15
     },
     {
       "skill": "backend",
-      "count": 5
+      "count": 8
     },
     {
-      "skill": "full stack",
+      "skill": "sql",
       "count": 5
-    },
-    {
-      "skill": "automation",
-      "count": 2
     },
     {
       "skill": "java",
       "count": 2
     },
     {
-      "skill": "sql",
-      "count": 1
-    },
-    {
-      "skill": "spring",
-      "count": 1
+      "skill": "git",
+      "count": 2
     },
     {
       "skill": "react",
+      "count": 2
+    },
+    {
+      "skill": "power bi",
+      "count": 1
+    },
+    {
+      "skill": "deep learning",
+      "count": 1
+    },
+    {
+      "skill": "full stack",
       "count": 1
     }
   ],
   "gap_skills": [
     {
-      "skill": "full stack",
-      "count": 5
+      "skill": "react",
+      "count": 2
     },
     {
-      "skill": "spring",
+      "skill": "power bi",
       "count": 1
     },
     {
-      "skill": "react",
+      "skill": "deep learning",
+      "count": 1
+    },
+    {
+      "skill": "full stack",
       "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 32
+      "count": 40
     },
     {
       "domain": "software",
-      "count": 17
-    },
-    {
-      "domain": "ml",
-      "count": 11
+      "count": 20
     },
     {
       "domain": "python",
-      "count": 10
+      "count": 14
     },
     {
-      "domain": "fullstack",
-      "count": 9
+      "domain": "ml",
+      "count": 13
     },
     {
       "domain": "backend",
-      "count": 5
+      "count": 8
+    },
+    {
+      "domain": "fullstack",
+      "count": 7
     },
     {
       "domain": "data",
-      "count": 2
+      "count": 4
     },
     {
       "domain": "java",
-      "count": 2
+      "count": 4
     }
   ],
   "sources": {
-    "LinkedIn": 60,
-    "Remotive": 6,
-    "Unstop": 22
+    "LinkedIn": 65,
+    "Unstop": 20,
+    "Internshala": 20,
+    "Remotive": 5
   }
 }
