@@ -1,32 +1,36 @@
 {
-  "updated": "2026-11-01",
+  "updated": "2026-11-08",
   "top_skills": [
+    {
+      "skill": "python",
+      "count": 12
+    },
     {
       "skill": "backend",
       "count": 11
-    },
-    {
-      "skill": "python",
-      "count": 10
-    },
-    {
-      "skill": "data analytics",
-      "count": 3
-    },
-    {
-      "skill": "full stack",
-      "count": 2
     },
     {
       "skill": "java",
       "count": 2
     },
     {
-      "skill": "git",
+      "skill": "full stack",
+      "count": 2
+    },
+    {
+      "skill": "pandas",
       "count": 1
     },
     {
-      "skill": "spring",
+      "skill": "machine learning",
+      "count": 1
+    },
+    {
+      "skill": "sql",
+      "count": 1
+    },
+    {
+      "skill": "data analytics",
       "count": 1
     }
   ],
@@ -36,34 +40,34 @@
       "count": 2
     },
     {
-      "skill": "spring",
+      "skill": "pandas",
+      "count": 1
+    },
+    {
+      "skill": "machine learning",
       "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 44
+      "count": 38
     },
     {
       "domain": "software",
-      "count": 23
-    },
-    {
-      "domain": "ml",
-      "count": 12
+      "count": 16
     },
     {
       "domain": "backend",
       "count": 11
     },
     {
-      "domain": "python",
-      "count": 8
+      "domain": "ml",
+      "count": 9
     },
     {
-      "domain": "fullstack",
-      "count": 3
+      "domain": "python",
+      "count": 7
     },
     {
       "domain": "data",
@@ -71,7 +75,11 @@
     },
     {
       "domain": "java",
-      "count": 2
+      "count": 3
+    },
+    {
+      "domain": "fullstack",
+      "count": 3
     },
     {
       "domain": "dataeng",
@@ -79,9 +87,9 @@
     }
   ],
   "sources": {
-    "LinkedIn": 55,
-    "Internshala": 24,
-    "Unstop": 22,
-    "Remotive": 6
+    "LinkedIn": 47,
+    "Internshala": 25,
+    "Remotive": 5,
+    "Unstop": 14
   }
 }
