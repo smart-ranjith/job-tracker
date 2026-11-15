@@ -1,29 +1,29 @@
 {
-  "updated": "2026-11-08",
+  "updated": "2026-11-15",
   "top_skills": [
     {
       "skill": "python",
-      "count": 12
+      "count": 9
     },
     {
       "skill": "backend",
-      "count": 11
-    },
-    {
-      "skill": "java",
-      "count": 2
+      "count": 9
     },
     {
       "skill": "full stack",
-      "count": 2
+      "count": 5
     },
     {
-      "skill": "pandas",
-      "count": 1
+      "skill": "automation",
+      "count": 4
+    },
+    {
+      "skill": "java",
+      "count": 3
     },
     {
       "skill": "machine learning",
-      "count": 1
+      "count": 2
     },
     {
       "skill": "sql",
@@ -32,64 +32,73 @@
     {
       "skill": "data analytics",
       "count": 1
+    },
+    {
+      "skill": "git",
+      "count": 1
+    },
+    {
+      "skill": "react",
+      "count": 1
     }
   ],
   "gap_skills": [
     {
       "skill": "full stack",
-      "count": 2
-    },
-    {
-      "skill": "pandas",
-      "count": 1
+      "count": 5
     },
     {
       "skill": "machine learning",
+      "count": 2
+    },
+    {
+      "skill": "react",
       "count": 1
     }
   ],
   "domains": [
     {
       "domain": "general",
-      "count": 38
+      "count": 46
     },
     {
       "domain": "software",
-      "count": 16
-    },
-    {
-      "domain": "backend",
-      "count": 11
+      "count": 22
     },
     {
       "domain": "ml",
-      "count": 9
+      "count": 11
     },
     {
       "domain": "python",
+      "count": 10
+    },
+    {
+      "domain": "backend",
+      "count": 9
+    },
+    {
+      "domain": "fullstack",
       "count": 7
     },
     {
       "domain": "data",
-      "count": 3
+      "count": 6
     },
     {
       "domain": "java",
       "count": 3
     },
     {
-      "domain": "fullstack",
-      "count": 3
-    },
-    {
       "domain": "dataeng",
-      "count": 1
+      "count": 2
     }
   ],
   "sources": {
-    "LinkedIn": 47,
-    "Internshala": 25,
-    "Remotive": 5,
-    "Unstop": 14
+    "LinkedIn": 60,
+    "Internshala": 24,
+    "Remotive": 3,
+    "Unstop": 17,
+    "Freshersworld": 12
   }
 }
